@@ -42,12 +42,16 @@
         .navbar img {
             height: 55px;
         }
+
+        /* Cursor fix */
         .nav-links a {
             color: var(--light-text);
             margin: 0 1rem;
             text-decoration: none;
             font-size: 1.1rem;
+            cursor: pointer !important;  /* IMPORTANT FIX */
         }
+
         .nav-links a.active,
         .nav-links a:hover {
             color: var(--primary-color);
@@ -89,6 +93,7 @@
             text-decoration: none;
             font-weight: bold;
             margin-top: 1.2rem;
+            cursor: pointer;
         }
         .btn:hover { background: #0a4660; }
 
@@ -178,9 +183,9 @@
     <img src="logo.png" alt="LakkisStock">
 
     <div class="nav-links">
-        <a onclick="showPage('home')" class="active">Home</a>
-        <a onclick="showPage('products')">Products</a>
-        <a onclick="showPage('contact')">Contact</a>
+        <a href="#" onclick="showPage('home')" class="active">Home</a>
+        <a href="#" onclick="showPage('products')">Products</a>
+        <a href="#" onclick="showPage('contact')">Contact</a>
     </div>
 
     <div class="social-icons">
@@ -316,4 +321,3 @@ function showPage(id) {
 
 </body>
 </html>
-
