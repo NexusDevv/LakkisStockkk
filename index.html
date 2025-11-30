@@ -2,7 +2,11 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>LLakkisStock</title>
+
+    <!-- FIXED FOR MOBILE VIEW -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LakkisStock</title>
 
     <!-- Logo -->
     <link rel="icon" type="image/png" href="logo.png" />
@@ -38,6 +42,9 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         .navbar img {
             height: 55px;
