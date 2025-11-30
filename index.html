@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>LLakkisStock</title>
+
+    <!-- Logo -->
+    <link rel="icon" type="image/png" href="logo.png" />
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #0f587f;
+            --light-text: #e0e0e0;
+            --dark-bg: #050505;
+            --section-bg: #f5f5f5;
+            --price-blue: #0085ff;
+            --shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        body {
+            margin: 0;
+            background: var(--dark-bg);
+            font-family: "Tajawal", sans-serif;
+            color: var(--light-text);
+        }
+
+        /* NAVBAR */
+        .navbar {
+            background: #0a0a0a;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+        .navbar img {
+            height: 55px;
+        }
+        .nav-links a {
+            color: var(--light-text);
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+        .nav-links a.active,
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-icons a {
+            color: var(--light-text);
+            font-size: 1.5rem;
+            margin-left: 1rem;
+            transition: 0.3s;
+        }
+        .social-icons a:hover {
+            color: var(--primary-color);
+        }
+
+        /* PAGES */
+        .page { display: none; animation: fade 0.4s; }
+        .page.active { display: block; }
+
+        @keyframes fade { 
+            from {opacity:0; transform:translateY(20px);} 
+            to {opacity:1; transform:translateY(0);} 
+        }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+        .hero img { width: 180px; }
+        .hero h1 { font-size: 3rem; margin: 1rem 0; }
+        .hero p { font-size: 1.3rem; opacity: 0.8; }
+        .btn {
+            display: inline-block;
+            background: var(--primary-color);
+            padding: 0.9rem 2rem;
+            border-radius: 10px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1.2rem;
+        }
+        .btn:hover { background: #0a4660; }
+
+        /* PRODUCTS SECTION */
+        .section-light {
+            background: var(--section-bg);
+            padding: 3rem 1rem;
+            color: #222;
+        }
+        .container { max-width: 1200px; margin: auto; }
+
+        /* PRICING */
+        .pricing-row {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .pricing-card {
+            width: 350px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+        }
+        .pricing-header {
+            padding: 1.2rem;
+            text-align: center;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 800;
+        }
+
+        .pricing-body {
+            padding: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .pricing-category {
+            text-align: center;
+            font-weight: 700;
+            margin: 1rem 0;
+            color: #333;
+        }
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .price-row:last-child { border-bottom: none; }
+
+        .price-value {
+            font-weight: bold;
+            color: var(--price-blue);
+        }
+
+        /* DISNEY+ */
+        .coming-card {
+            width: 350px;
+            margin: 3rem auto 0 auto;
+            background: #dbe9ff;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            color: #333;
+        }
+
+        /* CONTACT */
+        .contact-box {
+            text-align: center;
+            padding: 3rem 1rem;
+        }
+
+        footer {
+            text-align: center;
+            opacity: 0.5;
+            padding: 2rem;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <img src="logo.png" alt="LakkisStock">
+
+    <div class="nav-links">
+        <a onclick="showPage('home')" class="active">Home</a>
+        <a onclick="showPage('products')">Products</a>
+        <a onclick="showPage('contact')">Contact</a>
+    </div>
+
+    <div class="social-icons">
+        <a href="https://api.whatsapp.com/send/?phone=96170708025" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/lakkisstock/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+        <a href="#" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+        <a href="https://t.me/+96170708025" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+    </div>
+</nav>
+
+<!-- HOME -->
+<div id="home" class="page active">
+    <div class="hero">
+        <img src="logo.png">
+        <h1>LakkisStock</h1>
+        <p>Premium Streaming Accounts • Best Prices in Lebanon</p>
+        <a class="btn" onclick="showPage('products')">View Products</a>
+    </div>
+</div>
+
+<!-- PRODUCTS -->
+<div id="products" class="page">
+    <div class="section-light">
+        <div class="container">
+
+            <h2 style="text-align:center; margin-bottom:2rem;">
+                Explore our offerings for streaming accounts:
+            </h2>
+
+            <div class="pricing-row">
+
+                <!-- NETFLIX -->
+                <div class="pricing-card">
+                    <div class="pricing-header" style="background:#e50914;">Netflix</div>
+                    <div class="pricing-body">
+
+                        <div class="pricing-category">User Account</div>
+
+                        <div class="price-row"><span>1 Month</span><span class="price-value">$3.00</span></div>
+                        <div class="price-row"><span>3 Months</span><span class="price-value">$7.00</span></div>
+                        <div class="price-row"><span>6 Months</span><span class="price-value">$14.00</span></div>
+                        <div class="price-row"><span>1 Year</span><span class="price-value">$21.00</span></div>
+
+                        <div class="pricing-category">Full Account</div>
+
+                        <div class="price-row"><span>1 Month</span><span class="price-value">$9.00</span></div>
+                        <div class="price-row"><span>3 Months</span><span class="price-value">$24.00</span></div>
+                        <div class="price-row"><span>1 Year</span><span class="price-value">$90.00</span></div>
+
+                        <!-- Temporary Netflix Code Help -->
+                        <div style="margin-top:15px; text-align:center; background:#eef6ff; padding:10px; border-radius:8px;">
+                            <a href="https://ostories.me" target="_blank" 
+                               style="color:#0f587f; font-weight:bold; text-decoration:none;">
+                                If Netflix asks you for a temporary login code, please visit ostories.me
+                            </a>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- ANGHAMI -->
+                <div class="pricing-card">
+                    <div class="pricing-header" style="background:#7b1fa2;">🎵 Anghami</div>
+                    <div class="pricing-body">
+                        <div class="price-row"><span>3 Months</span><span class="price-value">$7.00</span></div>
+                        <div class="price-row"><span>6 Months</span><span class="price-value">$14.00</span></div>
+                        <div class="price-row"><span>1 Year</span><span class="price-value">$20.00</span></div>
+                    </div>
+                </div>
+
+                <!-- SHAHID -->
+                <div class="pricing-card">
+                    <div class="pricing-header" style="background:#03a9f4;">💻 Shahid</div>
+                    <div class="pricing-body">
+
+                        <div class="pricing-category">User Account</div>
+                        <div class="price-row"><span>1 Month</span><span class="price-value">$2.00</span></div>
+                        <div class="price-row"><span>3 Months</span><span class="price-value">$4.00</span></div>
+                        <div class="price-row"><span>1 Year</span><span class="price-value">$9.00</span></div>
+
+                        <div class="pricing-category">Full Account</div>
+                        <div class="price-row"><span>1 Month</span><span class="price-value">$5.00</span></div>
+                        <div class="price-row"><span>3 Months</span><span class="price-value">$9.00</span></div>
+                        <div class="price-row"><span>1 Year</span><span class="price-value">$30.00</span></div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- DISNEY+ -->
+            <div class="coming-card">
+                <h3>Disney+ (Coming Soon!)</h3>
+                <p>Stay tuned for amazing content!</p>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="page">
+    <div class="contact-box">
+        <h1><i class="fa-solid fa-paper-plane"></i> Contact</h1>
+        <p>For orders or inquiries, contact us on WhatsApp:</p>
+
+        <a class="btn" href="https://api.whatsapp.com/send/?phone=96170708025">Message on WhatsApp</a>
+
+        <h2 style="margin-top:2rem;">Support</h2>
+        <p>For support or any issues, contact us on Telegram:</p>
+
+        <a class="btn" style="background:#0088cc;" href="https://t.me/+96170708025" target="_blank">
+            <i class="fa-brands fa-telegram"></i> Contact on Telegram
+        </a>
+    </div>
+</div>
+
+<footer>
+    © 2025 LakkisStock — All Rights Reserved
+</footer>
+
+<script>
+function showPage(id) {
+    document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
+    document.getElementById(id).classList.add("active");
+
+    document.querySelectorAll(".nav-links a").forEach(a => a.classList.remove("active"));
+    document.querySelector(`.nav-links a[onclick="showPage('${id}')"]`).classList.add("active");
+
+    window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
