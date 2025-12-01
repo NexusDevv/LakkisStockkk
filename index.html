@@ -2,17 +2,11 @@
 <html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
+    <meta-name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
     <title>LakkisStock</title>
 
-    <!-- Logo -->
-    <link rel="icon" type="image/png" href="logo.png" />
-
-    <!-- Icons -->
+    <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <!-- Font -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
 
 <style>
@@ -25,7 +19,6 @@
     --shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
-/* GLOBAL */
 * {
     margin: 0;
     padding: 0;
@@ -47,13 +40,11 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: var(--shadow);
     flex-wrap: wrap;
+    box-shadow: var(--shadow);
 }
 
-.navbar img {
-    height: 45px;
-}
+.navbar img { height: 45px; }
 
 .nav-links {
     display: flex;
@@ -69,18 +60,16 @@ body {
 }
 
 .nav-links a.active,
-.nav-links a:hover {
-    color: var(--primary-color);
-}
+.nav-links a:hover { color: var(--primary-color); }
 
 .social-icons {
     display: flex;
     gap: .7rem;
 }
 
-.social-icons a {
-    color: var(--light-text);
-    font-size: 1.4rem;
+.social-icons a { 
+    color: var(--light-text); 
+    font-size: 1.4rem; 
 }
 
 /* SPINNER */
@@ -95,8 +84,7 @@ body {
     z-index: 10000;
 }
 .spinner {
-    width: 50px;
-    height: 50px;
+    width: 50px; height: 50px;
     border: 6px solid #ffffff33;
     border-top-color: var(--primary-color);
     border-radius: 50%;
@@ -108,6 +96,7 @@ body {
 .page {
     display: none;
     animation: fade .3s;
+    padding-bottom: 3rem;
 }
 .page.active { display: block; }
 
@@ -123,8 +112,8 @@ body {
 }
 .hero img { width: 150px; }
 .hero h1 { font-size: 2.4rem; margin-top: 1rem; }
-.hero p { font-size: 1.3rem; opacity: .8; margin-top: .3rem; }
 
+/* BUTTON */
 .btn {
     display: inline-block;
     background: var(--primary-color);
@@ -134,25 +123,24 @@ body {
     text-decoration: none;
     font-weight: 700;
     margin-top: 1.2rem;
-    cursor: pointer;
 }
 
 /* CONTENT BOX */
 .content-box {
     max-width: 900px;
     margin: 2rem auto;
-    background: rgba(255,255,255,0.12);
+    background: rgba(255,255,255,0.07);
     padding: 2rem;
     border-radius: 15px;
     border: 1px solid rgba(255,255,255,0.18);
 }
+
 .step {
     background: rgba(255,255,255,0.1);
     margin: 1rem 0;
     padding: 1rem;
     border-left: 4px solid var(--primary-color);
     border-radius: 8px;
-    font-size: 1.05rem;
 }
 
 /* PRICING */
@@ -162,14 +150,11 @@ body {
     color: #222;
 }
 
-.container {
-    max-width: 1200px;
-    margin: auto;
-}
+.container { max-width: 1200px; margin: auto; }
 
 .pricing-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
     gap: 1.5rem;
 }
 
@@ -188,9 +173,7 @@ body {
     color: #fff;
 }
 
-.pricing-body {
-    padding: 1.5rem;
-}
+.pricing-body { padding: 1.5rem; }
 
 .price-row {
     display: flex;
@@ -198,19 +181,10 @@ body {
     padding: .7rem 0;
     border-bottom: 1px solid #ddd;
 }
-.price-value {
-    color: var(--price-blue);
-    font-weight: 700;
-}
+.price-value { color: var(--price-blue); font-weight: 700; }
 
-.coming-card {
-    background: #dbe9ff;
-    padding: 2rem;
-    margin: 3rem auto 0;
-    border-radius: 12px;
-    width: 300px;
-    text-align: center;
-}
+.ps-header { background:#003087 !important; }
+.pslb-header { background:#002255 !important; }
 
 /* TRUST BADGES */
 .trust-section {
@@ -218,57 +192,110 @@ body {
     padding: 3rem 1rem;
     text-align: center;
 }
-
 .trust-section h2 {
     font-size: 1.8rem;
     margin-bottom: 2rem;
 }
-
 .trust-row {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
     gap: 1.5rem;
     max-width: 1000px;
     margin: auto;
 }
-
 .trust-item {
     background: rgba(255,255,255,0.07);
     padding: 1.5rem;
     border-radius: 12px;
     border: 1px solid rgba(255,255,255,0.18);
 }
-
 .trust-item i {
     font-size: 2rem;
     color: var(--primary-color);
-    margin-bottom: .6rem;
-}
-
-.trust-item p {
-    font-size: 1.1rem;
-    opacity: .9;
 }
 
 /* CONTACT */
 .contact-box {
+    max-width: 700px;
+    margin: 40px auto;
+    background: rgba(255,255,255,0.07);
+    padding: 40px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,0.15);
     text-align: center;
-    padding: 3rem 1rem;
 }
 
-footer {
-    text-align: center;
-    padding: 2rem;
-    opacity: .5;
+/* ORDER POPUP */
+#orderForm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
 }
 
-/* MOBILE FIX */
-@media (max-width: 768px) {
-    .navbar { flex-direction: column; gap: 1rem; }
-    .nav-links { justify-content: center; }
-    .hero h1 { font-size: 2rem; }
-    .hero img { width: 120px; }
+.form-box {
+    position: relative;
+    background: #fff;
+    color: #000;
+    width: 90%;
+    max-width: 420px;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
+
+.form-box input,
+.form-box select,
+.form-box textarea {
+    width: 100%;
+    padding: 11px;
+    margin: 8px 0 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.submitBtn {
+    background: #0f587f;
+    padding: 12px;
+    width: 100%;
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 15px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    color: #000;
+}
+
+#orderBtn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: var(--primary-color);
+    color: white;
+    font-size: 1.8rem;
+    padding: 15px 18px;
+    border-radius: 50%;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    cursor: pointer;
+    z-index: 9999;
+    transition: 0.2s;
+}
+#orderBtn:hover { transform: scale(1.1); }
 </style>
 </head>
 
@@ -285,13 +312,13 @@ footer {
         <a onclick="changePage('products')">Products</a>
         <a onclick="changePage('subscribe')">How to Subscribe</a>
         <a onclick="changePage('contact')">Contact</a>
-        <a href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE4MDE1NTIyMTI4MDM0MzI3?story_media_id=3277431989558516839_5938930079&igsh=bWVrbmxuaGhidm9r" target="_blank">Feedbacks</a>
+        <a href="https://www.instagram.com/stories/highlights/18015522128034327/" target="_blank">Feedbacks</a>
     </div>
 
     <div class="social-icons">
         <a href="https://api.whatsapp.com/send/?phone=96170708025"><i class="fab fa-whatsapp"></i></a>
         <a href="https://instagram.com/lakkisstock"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a><i class="fab fa-tiktok"></i></a>
         <a href="https://t.me/+96170708025"><i class="fab fa-telegram"></i></a>
     </div>
 </nav>
@@ -310,7 +337,6 @@ footer {
 <div id="products" class="page">
     <div class="section-light">
         <div class="container">
-
             <h2 style="text-align:center; margin-bottom:2rem;">Explore our offerings:</h2>
 
             <div class="pricing-row">
@@ -319,26 +345,22 @@ footer {
                 <div class="pricing-card">
                     <div class="pricing-header" style="background:#e50914;">Netflix</div>
                     <div class="pricing-body">
-
                         <h3>User Account</h3>
-                        <div class="price-row"><span>1 Month</span><span class="price-value">$3.5</span></div>
-                        <div class="price-row"><span>3 Months</span><span class="price-value">$8.00</span></div>
-                        <div class="price-row"><span>6 Months</span><span class="price-value">$15.00</span></div>
-                        <div class="price-row"><span>1 Year</span><span class="price-value">$22.00</span></div>
+                        <div class="price-row"><span>1 Month</span><span class="price-value">$3</span></div>
+                        <div class="price-row"><span>3 Months</span><span class="price-value">$7</span></div>
+                        <div class="price-row"><span>6 Months</span><span class="price-value">$14</span></div>
+                        <div class="price-row"><span>1 Year</span><span class="price-value">$21</span></div>
 
-                        <br>
-
-                        <h3>Full Account</h3>
-                        <div class="price-row"><span>1 Month</span><span class="price-value">$9.00</span></div>
-                        <div class="price-row"><span>3 Months</span><span class="price-value">$24.00</span></div>
-                        <div class="price-row"><span>1 Year</span><span class="price-value">$90.00</span></div>
+                        <h3 style="margin-top:1rem;">Full Account</h3>
+                        <div class="price-row"><span>1 Month</span><span class="price-value">$9</span></div>
+                        <div class="price-row"><span>3 Months</span><span class="price-value">$24</span></div>
+                        <div class="price-row"><span>1 Year</span><span class="price-value">$90</span></div>
 
                         <div style="margin-top:15px; background:#eef6ff; padding:10px; border-radius:8px; text-align:center;">
                             <a href="https://ostories.me" target="_blank" style="color:#0f587f; font-weight:bold;">
-                                If Netflix asks for a temporary login code → Visit ostories.me
+                                If Netflix asks for a login code → Visit ostories.me
                             </a>
                         </div>
-
                     </div>
                 </div>
 
@@ -346,9 +368,9 @@ footer {
                 <div class="pricing-card">
                     <div class="pricing-header" style="background:#7b1fa2;">🎵 Anghami</div>
                     <div class="pricing-body">
-                        <div class="price-row"><span>3 Months</span><span class="price-value">$8.00</span></div>
-                        <div class="price-row"><span>6 Months</span><span class="price-value">$14.00</span></div>
-                        <div class="price-row"><span>1 Year</span><span class="price-value">$20.00</span></div>
+                        <div class="price-row"><span>3 Months</span><span class="price-value">$7</span></div>
+                        <div class="price-row"><span>6 Months</span><span class="price-value">$14</span></div>
+                        <div class="price-row"><span>1 Year</span><span class="price-value">$20</span></div>
                     </div>
                 </div>
 
@@ -356,29 +378,43 @@ footer {
                 <div class="pricing-card">
                     <div class="pricing-header" style="background:#03a9f4;">💻 Shahid</div>
                     <div class="pricing-body">
-
                         <h3>User Account</h3>
-                        <div class="price-row"><span>1 Month</span><span class="price-value">$2.00</span></div>
-                        <div class="price-row"><span>3 Months</span><span class="price-value">$4.00</span></div>
-                        <div class="price-row"><span>1 Year</span><span class="price-value">$9.00</span></div>
+                        <div class="price-row"><span>1 Month</span><span class="price-value">$2</span></div>
+                        <div class="price-row"><span>3 Months</span><span class="price-value">$4</span></div>
+                        <div class="price-row"><span>1 Year</span><span class="price-value">$9</span></div>
 
-                        <br>
+                        <h3 style="margin-top:1rem;">Full Account</h3>
+                        <div class="price-row"><span>1 Month</span><span class="price-value">$5</span></div>
+                        <div class="price-row"><span>3 Months</span><span class="price-value">$9</span></div>
+                        <div class="price-row"><span>1 Year</span><span class="price-value">$30</span></div>
+                    </div>
+                </div>
 
-                        <h3>Full Account</h3>
-                        <div class="price-row"><span>1 Month</span><span class="price-value">$6.00</span></div>
-                        <div class="price-row"><span>3 Months</span><span class="price-value">$10.00</span></div>
-                        <div class="price-row"><span>1 Year</span><span class="price-value">$30.00</span></div>
+                <!-- PLAYSTATION USA -->
+                <div class="pricing-card">
+                    <div class="pricing-header ps-header">🎮 PlayStation Gift Cards (USA)</div>
+                    <div class="pricing-body">
+                        <div class="price-row"><span>$10 Card</span><span class="price-value">$12</span></div>
+                        <div class="price-row"><span>$25 Card</span><span class="price-value">$27</span></div>
+                        <div class="price-row"><span>$50 Card</span><span class="price-value">$52</span></div>
+                        <div class="price-row"><span>$75 Card</span><span class="price-value">$78</span></div>
+                        <div class="price-row"><span>$100 Card</span><span class="price-value">$105</span></div>
+                    </div>
+                </div>
 
+                <!-- PLAYSTATION LEBANON -->
+                <div class="pricing-card">
+                    <div class="pricing-header pslb-header">🇱🇧 PlayStation Gift Cards (Lebanon)</div>
+                    <div class="pricing-body">
+                        <div class="price-row"><span>10$ Card</span><span class="price-value">$12</span></div>
+                        <div class="price-row"><span>20$ Card</span><span class="price-value">$22</span></div>
+                        <div class="price-row"><span>40$ Card</span><span class="price-value">$42</span></div>
+                        <div class="price-row"><span>50$ Card</span><span class="price-value">$53</span></div>
+                        <div class="price-row"><span>100$ Card</span><span class="price-value">$105</span></div>
                     </div>
                 </div>
 
             </div>
-
-            <div class="coming-card">
-                <h3>Disney+ (Coming Soon)</h3>
-                <p>Stay tuned!</p>
-            </div>
-
         </div>
     </div>
 </div>
@@ -386,20 +422,17 @@ footer {
 <!-- SUBSCRIBE -->
 <div id="subscribe" class="page">
     <div class="content-box">
-
         <h1 style="text-align:center;">How to Subscribe</h1>
-        <p style="text-align:center; opacity:.8;">Follow these steps:</p>
 
-        <div class="step"><b>1.</b> Send which service you want (Netflix / Shahid / Anghami / Disney+).</div>
-        <div class="step"><b>2.</b> Send your full name + phone number.</div>
-        <div class="step"><b>3.</b> For Netflix → Send your preferred profile name.</div>
-        <div class="step"><b>4.</b> Pay using Whish Money.</div>
-        <div class="step"><b>5.</b> You receive your service instantly.</div>
+        <div class="step">1. Send which service you want.</div>
+        <div class="step">2. Send your full name + phone number.</div>
+        <div class="step">3. For Netflix → choose profile name.</div>
+        <div class="step">4. Pay using Wish Money.</div>
+        <div class="step">5. Receive your service instantly.</div>
 
         <div style="text-align:center; margin-top:2rem;">
             <a class="btn" href="https://api.whatsapp.com/send/?phone=96170708025">Order on WhatsApp</a>
         </div>
-
     </div>
 </div>
 
@@ -407,13 +440,15 @@ footer {
 <div id="contact" class="page">
     <div class="contact-box">
         <h1>Contact</h1>
-        <p>For orders or support:</p>
-        <a class="btn" href="https://api.whatsapp.com/send/?phone=96170708025">WhatsApp</a>
 
-        <h2 style="margin-top:2rem;">Support</h2>
-        <p>Contact our Telegram support:</p>
-        <a class="btn" style="background:#0088cc;" href="https://t.me/+96170708025">
-            <i class="fab fa-telegram"></i> Telegram Support
+        <a class="btn" href="https://api.whatsapp.com/send/?phone=96170708025" 
+           style="background:#25d366; margin: 10px; padding: 12px 25px; font-size:1.1rem;">
+           WhatsApp
+        </a>
+
+        <a class="btn" href="https://t.me/+96170708025" 
+           style="background:#0088cc; margin: 10px; padding: 12px 25px; font-size:1.1rem;">
+           Telegram Support
         </a>
     </div>
 </div>
@@ -426,7 +461,7 @@ footer {
 
         <div class="trust-item">
             <i class="fa-solid fa-shield-halved"></i>
-            <p>100% Secure Whish Money Payment</p>
+            <p>Secure Wish Money Payments</p>
         </div>
 
         <div class="trust-item">
@@ -436,17 +471,17 @@ footer {
 
         <div class="trust-item">
             <i class="fa-solid fa-star"></i>
-            <p>Trusted by 1,500+ Customers</p>
+            <p>1,500+ Happy Customers</p>
         </div>
 
         <div class="trust-item">
             <i class="fa-solid fa-headset"></i>
-            <p>24/7 Customer Support</p>
+            <p>24/7 Support</p>
         </div>
 
         <div class="trust-item">
-            <i class="fa-solid fa-badge-check"></i>
-            <p>Original Accounts Guaranteed</p>
+            <i class="fa-solid fa-certificate"></i>
+            <p>Original Accounts</p>
         </div>
 
     </div>
@@ -456,23 +491,158 @@ footer {
     © 2022 LakkisStock — All Rights Reserved
 </footer>
 
+<!-- FLOATING ORDER BUTTON -->
+<div id="orderBtn" onclick="openOrderForm()">
+    <i class="fa-solid fa-cart-shopping"></i>
+</div>
+
+<!-- POPUP ORDER FORM -->
+<div id="orderForm" onclick="closeOutside(event)">
+    <div class="form-box">
+        <span class="close-btn" onclick="closeOrderForm()">✖</span>
+        <h2 style="text-align:center;">Place Your Order</h2>
+
+        <form action="https://formsubmit.co/lakkisstockinquiry@gmail.com" method="POST">
+            <input type="hidden" name="_subject" value="New Order from LakkisStock">
+            <input type="hidden" name="_captcha" value="false">
+
+            <label>Full Name</label>
+            <input type="text" name="name" required>
+
+            <label>Phone Number</label>
+            <input type="text" name="phone" required>
+
+            <label>Choose Service</label>
+            <select id="serviceSelect" name="service" required>
+                <option value="">Select service</option>
+                <option>Netflix – User Account</option>
+                <option>Netflix – Full Account</option>
+                <option>Shahid – User Account</option>
+                <option>Shahid – Full Account</option>
+                <option>Anghami – Plus</option>
+                <option>PS USA Gift Card</option>
+                <option>PS Lebanon Gift Card</option>
+            </select>
+
+            <label>Duration / Amount</label>
+            <select id="durationSelect" name="duration" required>
+                <option value="">Select service first</option>
+            </select>
+
+            <!-- PRICE BOX -->
+            <label>Price</label>
+            <input type="text" id="priceBox" disabled placeholder="Select duration">
+
+            <label>Notes</label>
+            <textarea name="notes" placeholder="Optional..." style="height:80px;"></textarea>
+
+            <button type="submit" class="submitBtn">Submit Order</button>
+        </form>
+    </div>
+</div>
+
 <script>
 function changePage(id) {
-    document.getElementById("loadingSpinner").style.display = "flex";
+    const spinner = document.getElementById("loadingSpinner");
+    spinner.style.display = "flex";
 
     setTimeout(() => {
         document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
         document.getElementById(id).classList.add("active");
 
         document.querySelectorAll(".nav-links a").forEach(a => a.classList.remove("active"));
-        [...document.querySelectorAll(".nav-links a")].find(a => a.textContent.includes(id.charAt(0).toUpperCase()))?.classList.add("active");
+        [...document.querySelectorAll(".nav-links a")].forEach(a => {
+            if (a.textContent.toLowerCase().includes(id)) a.classList.add("active");
+        });
 
         window.scrollTo(0, 0);
-        document.getElementById("loadingSpinner").style.display = "none";
+        spinner.style.display = "none";
     }, 300);
 }
+
+/* POPUP */
+function openOrderForm() {
+    document.getElementById("orderForm").style.display = "flex";
+}
+function closeOrderForm() {
+    document.getElementById("orderForm").style.display = "none";
+}
+function closeOutside(e) {
+    if (e.target.id === "orderForm") closeOrderForm();
+}
+
+/* SERVICE + PRICE LOGIC */
+const serviceOptions = {
+    "Netflix – User Account": {
+        durations: ["1 Month", "3 Months", "6 Months", "1 Year"],
+        prices:    ["$3", "$7", "$14", "$21"]
+    },
+    "Netflix – Full Account": {
+        durations: ["1 Month", "3 Months", "1 Year"],
+        prices:    ["$9", "$24", "$90"]
+    },
+    "Shahid – User Account": {
+        durations: ["1 Month", "3 Months", "1 Year"],
+        prices:    ["$2", "$4", "$9"]
+    },
+    "Shahid – Full Account": {
+        durations: ["1 Month", "3 Months", "1 Year"],
+        prices:    ["$5", "$9", "$30"]
+    },
+    "Anghami – Plus": {
+        durations: ["3 Months", "6 Months", "1 Year"],
+        prices:    ["$7", "$14", "$20"]
+    },
+    "PS USA Gift Card": {
+        durations: ["$10", "$25", "$50", "$75", "$100"],
+        prices:    ["$12", "$27", "$52", "$78", "$105"]
+    },
+    "PS Lebanon Gift Card": {
+        durations: ["10$", "20$", "40$", "50$", "100$"],
+        prices:    ["$12", "$22", "$42", "$53", "$105"]
+    }
+};
+
+const serviceSelect = document.getElementById("serviceSelect");
+const durationSelect = document.getElementById("durationSelect");
+const priceBox = document.getElementById("priceBox");
+
+serviceSelect.addEventListener("change", function () {
+    const selected = this.value;
+
+    durationSelect.innerHTML = "";
+    priceBox.value = "";
+
+    if (!serviceOptions[selected]) {
+        durationSelect.innerHTML = "<option value=''>Select service first</option>";
+        return;
+    }
+
+    /* ADD DURATIONS */
+    serviceOptions[selected].durations.forEach((dur) => {
+        let opt = document.createElement("option");
+        opt.value = dur;
+        opt.textContent = dur;
+        durationSelect.appendChild(opt);
+    });
+
+    /* AUTO SELECT FIRST */
+    durationSelect.selectedIndex = 0;
+
+    /* SHOW PRICE AUTOMATICALLY */
+    priceBox.value = serviceOptions[selected].prices[0];
+});
+
+durationSelect.addEventListener("change", function () {
+    const service = serviceSelect.value;
+    const selectedDuration = this.value;
+
+    const index = serviceOptions[service].durations.indexOf(selectedDuration);
+    if (index !== -1) {
+        priceBox.value = serviceOptions[service].prices[index];
+    }
+});
 </script>
 
 </body>
 </html>
-
