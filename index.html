@@ -43,13 +43,12 @@
             height: 55px;
         }
 
-        /* Cursor fix */
         .nav-links a {
             color: var(--light-text);
             margin: 0 1rem;
             text-decoration: none;
             font-size: 1.1rem;
-            cursor: pointer !important;  /* IMPORTANT FIX */
+            cursor: pointer !important;
         }
 
         .nav-links a.active,
@@ -68,7 +67,7 @@
         }
 
         /* PAGES */
-        .page { display: none; animation: fade 0.4s; }
+        .page { display: none; animation: fade 0.4s; padding-bottom: 3rem; }
         .page.active { display: block; }
 
         @keyframes fade { 
@@ -97,7 +96,32 @@
         }
         .btn:hover { background: #0a4660; }
 
-        /* PRODUCTS SECTION */
+        /* CONTENT BOXES */
+        .content-box {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: #ffffff15;
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(6px);
+            border: 1px solid #ffffff22;
+        }
+
+        .content-box h1 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .step {
+            margin: 1rem 0;
+            padding: 1rem 1.2rem;
+            background: #ffffff10;
+            border-left: 4px solid var(--primary-color);
+            border-radius: 8px;
+            font-size: 1.1rem;
+        }
+
+        /* PRICING */
         .section-light {
             background: var(--section-bg);
             padding: 3rem 1rem;
@@ -105,7 +129,6 @@
         }
         .container { max-width: 1200px; margin: auto; }
 
-        /* PRICING */
         .pricing-row {
             display: flex;
             gap: 2rem;
@@ -150,7 +173,6 @@
             color: var(--price-blue);
         }
 
-        /* DISNEY+ */
         .coming-card {
             width: 350px;
             margin: 3rem auto 0 auto;
@@ -185,7 +207,9 @@
     <div class="nav-links">
         <a href="#" onclick="showPage('home')" class="active">Home</a>
         <a href="#" onclick="showPage('products')">Products</a>
+        <a href="#" onclick="showPage('subscribe')">How to Subscribe</a>
         <a href="#" onclick="showPage('contact')">Contact</a>
+        <a href="https://www.instagram.com/stories/highlights/18015522128034327/" target="_blank">Feedbacks</a>
     </div>
 
     <div class="social-icons">
@@ -235,7 +259,6 @@
                         <div class="price-row"><span>3 Months</span><span class="price-value">$24.00</span></div>
                         <div class="price-row"><span>1 Year</span><span class="price-value">$90.00</span></div>
 
-                        <!-- Temporary Netflix Code Help -->
                         <div style="margin-top:15px; text-align:center; background:#eef6ff; padding:10px; border-radius:8px;">
                             <a href="https://ostories.me" target="_blank" 
                                style="color:#0f587f; font-weight:bold; text-decoration:none;">
@@ -286,6 +309,45 @@
     </div>
 </div>
 
+<!-- SUBSCRIBE PAGE (NEW) -->
+<div id="subscribe" class="page">
+    <div class="content-box">
+        <h1>How to Subscribe</h1>
+        <p style="text-align:center; opacity:0.8;">Follow these simple steps to get your streaming service instantly.</p>
+
+        <div class="step">
+            <b>1. Send the service you want</b><br>
+            Netflix • Shahid • Anghami • Disney+
+        </div>
+
+        <div class="step">
+            <b>2. Send your full name and phone number</b><br>
+            This is required to activate your account.
+        </div>
+
+        <div class="step">
+            <b>3. For Netflix:</b><br>
+            Send the <b>profile name</b> you want on the account.
+        </div>
+
+        <div class="step">
+            <b>4. Send the payment through Wish Money</b><br>
+            This ensures a fast and secure delivery.
+        </div>
+
+        <div class="step">
+            <b>5. Receive your service instantly</b><br>
+            Delivery is immediate after confirmation.
+        </div>
+
+        <div style="text-align:center; margin-top:2rem;">
+            <a class="btn" href="https://api.whatsapp.com/send/?phone=96170708025" target="_blank">
+                Order on WhatsApp
+            </a>
+        </div>
+    </div>
+</div>
+
 <!-- CONTACT -->
 <div id="contact" class="page">
     <div class="contact-box">
@@ -295,7 +357,7 @@
         <a class="btn" href="https://api.whatsapp.com/send/?phone=96170708025">Message on WhatsApp</a>
 
         <h2 style="margin-top:2rem;">Support</h2>
-        <p>For support or any issues, contact us on Telegram:</p>
+        <p>For help or issues, contact us on Telegram:</p>
 
         <a class="btn" style="background:#0088cc;" href="https://t.me/+96170708025" target="_blank">
             <i class="fa-brands fa-telegram"></i> Contact on Telegram
@@ -313,7 +375,7 @@ function showPage(id) {
     document.getElementById(id).classList.add("active");
 
     document.querySelectorAll(".nav-links a").forEach(a => a.classList.remove("active"));
-    document.querySelector(`.nav-links a[onclick="showPage('${id}')"]`).classList.add("active");
+    document.querySelector(`.nav-links a[onclick="showPage('${id}')"]`)?.classList.add("active");
 
     window.scrollTo(0, 0);
 }
