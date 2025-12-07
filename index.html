@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
 
-    <!-- ✅ FIXED VIEWPORT FOR MOBILE -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!-- Mobile friendly -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>LakkisStock</title>
+    <title>LakkisStock – Premium Streaming in Lebanon</title>
 
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -14,72 +14,62 @@
 
 <style>
 :root {
-    --primary-color: #0f587f;
+    --primary-color: #0f74b8;
+    --accent-color: #00c3ff;
     --light-text: #e0e0e0;
-    --dark-bg: #050505;
+    --muted-text: #a7b4c4;
+    --dark-bg: #02040a;
     --section-bg: #f5f5f5;
     --price-blue: #0085ff;
-    --shadow: 0 10px 20px rgba(0,0,0,0.2);
+    --shadow: 0 18px 40px rgba(0,0,0,0.4);
+    --radius: 18px;
 }
 
+/* GLOBAL RESET */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    user-select: none;
-    caret-color: transparent !important;
 }
 
 body {
-    background: var(--dark-bg);
+    background: radial-gradient(circle at top, #041221 0, #02040a 55%, #000 100%);
     font-family: "Tajawal", sans-serif;
     color: var(--light-text);
 }
 
-/* NAVBAR */
-.navbar {
-    background: #0a0a0a;
-    padding: 1rem 1.2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    box-shadow: var(--shadow);
+/* UTILITIES */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.2rem;
 }
 
-.navbar img { height: 45px; }
-
-.nav-links {
-    display: flex;
-    gap: 1.2rem;
-    flex-wrap: wrap;
-}
-
-.nav-links a {
-    color: var(--light-text);
+.btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    padding: .9rem 2.2rem;
+    border-radius: 999px;
+    color: #fff;
     text-decoration: none;
-    font-size: 1.1rem;
+    font-weight: 800;
+    margin-top: 1.2rem;
+    font-size: 1.05rem;
+    box-shadow: var(--shadow);
+    border: none;
     cursor: pointer;
+    transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
 }
-
-.nav-links a.active,
-.nav-links a:hover { color: var(--primary-color); }
-
-.social-icons {
-    display: flex;
-    gap: .7rem;
-}
-
-.social-icons a { 
-    color: var(--light-text); 
-    font-size: 1.4rem; 
+.btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.06);
+    box-shadow: 0 22px 45px rgba(0,195,255,0.55);
 }
 
 /* SPINNER */
 #loadingSpinner {
     position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
+    inset: 0;
     background: rgba(0,0,0,0.7);
     display: none;
     justify-content: center;
@@ -87,19 +77,133 @@ body {
     z-index: 10000;
 }
 .spinner {
-    width: 50px; height: 50px;
-    border: 6px solid #ffffff33;
-    border-top-color: var(--primary-color);
+    width: 55px;
+    height: 55px;
+    border: 5px solid #ffffff26;
+    border-top-color: var(--accent-color);
     border-radius: 50%;
-    animation: spin .6s linear infinite;
+    animation: spin .65s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
+
+/* NAVBAR */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: rgba(3,5,15,0.88);
+    backdrop-filter: blur(16px);
+    padding: .75rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    gap: .8rem;
+}
+
+.navbar img {
+    height: 46px;
+    filter: drop-shadow(0 0 12px rgba(0,195,255,0.7));
+}
+
+.brand-text {
+    display: flex;
+    flex-direction: column;
+}
+.brand-text span:first-child {
+    font-weight: 900;
+    letter-spacing: .03em;
+    font-size: 1.1rem;
+}
+.brand-text span:last-child {
+    font-size: .78rem;
+    color: var(--muted-text);
+}
+
+/* NAV LINKS */
+.nav-links {
+    display: flex;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.nav-links a {
+    color: var(--light-text);
+    text-decoration: none;
+    font-size: .98rem;
+    cursor: pointer;
+    position: relative;
+    padding-bottom: .2rem;
+}
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+    transition: width .24s ease;
+}
+
+.nav-links a.active,
+.nav-links a:hover {
+    color: var(--accent-color);
+}
+
+.nav-links a.active::after,
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.social-icons {
+display: flex;
+gap: .5rem;
+}
+.social-icons a {
+color: var(--light-text);
+font-size: 1.2rem;
+width: 32px;
+height: 32px;
+border-radius: 999px;
+display: inline-flex;
+justify-content: center;
+align-items: center;
+background: rgba(255,255,255,0.06);
+border: 1px solid rgba(255,255,255,0.09);
+transition: background .2s ease, transform .2s ease, color .2s ease;
+text-decoration: none !important;
+outline: none !important;
+caret-color: transparent !important;
+cursor: pointer;
+-webkit-tap-highlight-color: transparent;
+}
+.social-icons a:hover {
+background: var(--accent-color);
+color: #fff;
+transform: translateY(-2px);
+}
+
+/* MOBILE NAV */
+.menu-toggle {
+    display: none;
+    font-size: 1.4rem;
+    color: #fff;
+    cursor: pointer;
+}
 
 /* PAGES */
 .page {
     display: none;
-    animation: fade .3s;
-    padding-bottom: 3rem;
+    animation: fade .35s ease-out;
+    padding-bottom: 3.5rem;
 }
 .page.active { display: block; }
 
@@ -110,51 +214,168 @@ body {
 
 /* HERO */
 .hero {
-    text-align: center;
-    padding: 3rem 1rem;
+    padding: 3.5rem 1rem 3rem;
 }
-.hero img { width: 150px; }
-.hero h1 { font-size: 2.4rem; margin-top: 1rem; }
-
-/* BUTTON */
-.btn {
-    display: inline-block;
-    background: var(--primary-color);
-    padding: .9rem 2rem;
-    border-radius: 10px;
-    color: #fff;
-    text-decoration: none;
+.hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(0,1.1fr) minmax(0,.9fr);
+    gap: 2.5rem;
+    align-items: center;
+}
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    background: rgba(0,0,0,0.55);
+    padding: .35rem .75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12);
+    font-size: .8rem;
+    color: var(--muted-text);
+    margin-bottom: .9rem;
+}
+.hero-badge span.highlight {
+    color: var(--accent-color);
     font-weight: 700;
-    margin-top: 1.2rem;
+}
+
+.hero h1 {
+    font-size: 2.6rem;
+    line-height: 1.2;
+    margin-bottom: .5rem;
+}
+.hero .subtitle {
+    color: var(--muted-text);
+    font-size: 1rem;
+    margin-bottom: 1.4rem;
+}
+.hero .points {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    font-size: .95rem;
+    color: var(--muted-text);
+}
+.hero .points i {
+    color: var(--accent-color);
+    margin-right: .35rem;
+}
+.hero-cta-row {
+    margin-top: 1.8rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+    align-items: center;
+}
+.hero-cta-row small {
+    font-size: .8rem;
+    color: var(--muted-text);
+}
+
+/* HERO RIGHT */
+.hero-visual {
+    justify-self: center;
+}
+.hero-card {
+    background: radial-gradient(circle at top left, rgba(0,195,255,0.25), rgba(6,12,30,0.95));
+    border-radius: 26px;
+    padding: 1.6rem 1.4rem;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255,255,255,0.06);
+    width: 100%;
+    max-width: 360px;
+    position: relative;
+    overflow: hidden;
+}
+.hero-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.hero-card-title {
+    font-weight: 800;
+    font-size: 1.05rem;
+}
+.hero-tag {
+    font-size: .75rem;
+    padding: .25rem .6rem;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.6);
+    border: 1px solid rgba(255,255,255,0.18);
+}
+.hero-card-logos {
+    display: flex;
+    gap: .4rem;
+    margin-top: 1rem;
+    margin-bottom: .6rem;
+}
+.hero-logo-pill {
+    background: rgba(0,0,0,0.45);
+    border-radius: 999px;
+    padding: .35rem .7rem;
+    font-size: .8rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+}
+.hero-logo-pill span.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 999px;
+    background: #e50914;
+}
+.hero-logo-pill.netflix span.dot { background:#e50914; }
+.hero-logo-pill.shahid span.dot { background:#03a9f4; }
+.hero-logo-pill.anghami span.dot { background:#7b1fa2; }
+
+.hero-card-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: .85rem;
+    margin-top: .4rem;
+}
+.hero-card-line span:last-child {
+    color: var(--accent-color);
+    font-weight: 700;
 }
 
 /* CONTENT BOX */
 .content-box {
     max-width: 900px;
-    margin: 2rem auto;
-    background: rgba(255,255,255,0.07);
+    margin: 2.5rem auto;
+    background: rgba(5,12,25,0.92);
     padding: 2rem;
-    border-radius: 15px;
-    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,0.15);
+    box-shadow: var(--shadow);
 }
 
+/* STEPS */
 .step {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.04);
     margin: 1rem 0;
     padding: 1rem;
-    border-left: 4px solid var(--primary-color);
-    border-radius: 8px;
+    border-left: 4px solid var(--accent-color);
+    border-radius: 10px;
+    font-size: .98rem;
 }
 
-/* PRICING */
+/* PRICING SECTION (LIGHT) */
 .section-light {
     background: var(--section-bg);
-    padding: 3rem 1rem;
+    padding: 3.3rem 0;
     color: #222;
 }
 
-.container { max-width: 1200px; margin: auto; }
+.section-light h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 1.9rem;
+}
 
+/* PRICING GRID */
 .pricing-row {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
@@ -163,41 +384,59 @@ body {
 
 .pricing-card {
     background: white;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: var(--shadow);
+    box-shadow: 0 18px 30px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
 }
 
 .pricing-header {
-    padding: 1.2rem;
-    font-size: 1.4rem;
+    padding: 1rem 1.2rem;
+    font-size: 1.3rem;
     text-align: center;
     font-weight: 900;
     color: #fff;
 }
 
-.pricing-body { padding: 1.5rem; }
+.pricing-body {
+    padding: 1.3rem 1.4rem 1.5rem;
+    font-size: .95rem;
+}
+
+.pricing-body h3 {
+    margin: .2rem 0 .6rem;
+    font-size: 1.05rem;
+}
 
 .price-row {
     display: flex;
     justify-content: space-between;
-    padding: .7rem 0;
-    border-bottom: 1px solid #ddd;
+    padding: .55rem 0;
+    border-bottom: 1px solid #eee;
+    font-size: .95rem;
 }
-.price-value { color: var(--price-blue); font-weight: 700; }
+.price-row:last-of-type {
+    border-bottom: none;
+}
+.price-value {
+    color: var(--price-blue);
+    font-weight: 700;
+}
 
+/* SPECIAL HEADERS */
 .ps-header { background:#003087 !important; }
 .pslb-header { background:#002255 !important; }
 
 /* TRUST BADGES */
 .trust-section {
-    background: #0d0d0d;
-    padding: 3rem 1rem;
+    background: #05060b;
+    padding: 3.5rem 1rem;
     text-align: center;
 }
 .trust-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
+    font-size: 1.9rem;
+    margin-bottom: 2.2rem;
 }
 .trust-row {
     display: grid;
@@ -207,25 +446,150 @@ body {
     margin: auto;
 }
 .trust-item {
-    background: rgba(255,255,255,0.07);
-    padding: 1.5rem;
-    border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255,255,255,0.04);
+    padding: 1.6rem 1.4rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,0.14);
+    box-shadow: 0 15px 28px rgba(0,0,0,0.3);
+    font-size: .95rem;
 }
 .trust-item i {
     font-size: 2rem;
-    color: var(--primary-color);
+    color: var(--accent-color);
+    margin-bottom: .8rem;
 }
 
 /* CONTACT */
 .contact-box {
     max-width: 700px;
     margin: 40px auto;
-    background: rgba(255,255,255,0.07);
-    padding: 40px;
-    border-radius: 15px;
+    background: rgba(5,12,25,0.95);
+    padding: 40px 24px;
+    border-radius: 22px;
     border: 1px solid rgba(255,255,255,0.15);
     text-align: center;
+    box-shadow: var(--shadow);
+}
+.contact-buttons {
+    margin-top: 1.4rem;
+}
+.contact-buttons .btn {
+    margin: 10px;
+    padding: 12px 25px;
+    font-size:1.05rem;
+}
+
+/* FLOATING WHATSAPP BUTTON */
+.floating-wa {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    width: 54px;
+    height: 54px;
+    border-radius: 999px;
+    background:#25d366;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow: 0 18px 35px rgba(0,0,0,0.5);
+    z-index:9999;
+    text-decoration:none;
+    color:#fff;
+    font-size: 1.8rem;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.55); }
+    70% { box-shadow: 0 0 0 18px rgba(37,211,102,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+}
+
+/* FOOTER */
+footer {
+    padding: 1.5rem 1rem 2.2rem;
+    text-align: center;
+    opacity: .7;
+    font-size: .9rem;
+}
+
+/* RESPONSIVE */
+@media (max-width: 840px) {
+    .hero-inner {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .hero-visual {
+        order: -1;
+    }
+    .hero-card {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 780px) {
+    .navbar {
+        padding-inline: 1rem;
+    }
+    .nav-links {
+        position: fixed;
+        top: 60px;
+        right: 0;
+        background: rgba(3,5,15,0.96);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem 1.4rem;
+        min-width: 210px;
+        transform: translateX(100%);
+        transition: transform .25s ease;
+    }
+    .nav-links.open {
+        transform: translateX(0);
+    }
+    .menu-toggle {
+        display: block;
+        margin-left: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2.1rem;
+    }
+    .hero-card {
+        max-width: 320px;
+    }
+}
+
+
+/* --------------------------------------- */
+/* 🔥 FIX TYPING CURSOR ISSUE — ADDED HERE 🔥 */
+/* --------------------------------------- */
+
+/* Disable text cursor globally */
+* {
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    caret-color: transparent !important;
+}
+
+/* Allow inputs to work normally (if added later) */
+input, textarea {
+    user-select: text;
+    caret-color: auto;
+}
+
+/* Force pointer cursor for all clickable items */
+button,
+a,
+.nav-links a,
+.menu-toggle,
+.hero-card,
+.social-icons a,
+.pricing-card,
+.floating-wa {
+    cursor: pointer !important;
 }
 
 </style>
@@ -238,42 +602,120 @@ body {
 
 <!-- NAVBAR -->
 <nav class="navbar">
-    <img src="logo.png">
-    <div class="nav-links">
-        <a onclick="changePage('home')" class="active">Home</a>
-        <a onclick="changePage('products')">Products</a>
-        <a onclick="changePage('subscribe')">How to Subscribe</a>
-        <a onclick="changePage('contact')">Contact</a>
+    <div class="nav-left">
+        <img src="logo.png" alt="LakkisStock logo">
+        <div class="brand-text">
+            <span>LakkisStock</span>
+            <span>Premium Streaming • Lebanon</span>
+        </div>
+    </div>
+
+    <div class="menu-toggle" id="menuToggle">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+        <a data-page="home" onclick="changePage('home')" class="active">Home</a>
+        <a data-page="products" onclick="changePage('products')">Products</a>
+        <a data-page="subscribe" onclick="changePage('subscribe')">How to Subscribe</a>
+        <a data-page="contact" onclick="changePage('contact')">Contact</a>
         <a href="https://www.instagram.com/stories/highlights/18015522128034327/" target="_blank">Feedbacks</a>
     </div>
 
     <div class="social-icons">
-        <a href="https://api.whatsapp.com/send/?phone=96170708025"><i class="fab fa-whatsapp"></i></a>
-        <a href="https://instagram.com/lakkisstock"><i class="fab fa-instagram"></i></a>
-        <a><i class="fab fa-tiktok"></i></a>
-        <a href="https://t.me/+96170708025"><i class="fab fa-telegram"></i></a>
+        <a href="https://api.whatsapp.com/send/?phone=96170708025" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://instagram.com/lakkisstock" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+        <a href="https://t.me/+96170708025" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
     </div>
 </nav>
 
 <!-- HOME -->
 <div id="home" class="page active">
-    <div class="hero">
-        <img src="logo.png">
-        <h1>LakkisStock</h1>
-        <p>Premium Streaming Accounts • Best Prices in Lebanon</p>
-        <a class="btn" onclick="changePage('products')">View Products</a>
-    </div>
+    <section class="hero">
+        <div class="hero-inner">
+            <div>
+                <div class="hero-badge">
+                    <i class="fa-solid fa-location-dot"></i>
+                    <span>Serving all Lebanon • <span class="highlight">Whish Money Accepted</span></span>
+                </div>
+
+                <h1>Premium Streaming Accounts at Lebanon’s Best Prices</h1>
+                <p class="subtitle">
+                    Netflix, Shahid, Anghami, PlayStation gift cards & more. Fast delivery, original accounts, and lifetime support.
+                </p>
+
+                <div class="points">
+                    <div><i class="fa-solid fa-check"></i> User & full accounts available</div>
+                    <div><i class="fa-solid fa-check"></i> Secure Whish Money payments</div>
+                    <div><i class="fa-solid fa-check"></i> Instant activation after payment</div>
+                </div>
+
+                <div class="hero-cta-row">
+                    <button class="btn" onclick="changePage('products')">
+                        Browse Products
+                    </button>
+                    <a class="btn" style="background:#25d366; box-shadow:0 18px 30px rgba(37,211,102,0.45);" 
+                       href="https://api.whatsapp.com/send/?phone=96170708025">
+                       Order via WhatsApp
+                    </a>
+                    <small>24/7 support • 1,500+ happy customers</small>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-card">
+                    <div class="hero-card-header">
+                        <div class="hero-card-title">Popular Bundle</div>
+                        <div class="hero-tag"><i class="fa-solid fa-fire"></i> Lebanon Favorite</div>
+                    </div>
+
+                    <div class="hero-card-logos">
+                        <div class="hero-logo-pill netflix">
+                            <span class="dot"></span> Netflix
+                        </div>
+                        <div class="hero-logo-pill shahid">
+                            <span class="dot"></span> Shahid
+                        </div>
+                        <div class="hero-logo-pill anghami">
+                            <span class="dot"></span> Anghami
+                        </div>
+                    </div>
+
+                    <div class="hero-card-line">
+                        <span>Netflix User • 1 Month</span><span>$3.5</span>
+                    </div>
+                    <div class="hero-card-line">
+                        <span>Shahid User • 1 Year</span><span>$11</span>
+                    </div>
+                    <div class="hero-card-line">
+                        <span>Anghami • 1 Year</span><span>$20</span>
+                    </div>
+
+                    <hr style="border:none; border-top:1px dashed rgba(255,255,255,0.2); margin:1rem 0;">
+
+                    <div class="hero-card-line">
+                        <span style="font-size:.88rem;">PlayStation USA Gift Card</span>
+                        <span style="font-size:.9rem; color:#4caf50; font-weight:800;">Starting $12</span>
+                    </div>
+
+                    <p style="font-size:.78rem; color:#c5cede; margin-top:.7rem;">
+                        Message us on WhatsApp, pay via Whish Money, and get your login or code instantly.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
 
 <!-- PRODUCTS -->
 <div id="products" class="page">
     <div class="section-light">
         <div class="container">
-            <h2 style="text-align:center; margin-bottom:2rem;">Explore our offerings:</h2>
+            <h2>Explore our offerings</h2>
 
             <div class="pricing-row">
 
-                <!-- NETFLIX -->
                 <div class="pricing-card">
                     <div class="pricing-header" style="background:#e50914;">Netflix</div>
                     <div class="pricing-body">
@@ -288,15 +730,14 @@ body {
                         <div class="price-row"><span>3 Months</span><span class="price-value">$25</span></div>
                         <div class="price-row"><span>1 Year</span><span class="price-value">$90</span></div>
 
-                        <div style="margin-top:15px; background:#eef6ff; padding:10px; border-radius:8px; text-align:center;">
-                            <a href="https://ostories.me" target="_blank" style="color:#0f587f; font-weight:bold;">
-                                If Netflix asks for a login code → Visit ostories.me
+                        <div style="margin-top:15px; background:#eef6ff; padding:10px; border-radius:8px; text-align:center; font-size:.88rem;">
+                            <a href="https://ostories.me" target="_blank" style="color:#0f587f; font-weight:bold; text-decoration:none;">
+                                Netflix asking for a login code? → Visit ostories.me
                             </a>
                         </div>
                     </div>
                 </div>
 
-                <!-- ANGHAMI -->
                 <div class="pricing-card">
                     <div class="pricing-header" style="background:#7b1fa2;">🎵 Anghami</div>
                     <div class="pricing-body">
@@ -306,7 +747,6 @@ body {
                     </div>
                 </div>
 
-                <!-- SHAHID -->
                 <div class="pricing-card">
                     <div class="pricing-header" style="background:#03a9f4;">💻 Shahid</div>
                     <div class="pricing-body">
@@ -322,7 +762,6 @@ body {
                     </div>
                 </div>
 
-                <!-- PLAYSTATION USA -->
                 <div class="pricing-card">
                     <div class="pricing-header ps-header">🎮 PlayStation Gift Cards (USA)</div>
                     <div class="pricing-body">
@@ -334,15 +773,14 @@ body {
                     </div>
                 </div>
 
-                <!-- PLAYSTATION LEBANON -->
                 <div class="pricing-card">
-                    <div class="pricing-header pslb-header">🇱🇧 PlayStation Gift Cards (Lebanon)</div>
+                    <div class="pricing-header pslb-header"> PlayStation Gift Cards (Lebanon)</div>
                     <div class="pricing-body">
-                        <div class="price-row"><span>10$ Card</span><span class="price-value">$12</span></div>
-                        <div class="price-row"><span>20$ Card</span><span class="price-value">$22</span></div>
-                        <div class="price-row"><span>40$ Card</span><span class="price-value">$42</span></div>
-                        <div class="price-row"><span>50$ Card</span><span class="price-value">$53</span></div>
-                        <div class="price-row"><span>100$ Card</span><span class="price-value">$105</span></div>
+                        <div class="price-row"><span>$10 Card</span><span class="price-value">$12</span></div>
+                        <div class="price-row"><span>$20 Card</span><span class="price-value">$22</span></div>
+                        <div class="price-row"><span>$40 Card</span><span class="price-value">$42</span></div>
+                        <div class="price-row"><span>$50 Card</span><span class="price-value">$53</span></div>
+                        <div class="price-row"><span>$100 Card</span><span class="price-value">$105</span></div>
                     </div>
                 </div>
 
@@ -354,16 +792,21 @@ body {
 <!-- SUBSCRIBE -->
 <div id="subscribe" class="page">
     <div class="content-box">
-        <h1 style="text-align:center;">How to Subscribe</h1>
+        <h1 style="text-align:center; margin-bottom:1.2rem;">How to Subscribe</h1>
+        <p style="text-align:center; color:var(--muted-text); font-size:.98rem; margin-bottom:1.2rem;">
+            Simple steps to activate your account in minutes:
+        </p>
 
-        <div class="step">1. Send which service you want。</div>
-        <div class="step">2. Send your full name + phone number.</div>
-        <div class="step">3. For Netflix → choose profile name.</div>
-        <div class="step">4. Pay using Wish Money.</div>
-        <div class="step">5. Receive your service instantly.</div>
+        <div class="step">1. Message us on WhatsApp or Telegram with the service you want.</div>
+        <div class="step">2. Send your full name and phone number.</div>
+        <div class="step">3. For Netflix → choose your profile name.</div>
+        <div class="step">4. Pay using <strong>Whish Money</strong> (details will be sent to you).</div>
+        <div class="step">5. Receive your account or code instantly after payment.</div>
 
         <div style="text-align:center; margin-top:2rem;">
-            <a class="btn" href="https://api.whatsapp.com/send/?phone=96170708025">Order on WhatsApp</a>
+            <a class="btn" href="https://api.whatsapp.com/send/?phone=96170708025">
+                Start Order on WhatsApp
+            </a>
         </div>
     </div>
 </div>
@@ -371,17 +814,22 @@ body {
 <!-- CONTACT -->
 <div id="contact" class="page">
     <div class="contact-box">
-        <h1>Contact</h1>
+        <h1>Contact & Support</h1>
+        <p style="color:var(--muted-text); margin-top:.4rem; font-size:.98rem;">
+            We’re online almost 24/7. Choose your favorite app and we’ll reply as soon as possible.
+        </p>
 
-        <a class="btn" href="https://api.whatsapp.com/send/?phone=96170708025" 
-           style="background:#25d366; margin: 10px; padding: 12px 25px; font-size:1.1rem;">
-           WhatsApp
-        </a>
+        <div class="contact-buttons">
+            <a class="btn" href="https://api.whatsapp.com/send/?phone=96170708025" 
+               style="background:#25d366; box-shadow:0 18px 35px rgba(37,211,102,0.42);">
+               <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
 
-        <a class="btn" href="https://t.me/+96170708025" 
-           style="background:#0088cc; margin: 10px; padding: 12px 25px; font-size:1.1rem;">
-           Telegram Support
-        </a>
+            <a class="btn" href="https://t.me/+96170708025" 
+               style="background:#0088cc; box-shadow:0 18px 35px rgba(0,136,204,0.42);">
+               <i class="fab fa-telegram"></i> Telegram Support
+            </a>
+        </div>
     </div>
 </div>
 
@@ -393,7 +841,7 @@ body {
 
         <div class="trust-item">
             <i class="fa-solid fa-shield-halved"></i>
-            <p>Secure Wish Money Payments</p>
+            <p>Secure Whish Money Payments</p>
         </div>
 
         <div class="trust-item">
@@ -420,30 +868,47 @@ body {
 </section>
 
 <footer>
-    © 2022 LakkisStock — All Rights Reserved
+    © 2022–2025 LakkisStock — All Rights Reserved
 </footer>
 
+<!-- FLOATING WHATSAPP -->
+<a href="https://api.whatsapp.com/send/?phone=96170708025" class="floating-wa" aria-label="WhatsApp Floating Button">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
 <script>
+const spinner = document.getElementById("loadingSpinner");
+const navLinks = document.querySelectorAll(".nav-links a[data-page]");
+const pages = document.querySelectorAll(".page");
+const navLinksContainer = document.getElementById("navLinks");
+const menuToggle = document.getElementById("menuToggle");
+
 function changePage(id) {
-    const spinner = document.getElementById("loadingSpinner");
     spinner.style.display = "flex";
 
     setTimeout(() => {
-        document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-        document.getElementById(id).classList.add("active");
+        pages.forEach(p => p.classList.remove("active"));
+        const pageEl = document.getElementById(id);
+        if (pageEl) pageEl.classList.add("active");
 
-        document.querySelectorAll(".nav-links a").forEach(a => a.classList.remove("active"));
-        [...document.querySelectorAll(".nav-links a")].forEach(a => {
-            if (a.textContent.toLowerCase().includes(id)) a.classList.add("active");
+        navLinks.forEach(a => a.classList.remove("active"));
+        navLinks.forEach(a => {
+            if (a.getAttribute("data-page") === id) a.classList.add("active");
         });
 
-        window.scrollTo(0, 0);
+        window.scrollTo({ top: 0, behavior: "smooth" });
         spinner.style.display = "none";
-    }, 300);
+
+        if (navLinksContainer.classList.contains("open")) {
+            navLinksContainer.classList.remove("open");
+        }
+    }, 250);
 }
+
+menuToggle.addEventListener("click", () => {
+    navLinksContainer.classList.toggle("open");
+});
 </script>
 
 </body>
 </html>
-
-
