@@ -591,6 +591,21 @@ a,
 .floating-wa {
     cursor: pointer !important;
 }
+/* Fix hero scaling on mobile — keep layout same but smaller */
+@media (max-width: 840px) {
+    .hero-inner {
+        transform: scale(0.82);
+        transform-origin: top center;
+    }
+}
+
+/* Fix spacing after scaling */
+@media (max-width: 840px) {
+    .hero {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+}
 
 </style>
 </head>
