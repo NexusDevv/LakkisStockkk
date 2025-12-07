@@ -515,8 +515,14 @@ footer {
 /* RESPONSIVE */
 @media (max-width: 840px) {
     .hero-inner {
-        transform: scale(0.82);
-        transform-origin: top center;
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .hero-visual {
+        order: -1;
+    }
+    .hero-card {
+        margin: 0 auto;
     }
 }
 
@@ -584,21 +590,6 @@ a,
 .pricing-card,
 .floating-wa {
     cursor: pointer !important;
-}
-/* Fix hero scaling on mobile — keep layout same but smaller */
-@media (max-width: 840px) {
-    .hero-inner {
-        transform: scale(0.82);
-        transform-origin: top center;
-    }
-}
-
-/* Fix spacing after scaling */
-@media (max-width: 840px) {
-    .hero {
-        padding-top: 2rem;
-        padding-bottom: 2rem;
-    }
 }
 
 </style>
