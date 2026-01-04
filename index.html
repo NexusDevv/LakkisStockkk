@@ -8,6 +8,8 @@
 
     <title>LakkisStock – Premium Streaming in Lebanon</title>
 
+    <meta name="description" content="Premium streaming accounts in Lebanon: Netflix, Shahid, Anghami, PlayStation gift cards & more. Fast delivery, Whish Money accepted, 24/7 support.">
+
     <link rel="icon" type="image/png" href="logo.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800;900&display=swap" rel="stylesheet">
@@ -26,11 +28,7 @@
 }
 
 /* GLOBAL RESET */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     background: radial-gradient(circle at top, #041221 0, #02040a 55%, #000 100%);
@@ -39,11 +37,7 @@ body {
 }
 
 /* UTILITIES */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.2rem;
-}
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.2rem; }
 
 .btn {
     display: inline-block;
@@ -60,11 +54,7 @@ body {
     cursor: pointer;
     transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
 }
-.btn:hover {
-    transform: translateY(-3px);
-    filter: brightness(1.06);
-    box-shadow: 0 22px 45px rgba(0,195,255,0.55);
-}
+.btn:hover { transform: translateY(-3px); filter: brightness(1.06); box-shadow: 0 22px 45px rgba(0,195,255,0.55); }
 
 /* SPINNER */
 #loadingSpinner {
@@ -100,38 +90,19 @@ body {
     box-shadow: 0 10px 30px rgba(0,0,0,0.6);
 }
 
-.nav-left {
-    display: flex;
-    align-items: center;
-    gap: .8rem;
-}
+.nav-left { display: flex; align-items: center; gap: .8rem; }
 
 .navbar img {
     height: 46px;
     filter: drop-shadow(0 0 12px rgba(0,195,255,0.7));
 }
 
-.brand-text {
-    display: flex;
-    flex-direction: column;
-}
-.brand-text span:first-child {
-    font-weight: 900;
-    letter-spacing: .03em;
-    font-size: 1.1rem;
-}
-.brand-text span:last-child {
-    font-size: .78rem;
-    color: var(--muted-text);
-}
+.brand-text { display: flex; flex-direction: column; }
+.brand-text span:first-child { font-weight: 900; letter-spacing: .03em; font-size: 1.1rem; }
+.brand-text span:last-child { font-size: .78rem; color: var(--muted-text); }
 
 /* NAV LINKS */
-.nav-links {
-    display: flex;
-    gap: 1.2rem;
-    flex-wrap: wrap;
-    align-items: center;
-}
+.nav-links { display: flex; gap: 1.2rem; flex-wrap: wrap; align-items: center; }
 
 .nav-links a {
     color: var(--light-text);
@@ -153,58 +124,53 @@ body {
     transition: width .24s ease;
 }
 
-.nav-links a.active,
-.nav-links a:hover {
-    color: var(--accent-color);
-}
+.nav-links a.active, .nav-links a:hover { color: var(--accent-color); }
+.nav-links a.active::after, .nav-links a:hover::after { width: 100%; }
 
-.nav-links a.active::after,
-.nav-links a:hover::after {
-    width: 100%;
-}
-
-.social-icons {
-display: flex;
-gap: .5rem;
-}
+.social-icons { display: flex; gap: .5rem; }
 .social-icons a {
-color: var(--light-text);
-font-size: 1.2rem;
-width: 32px;
-height: 32px;
-border-radius: 999px;
-display: inline-flex;
-justify-content: center;
-align-items: center;
-background: rgba(255,255,255,0.06);
-border: 1px solid rgba(255,255,255,0.09);
-transition: background .2s ease, transform .2s ease, color .2s ease;
-text-decoration: none !important;
-outline: none !important;
-caret-color: transparent !important;
-cursor: pointer;
--webkit-tap-highlight-color: transparent;
+    color: var(--light-text);
+    font-size: 1.2rem;
+    width: 32px;
+    height: 32px;
+    border-radius: 999px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.09);
+    transition: background .2s ease, transform .2s ease, color .2s ease;
+    text-decoration: none !important;
+    outline: none !important;
+    caret-color: transparent !important;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
 }
-.social-icons a:hover {
-background: var(--accent-color);
-color: #fff;
-transform: translateY(-2px);
+.social-icons a:hover { background: var(--accent-color); color: #fff; transform: translateY(-2px); }
+
+/* TOGGLE PILLS (Language + Currency) */
+.pill-toggle{
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    padding: .35rem .7rem;
+    border-radius: 999px;
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: var(--light-text);
+    font-weight: 800;
+    font-size: .92rem;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
+.pill-toggle:hover { background: rgba(0,195,255,0.15); color: var(--accent-color); }
 
 /* MOBILE NAV */
-.menu-toggle {
-    display: none;
-    font-size: 1.4rem;
-    color: #fff;
-    cursor: pointer;
-}
+.menu-toggle { display: none; font-size: 1.4rem; color: #fff; cursor: pointer; }
 
 /* PAGES */
-.page {
-    display: none;
-    animation: fade .35s ease-out;
-    padding-bottom: 3.5rem;
-}
+.page { display: none; animation: fade .35s ease-out; padding-bottom: 3.5rem; }
 .page.active { display: block; }
 
 @keyframes fade {
@@ -213,9 +179,7 @@ transform: translateY(-2px);
 }
 
 /* HERO */
-.hero {
-    padding: 3.5rem 1rem 3rem;
-}
+.hero { padding: 3.5rem 1rem 3rem; }
 .hero-inner {
     max-width: 1100px;
     margin: 0 auto;
@@ -236,48 +200,17 @@ transform: translateY(-2px);
     color: var(--muted-text);
     margin-bottom: .9rem;
 }
-.hero-badge span.highlight {
-    color: var(--accent-color);
-    font-weight: 700;
-}
+.hero-badge span.highlight { color: var(--accent-color); font-weight: 700; }
 
-.hero h1 {
-    font-size: 2.6rem;
-    line-height: 1.2;
-    margin-bottom: .5rem;
-}
-.hero .subtitle {
-    color: var(--muted-text);
-    font-size: 1rem;
-    margin-bottom: 1.4rem;
-}
-.hero .points {
-    display: flex;
-    flex-direction: column;
-    gap: .25rem;
-    font-size: .95rem;
-    color: var(--muted-text);
-}
-.hero .points i {
-    color: var(--accent-color);
-    margin-right: .35rem;
-}
-.hero-cta-row {
-    margin-top: 1.8rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: .8rem;
-    align-items: center;
-}
-.hero-cta-row small {
-    font-size: .8rem;
-    color: var(--muted-text);
-}
+.hero h1 { font-size: 2.6rem; line-height: 1.2; margin-bottom: .5rem; }
+.hero .subtitle { color: var(--muted-text); font-size: 1rem; margin-bottom: 1.4rem; }
+.hero .points { display: flex; flex-direction: column; gap: .25rem; font-size: .95rem; color: var(--muted-text); }
+.hero .points i { color: var(--accent-color); margin-right: .35rem; }
+.hero-cta-row { margin-top: 1.8rem; display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
+.hero-cta-row small { font-size: .8rem; color: var(--muted-text); }
 
 /* HERO RIGHT */
-.hero-visual {
-    justify-self: center;
-}
+.hero-visual { justify-self: center; }
 .hero-card {
     background: radial-gradient(circle at top left, rgba(0,195,255,0.25), rgba(6,12,30,0.95));
     border-radius: 26px;
@@ -289,15 +222,8 @@ transform: translateY(-2px);
     position: relative;
     overflow: hidden;
 }
-.hero-card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-.hero-card-title {
-    font-weight: 800;
-    font-size: 1.05rem;
-}
+.hero-card-header { display: flex; justify-content: space-between; align-items: center; }
+.hero-card-title { font-weight: 800; font-size: 1.05rem; }
 .hero-tag {
     font-size: .75rem;
     padding: .25rem .6rem;
@@ -305,12 +231,7 @@ transform: translateY(-2px);
     background: rgba(0,0,0,0.6);
     border: 1px solid rgba(255,255,255,0.18);
 }
-.hero-card-logos {
-    display: flex;
-    gap: .4rem;
-    margin-top: 1rem;
-    margin-bottom: .6rem;
-}
+.hero-card-logos { display: flex; gap: .4rem; margin-top: 1rem; margin-bottom: .6rem; }
 .hero-logo-pill {
     background: rgba(0,0,0,0.45);
     border-radius: 999px;
@@ -320,26 +241,13 @@ transform: translateY(-2px);
     align-items: center;
     gap: .4rem;
 }
-.hero-logo-pill span.dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: #e50914;
-}
+.hero-logo-pill span.dot { width: 6px; height: 6px; border-radius: 999px; background: #e50914; }
 .hero-logo-pill.netflix span.dot { background:#e50914; }
 .hero-logo-pill.shahid span.dot { background:#03a9f4; }
 .hero-logo-pill.anghami span.dot { background:#7b1fa2; }
 
-.hero-card-line {
-    display: flex;
-    justify-content: space-between;
-    font-size: .85rem;
-    margin-top: .4rem;
-}
-.hero-card-line span:last-child {
-    color: var(--accent-color);
-    font-weight: 700;
-}
+.hero-card-line { display: flex; justify-content: space-between; font-size: .9rem; margin-top: .5rem; }
+.hero-card-line span:last-child { color: var(--accent-color); font-weight: 800; }
 
 /* CONTENT BOX */
 .content-box {
@@ -363,24 +271,11 @@ transform: translateY(-2px);
 }
 
 /* PRICING SECTION (LIGHT) */
-.section-light {
-    background: var(--section-bg);
-    padding: 3.3rem 0;
-    color: #222;
-}
-
-.section-light h2 {
-    text-align: center;
-    margin-bottom: 2rem;
-    font-size: 1.9rem;
-}
+.section-light { background: var(--section-bg); padding: 3.3rem 0; color: #222; }
+.section-light h2 { text-align: center; margin-bottom: 2rem; font-size: 1.9rem; }
 
 /* PRICING GRID */
-.pricing-row {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-    gap: 1.5rem;
-}
+.pricing-row { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 1.5rem; }
 
 .pricing-card {
     background: white;
@@ -391,53 +286,21 @@ transform: translateY(-2px);
     flex-direction: column;
 }
 
-.pricing-header {
-    padding: 1rem 1.2rem;
-    font-size: 1.3rem;
-    text-align: center;
-    font-weight: 900;
-    color: #fff;
-}
+.pricing-header { padding: 1rem 1.2rem; font-size: 1.3rem; text-align: center; font-weight: 900; color: #fff; }
+.pricing-body { padding: 1.3rem 1.4rem 1.5rem; font-size: .95rem; }
+.pricing-body h3 { margin: .2rem 0 .6rem; font-size: 1.05rem; }
 
-.pricing-body {
-    padding: 1.3rem 1.4rem 1.5rem;
-    font-size: .95rem;
-}
-
-.pricing-body h3 {
-    margin: .2rem 0 .6rem;
-    font-size: 1.05rem;
-}
-
-.price-row {
-    display: flex;
-    justify-content: space-between;
-    padding: .55rem 0;
-    border-bottom: 1px solid #eee;
-    font-size: .95rem;
-}
-.price-row:last-of-type {
-    border-bottom: none;
-}
-.price-value {
-    color: var(--price-blue);
-    font-weight: 700;
-}
+.price-row { display: flex; justify-content: space-between; padding: .55rem 0; border-bottom: 1px solid #eee; font-size: 1rem; }
+.price-row:last-of-type { border-bottom: none; }
+.price-value { color: var(--price-blue); font-weight: 900; }
 
 /* SPECIAL HEADERS */
 .ps-header { background:#003087 !important; }
 .pslb-header { background:#002255 !important; }
 
 /* TRUST BADGES */
-.trust-section {
-    background: #05060b;
-    padding: 3.5rem 1rem;
-    text-align: center;
-}
-.trust-section h2 {
-    font-size: 1.9rem;
-    margin-bottom: 2.2rem;
-}
+.trust-section { background: #05060b; padding: 3.5rem 1rem; text-align: center; }
+.trust-section h2 { font-size: 1.9rem; margin-bottom: 2.2rem; }
 .trust-row {
     display: grid;
     grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
@@ -453,11 +316,7 @@ transform: translateY(-2px);
     box-shadow: 0 15px 28px rgba(0,0,0,0.3);
     font-size: .95rem;
 }
-.trust-item i {
-    font-size: 2rem;
-    color: var(--accent-color);
-    margin-bottom: .8rem;
-}
+.trust-item i { font-size: 2rem; color: var(--accent-color); margin-bottom: .8rem; }
 
 /* CONTACT */
 .contact-box {
@@ -470,14 +329,8 @@ transform: translateY(-2px);
     text-align: center;
     box-shadow: var(--shadow);
 }
-.contact-buttons {
-    margin-top: 1.4rem;
-}
-.contact-buttons .btn {
-    margin: 10px;
-    padding: 12px 25px;
-    font-size:1.05rem;
-}
+.contact-buttons { margin-top: 1.4rem; }
+.contact-buttons .btn { margin: 10px; padding: 12px 25px; font-size:1.05rem; }
 
 /* FLOATING WHATSAPP BUTTON */
 .floating-wa {
@@ -505,31 +358,19 @@ transform: translateY(-2px);
 }
 
 /* FOOTER */
-footer {
-    padding: 1.5rem 1rem 2.2rem;
-    text-align: center;
-    opacity: .7;
-    font-size: .9rem;
-}
+footer { padding: 1.5rem 1rem 2.2rem; text-align: center; opacity: .7; font-size: .9rem; }
 
 /* RESPONSIVE */
 @media (max-width: 840px) {
-    .hero-inner {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
-    .hero-visual {
-        order: -1;
-    }
-    .hero-card {
-        margin: 0 auto;
-    }
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero-visual { order: -1; }
+    .hero-card { margin: 0 auto; }
 }
 
+/* Mobile nav + mobile optimizations */
 @media (max-width: 780px) {
-    .navbar {
-        padding-inline: 1rem;
-    }
+    .navbar { padding-inline: 1rem; }
+
     .nav-links {
         position: fixed;
         top: 60px;
@@ -537,35 +378,33 @@ footer {
         background: rgba(3,5,15,0.96);
         flex-direction: column;
         align-items: flex-start;
-        padding: 1rem 1.4rem;
-        min-width: 210px;
+        padding: 1rem 1.2rem;
+        min-width: 240px;
         transform: translateX(100%);
         transition: transform .25s ease;
+        border-left: 1px solid rgba(255,255,255,0.10);
+        gap: .4rem;
     }
-    .nav-links.open {
-        transform: translateX(0);
-    }
-    .menu-toggle {
-        display: block;
-        margin-left: 1rem;
-    }
+    .nav-links.open { transform: translateX(0); }
+    .nav-links a, .pill-toggle { width: 100%; padding: .85rem .8rem; font-size: 1.05rem; }
+    .menu-toggle { display: block; margin-left: 1rem; }
+
+    .pricing-row { grid-template-columns: 1fr; gap: 1.1rem; }
+    .pricing-body { font-size: 1.02rem; }
+    .price-row { font-size: 1.08rem; padding: .7rem 0; }
+    .btn { padding: 1rem 1.4rem; font-size: 1.08rem; }
 }
 
 @media (max-width: 480px) {
-    .hero h1 {
-        font-size: 2.1rem;
-    }
-    .hero-card {
-        max-width: 320px;
-    }
+    .hero { padding-top: 2.6rem; }
+    .hero h1 { font-size: 2.05rem; }
+    .hero .subtitle { font-size: 1.02rem; }
+    .hero-card { max-width: 340px; }
 }
 
-
 /* --------------------------------------- */
-/* 🔥 FIX TYPING CURSOR ISSUE — ADDED HERE 🔥 */
+/* 🔥 FIX TYPING CURSOR ISSUE — YOUR ORIGINAL */
 /* --------------------------------------- */
-
-/* Disable text cursor globally */
 * {
     user-select: none;
     -webkit-user-select: none;
@@ -573,29 +412,81 @@ footer {
     -moz-user-select: none;
     caret-color: transparent !important;
 }
+input, textarea { user-select: text; caret-color: auto; }
+button, a, .nav-links a, .menu-toggle, .hero-card, .social-icons a, .pricing-card, .floating-wa, .pill-toggle { cursor: pointer !important; }
 
-/* Allow inputs to work normally (if added later) */
-input, textarea {
-    user-select: text;
-    caret-color: auto;
+/* Language Modal */
+.lang-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.78);
+    backdrop-filter: blur(14px);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 20000;
+    padding: 1.2rem;
 }
-
-/* Force pointer cursor for all clickable items */
-button,
-a,
-.nav-links a,
-.menu-toggle,
-.hero-card,
-.social-icons a,
-.pricing-card,
-.floating-wa {
-    cursor: pointer !important;
+.lang-box {
+    width: 100%;
+    max-width: 420px;
+    background: radial-gradient(circle at top left, rgba(0,195,255,0.2), rgba(6,12,30,0.95));
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 22px;
+    padding: 1.8rem 1.5rem;
+    box-shadow: var(--shadow);
+    text-align: center;
 }
+.lang-title { font-weight: 900; font-size: 1.25rem; }
+.lang-subtitle { margin-top: .35rem; color: var(--muted-text); font-size: .95rem; }
+.lang-btns { display:flex; gap: .8rem; justify-content:center; flex-wrap: wrap; margin-top: 1.4rem; }
+.lang-btns .btn { margin-top: 0; min-width: 150px; }
 
+/* MOBILE ORDER BAR (NEW) */
+.mobile-order-bar{
+    display:none;
+}
+@media (max-width: 780px){
+    .mobile-order-bar{
+        display:block;
+        position:fixed;
+        bottom:0; left:0; right:0;
+        background:#25d366;
+        z-index:9999;
+        padding:.95rem 1rem;
+        box-shadow: 0 -10px 28px rgba(0,0,0,.45);
+    }
+    .mobile-order-bar a{
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:.6rem;
+        font-size:1.18rem;
+        font-weight:900;
+        color:#fff;
+        text-decoration:none;
+    }
+    /* push content above bar */
+    body{ padding-bottom:86px; }
+    /* move floating WA above bar */
+    .floating-wa{ bottom: 96px; }
+}
 </style>
 </head>
 
 <body>
+
+<!-- LANGUAGE MODAL (NEW) -->
+<div id="langModal" class="lang-modal">
+    <div class="lang-box">
+        <div class="lang-title" data-i18n="lang_title">Choose your language</div>
+        <div class="lang-subtitle" data-i18n="lang_subtitle">Please select English or Arabic</div>
+        <div class="lang-btns">
+            <button class="btn" onclick="setLanguage('en')">🇬🇧 English</button>
+            <button class="btn" onclick="setLanguage('ar')">🇱🇧 العربية</button>
+        </div>
+    </div>
+</div>
 
 <!-- SPINNER -->
 <div id="loadingSpinner"><div class="spinner"></div></div>
@@ -606,7 +497,7 @@ a,
         <img src="logo.png" alt="LakkisStock logo">
         <div class="brand-text">
             <span>LakkisStock</span>
-            <span>Premium Streaming • Lebanon</span>
+            <span data-i18n="brand_sub">Premium Streaming • Lebanon</span>
         </div>
     </div>
 
@@ -615,11 +506,23 @@ a,
     </div>
 
     <div class="nav-links" id="navLinks">
-        <a data-page="home" onclick="changePage('home')" class="active">Home</a>
-        <a data-page="products" onclick="changePage('products')">Products</a>
-        <a data-page="subscribe" onclick="changePage('subscribe')">How to Subscribe</a>
-        <a data-page="contact" onclick="changePage('contact')">Contact</a>
-        <a href="https://www.instagram.com/stories/highlights/18015522128034327/" target="_blank">Feedbacks</a>
+        <a data-page="home" onclick="changePage('home')" class="active" data-i18n="nav_home">Home</a>
+        <a data-page="products" onclick="changePage('products')" data-i18n="nav_products">Products</a>
+        <a data-page="subscribe" onclick="changePage('subscribe')" data-i18n="nav_subscribe">How to Subscribe</a>
+        <a data-page="contact" onclick="changePage('contact')" data-i18n="nav_contact">Contact</a>
+        <a href="https://www.instagram.com/stories/highlights/18015522128034327/" target="_blank" data-i18n="nav_feedbacks">Feedbacks</a>
+
+        <!-- Language toggle -->
+        <span class="pill-toggle" onclick="toggleLanguage()">
+            <i class="fa-solid fa-language"></i>
+            <span id="langToggleText">AR</span>
+        </span>
+
+        <!-- Currency toggle -->
+        <span class="pill-toggle" onclick="toggleCurrency()">
+            <i class="fa-solid fa-coins"></i>
+            <span id="currencyToggleText">LBP</span>
+        </span>
     </div>
 
     <div class="social-icons">
@@ -637,69 +540,67 @@ a,
             <div>
                 <div class="hero-badge">
                     <i class="fa-solid fa-location-dot"></i>
-                    <span>Serving all Lebanon • <span class="highlight">Whish Money Accepted</span></span>
+                    <span data-i18n="hero_badge">Serving all Lebanon • <span class="highlight">Whish Money Accepted</span></span>
                 </div>
 
-                <h1>Premium Streaming Accounts at Lebanon’s Best Prices</h1>
-                <p class="subtitle">
+                <h1 data-i18n="hero_title">Premium Streaming Accounts at Lebanon’s Best Prices</h1>
+                <p class="subtitle" data-i18n="hero_subtitle">
                     Netflix, Shahid, Anghami, PlayStation gift cards & more. Fast delivery, original accounts, and lifetime support.
                 </p>
 
                 <div class="points">
-                    <div><i class="fa-solid fa-check"></i> User & full accounts available</div>
-                    <div><i class="fa-solid fa-check"></i> Secure Whish Money payments</div>
-                    <div><i class="fa-solid fa-check"></i> Instant activation after payment</div>
+                    <div data-i18n="hero_point1"><i class="fa-solid fa-check"></i> User & full accounts available</div>
+                    <div data-i18n="hero_point2"><i class="fa-solid fa-check"></i> Secure Whish Money payments</div>
+                    <div data-i18n="hero_point3"><i class="fa-solid fa-check"></i> Instant activation after payment</div>
                 </div>
 
                 <div class="hero-cta-row">
-                    <button class="btn" onclick="changePage('products')">
-                        Browse Products
-                    </button>
-                    <a class="btn" style="background:#25d366; box-shadow:0 18px 30px rgba(37,211,102,0.45);" 
-                       href="https://api.whatsapp.com/send/?phone=96170708025">
+                    <button class="btn" onclick="changePage('products')" data-i18n="hero_btn_browse">Browse Products</button>
+                    <a class="btn" style="background:#25d366; box-shadow:0 18px 30px rgba(37,211,102,0.45);"
+                       href="https://api.whatsapp.com/send/?phone=96170708025" data-i18n="hero_btn_order">
                        Order via WhatsApp
                     </a>
-                    <small>24/7 support • 1,500+ happy customers</small>
+                    <small data-i18n="hero_small">24/7 support • 1,500+ happy customers</small>
                 </div>
             </div>
 
             <div class="hero-visual">
                 <div class="hero-card">
                     <div class="hero-card-header">
-                        <div class="hero-card-title">Popular Bundle</div>
-                        <div class="hero-tag"><i class="fa-solid fa-fire"></i> Lebanon Favorite</div>
+                        <div class="hero-card-title" data-i18n="bundle_title">Popular Bundle</div>
+                        <div class="hero-tag" data-i18n="bundle_tag"><i class="fa-solid fa-fire"></i> Lebanon Favorite</div>
                     </div>
 
                     <div class="hero-card-logos">
-                        <div class="hero-logo-pill netflix">
-                            <span class="dot"></span> Netflix
-                        </div>
-                        <div class="hero-logo-pill shahid">
-                            <span class="dot"></span> Shahid
-                        </div>
-                        <div class="hero-logo-pill anghami">
-                            <span class="dot"></span> Anghami
-                        </div>
+                        <div class="hero-logo-pill netflix"><span class="dot"></span> Netflix</div>
+                        <div class="hero-logo-pill shahid"><span class="dot"></span> Shahid</div>
+                        <div class="hero-logo-pill anghami"><span class="dot"></span> Anghami</div>
                     </div>
 
                     <div class="hero-card-line">
-                        <span>Netflix User • 1 Month</span><span>$3.5</span>
+                        <span data-i18n="bundle_line1_left">Netflix User • 1 Month</span>
+                        <span class="price-value" data-usd="3.5">$3.5</span>
                     </div>
                     <div class="hero-card-line">
-                        <span>Shahid User • 1 Year</span><span>$11</span>
+                        <span data-i18n="bundle_line2_left">Shahid User • 1 Year</span>
+                        <span class="price-value" data-usd="11">$11</span>
                     </div>
                     <div class="hero-card-line">
-                        <span>Anghami • 1 Year</span><span>$20</span>
+                        <span data-i18n="bundle_line3_left">Anghami • 1 Year</span>
+                        <span class="price-value" data-usd="20">$20</span>
                     </div>
 
                     <hr style="border:none; border-top:1px dashed rgba(255,255,255,0.2); margin:1rem 0;">
 
                     <div class="hero-card-line">
-                        <span style="font-size:.88rem;">PlayStation USA Gift Card</span>
-                        <span style="font-size:.9rem; color:#4caf50; font-weight:800;">Starting $12</span>
+                        <span style="font-size:.88rem;" data-i18n="bundle_ps_left">PlayStation USA Gift Card</span>
+                        <span style="font-size:.9rem; color:#4caf50; font-weight:800;">
+                            <span data-i18n="starting_prefix">Starting</span>
+                            <span class="price-value" data-usd="12">$12</span>
+                        </span>
                     </div>
 
-                    <p style="font-size:.78rem; color:#c5cede; margin-top:.7rem;">
+                    <p style="font-size:.78rem; color:#c5cede; margin-top:.7rem;" data-i18n="bundle_note">
                         Message us on WhatsApp, pay via Whish Money, and get your login or code instantly.
                     </p>
                 </div>
@@ -712,26 +613,26 @@ a,
 <div id="products" class="page">
     <div class="section-light">
         <div class="container">
-            <h2>Explore our offerings</h2>
+            <h2 data-i18n="products_title">Explore our offerings</h2>
 
             <div class="pricing-row">
 
                 <div class="pricing-card">
                     <div class="pricing-header" style="background:#e50914;">Netflix</div>
                     <div class="pricing-body">
-                        <h3>User Account</h3>
-                        <div class="price-row"><span>1 Month</span><span class="price-value">$3.5</span></div>
-                        <div class="price-row"><span>3 Months</span><span class="price-value">$9</span></div>
-                        <div class="price-row"><span>6 Months</span><span class="price-value">$15</span></div>
-                        <div class="price-row"><span>1 Year</span><span class="price-value">$22</span></div>
+                        <h3 data-i18n="netflix_user">User Account</h3>
+                        <div class="price-row"><span data-i18n="m1">1 Month</span><span class="price-value" data-usd="3.5">$3.5</span></div>
+                        <div class="price-row"><span data-i18n="m3">3 Months</span><span class="price-value" data-usd="9">$9</span></div>
+                        <div class="price-row"><span data-i18n="m6">6 Months</span><span class="price-value" data-usd="15">$15</span></div>
+                        <div class="price-row"><span data-i18n="y1">1 Year</span><span class="price-value" data-usd="22">$22</span></div>
 
-                        <h3 style="margin-top:1rem;">Full Account</h3>
-                        <div class="price-row"><span>1 Month</span><span class="price-value">$14</span></div>
-                        <div class="price-row"><span>3 Months</span><span class="price-value">$25</span></div>
-                        <div class="price-row"><span>1 Year</span><span class="price-value">$90</span></div>
+                        <h3 style="margin-top:1rem;" data-i18n="netflix_full">Full Account</h3>
+                        <div class="price-row"><span data-i18n="m1">1 Month</span><span class="price-value" data-usd="14">$14</span></div>
+                        <div class="price-row"><span data-i18n="m3">3 Months</span><span class="price-value" data-usd="25">$25</span></div>
+                        <div class="price-row"><span data-i18n="y1">1 Year</span><span class="price-value" data-usd="90">$90</span></div>
 
                         <div style="margin-top:15px; background:#eef6ff; padding:10px; border-radius:8px; text-align:center; font-size:.88rem;">
-                            <a href="https://ostories.me" target="_blank" style="color:#0f587f; font-weight:bold; text-decoration:none;">
+                            <a href="https://ostories.me" target="_blank" style="color:#0f587f; font-weight:bold; text-decoration:none;" data-i18n="netflix_code_help">
                                 Netflix asking for a login code? → Visit ostories.me
                             </a>
                         </div>
@@ -741,46 +642,46 @@ a,
                 <div class="pricing-card">
                     <div class="pricing-header" style="background:#7b1fa2;">🎵 Anghami</div>
                     <div class="pricing-body">
-                        <div class="price-row"><span>3 Months</span><span class="price-value">$9</span></div>
-                        <div class="price-row"><span>6 Months</span><span class="price-value">$15</span></div>
-                        <div class="price-row"><span>1 Year</span><span class="price-value">$20</span></div>
+                        <div class="price-row"><span data-i18n="m3">3 Months</span><span class="price-value" data-usd="9">$9</span></div>
+                        <div class="price-row"><span data-i18n="m6">6 Months</span><span class="price-value" data-usd="15">$15</span></div>
+                        <div class="price-row"><span data-i18n="y1">1 Year</span><span class="price-value" data-usd="20">$20</span></div>
                     </div>
                 </div>
 
                 <div class="pricing-card">
                     <div class="pricing-header" style="background:#03a9f4;">💻 Shahid</div>
                     <div class="pricing-body">
-                        <h3>User Account</h3>
-                        <div class="price-row"><span>1 Month</span><span class="price-value">$3</span></div>
-                        <div class="price-row"><span>3 Months</span><span class="price-value">$6</span></div>
-                        <div class="price-row"><span>1 Year</span><span class="price-value">$11</span></div>
+                        <h3 data-i18n="shahid_user">User Account</h3>
+                        <div class="price-row"><span data-i18n="m1">1 Month</span><span class="price-value" data-usd="3">$3</span></div>
+                        <div class="price-row"><span data-i18n="m3">3 Months</span><span class="price-value" data-usd="6">$6</span></div>
+                        <div class="price-row"><span data-i18n="y1">1 Year</span><span class="price-value" data-usd="11">$11</span></div>
 
-                        <h3 style="margin-top:1rem;">Full Account</h3>
-                        <div class="price-row"><span>1 Month</span><span class="price-value">$9</span></div>
-                        <div class="price-row"><span>3 Months</span><span class="price-value">$14</span></div>
-                        <div class="price-row"><span>1 Year</span><span class="price-value">$30</span></div>
+                        <h3 style="margin-top:1rem;" data-i18n="shahid_full">Full Account</h3>
+                        <div class="price-row"><span data-i18n="m1">1 Month</span><span class="price-value" data-usd="9">$9</span></div>
+                        <div class="price-row"><span data-i18n="m3">3 Months</span><span class="price-value" data-usd="14">$14</span></div>
+                        <div class="price-row"><span data-i18n="y1">1 Year</span><span class="price-value" data-usd="30">$30</span></div>
                     </div>
                 </div>
 
                 <div class="pricing-card">
-                    <div class="pricing-header ps-header">🎮 PlayStation Gift Cards (USA)</div>
+                    <div class="pricing-header ps-header" data-i18n="ps_usa_title">🎮 PlayStation Gift Cards (USA)</div>
                     <div class="pricing-body">
-                        <div class="price-row"><span>$10 Card</span><span class="price-value">$12</span></div>
-                        <div class="price-row"><span>$25 Card</span><span class="price-value">$27</span></div>
-                        <div class="price-row"><span>$50 Card</span><span class="price-value">$52</span></div>
-                        <div class="price-row"><span>$75 Card</span><span class="price-value">$78</span></div>
-                        <div class="price-row"><span>$100 Card</span><span class="price-value">$105</span></div>
+                        <div class="price-row"><span>$10 Card</span><span class="price-value" data-usd="12">$12</span></div>
+                        <div class="price-row"><span>$25 Card</span><span class="price-value" data-usd="27">$27</span></div>
+                        <div class="price-row"><span>$50 Card</span><span class="price-value" data-usd="52">$52</span></div>
+                        <div class="price-row"><span>$75 Card</span><span class="price-value" data-usd="78">$78</span></div>
+                        <div class="price-row"><span>$100 Card</span><span class="price-value" data-usd="105">$105</span></div>
                     </div>
                 </div>
 
                 <div class="pricing-card">
-                    <div class="pricing-header pslb-header"> PlayStation Gift Cards (Lebanon)</div>
+                    <div class="pricing-header pslb-header" data-i18n="ps_lb_title">PlayStation Gift Cards (Lebanon)</div>
                     <div class="pricing-body">
-                        <div class="price-row"><span>$10 Card</span><span class="price-value">$12</span></div>
-                        <div class="price-row"><span>$20 Card</span><span class="price-value">$22</span></div>
-                        <div class="price-row"><span>$40 Card</span><span class="price-value">$42</span></div>
-                        <div class="price-row"><span>$50 Card</span><span class="price-value">$53</span></div>
-                        <div class="price-row"><span>$100 Card</span><span class="price-value">$105</span></div>
+                        <div class="price-row"><span>$10 Card</span><span class="price-value" data-usd="12">$12</span></div>
+                        <div class="price-row"><span>$20 Card</span><span class="price-value" data-usd="22">$22</span></div>
+                        <div class="price-row"><span>$40 Card</span><span class="price-value" data-usd="42">$42</span></div>
+                        <div class="price-row"><span>$50 Card</span><span class="price-value" data-usd="53">$53</span></div>
+                        <div class="price-row"><span>$100 Card</span><span class="price-value" data-usd="105">$105</span></div>
                     </div>
                 </div>
 
@@ -792,19 +693,19 @@ a,
 <!-- SUBSCRIBE -->
 <div id="subscribe" class="page">
     <div class="content-box">
-        <h1 style="text-align:center; margin-bottom:1.2rem;">How to Subscribe</h1>
-        <p style="text-align:center; color:var(--muted-text); font-size:.98rem; margin-bottom:1.2rem;">
+        <h1 style="text-align:center; margin-bottom:1.2rem;" data-i18n="subscribe_title">How to Subscribe</h1>
+        <p style="text-align:center; color:var(--muted-text); font-size:.98rem; margin-bottom:1.2rem;" data-i18n="subscribe_sub">
             Simple steps to activate your account in minutes:
         </p>
 
-        <div class="step">1. Message us on WhatsApp or Telegram with the service you want.</div>
-        <div class="step">2. Send your full name and phone number.</div>
-        <div class="step">3. For Netflix → choose your profile name.</div>
-        <div class="step">4. Pay using <strong>Whish Money</strong> (details will be sent to you).</div>
-        <div class="step">5. Receive your account or code instantly after payment.</div>
+        <div class="step" data-i18n="step1">1. Message us on WhatsApp or Telegram with the service you want.</div>
+        <div class="step" data-i18n="step2">2. Send your full name and phone number.</div>
+        <div class="step" data-i18n="step3">3. For Netflix → choose your profile name.</div>
+        <div class="step" data-i18n="step4">4. Pay using <strong>Whish Money</strong> (details will be sent to you).</div>
+        <div class="step" data-i18n="step5">5. Receive your account or code instantly after payment.</div>
 
         <div style="text-align:center; margin-top:2rem;">
-            <a class="btn" href="https://api.whatsapp.com/send/?phone=96170708025">
+            <a class="btn" href="https://api.whatsapp.com/send/?phone=96170708025" data-i18n="start_order">
                 Start Order on WhatsApp
             </a>
         </div>
@@ -814,20 +715,20 @@ a,
 <!-- CONTACT -->
 <div id="contact" class="page">
     <div class="contact-box">
-        <h1>Contact & Support</h1>
-        <p style="color:var(--muted-text); margin-top:.4rem; font-size:.98rem;">
+        <h1 data-i18n="contact_title">Contact & Support</h1>
+        <p style="color:var(--muted-text); margin-top:.4rem; font-size:.98rem;" data-i18n="contact_sub">
             We’re online almost 24/7. Choose your favorite app and we’ll reply as soon as possible.
         </p>
 
         <div class="contact-buttons">
-            <a class="btn" href="https://api.whatsapp.com/send/?phone=96170708025" 
+            <a class="btn" href="https://api.whatsapp.com/send/?phone=96170708025"
                style="background:#25d366; box-shadow:0 18px 35px rgba(37,211,102,0.42);">
-               <i class="fab fa-whatsapp"></i> WhatsApp
+               <i class="fab fa-whatsapp"></i> <span data-i18n="contact_whatsapp">WhatsApp</span>
             </a>
 
-            <a class="btn" href="https://t.me/+96170708025" 
+            <a class="btn" href="https://t.me/+96170708025"
                style="background:#0088cc; box-shadow:0 18px 35px rgba(0,136,204,0.42);">
-               <i class="fab fa-telegram"></i> Telegram Support
+               <i class="fab fa-telegram"></i> <span data-i18n="contact_telegram">Telegram Support</span>
             </a>
         </div>
     </div>
@@ -835,48 +736,34 @@ a,
 
 <!-- TRUST BADGES -->
 <section class="trust-section">
-    <h2>Why Thousands Trust LakkisStock</h2>
+    <h2 data-i18n="trust_title">Why Thousands Trust LakkisStock</h2>
 
     <div class="trust-row">
-
-        <div class="trust-item">
-            <i class="fa-solid fa-shield-halved"></i>
-            <p>Secure Whish Money Payments</p>
-        </div>
-
-        <div class="trust-item">
-            <i class="fa-solid fa-bolt"></i>
-            <p>Instant Delivery</p>
-        </div>
-
-        <div class="trust-item">
-            <i class="fa-solid fa-star"></i>
-            <p>1,500+ Happy Customers</p>
-        </div>
-
-        <div class="trust-item">
-            <i class="fa-solid fa-headset"></i>
-            <p>24/7 Support</p>
-        </div>
-
-        <div class="trust-item">
-            <i class="fa-solid fa-certificate"></i>
-            <p>Original Accounts</p>
-        </div>
-
+        <div class="trust-item"><i class="fa-solid fa-shield-halved"></i><p data-i18n="trust_1">Secure Whish Money Payments</p></div>
+        <div class="trust-item"><i class="fa-solid fa-bolt"></i><p data-i18n="trust_2">Instant Delivery</p></div>
+        <div class="trust-item"><i class="fa-solid fa-star"></i><p data-i18n="trust_3">1,500+ Happy Customers</p></div>
+        <div class="trust-item"><i class="fa-solid fa-headset"></i><p data-i18n="trust_4">24/7 Support</p></div>
+        <div class="trust-item"><i class="fa-solid fa-certificate"></i><p data-i18n="trust_5">Original Accounts</p></div>
     </div>
 </section>
 
-<footer>
-    © 2022–2025 LakkisStock — All Rights Reserved
-</footer>
+<footer data-i18n="footer">© 2022–2025 LakkisStock — All Rights Reserved</footer>
 
 <!-- FLOATING WHATSAPP -->
 <a href="https://api.whatsapp.com/send/?phone=96170708025" class="floating-wa" aria-label="WhatsApp Floating Button">
     <i class="fab fa-whatsapp"></i>
 </a>
 
+<!-- MOBILE ORDER BAR (NEW, best for mobile) -->
+<div class="mobile-order-bar">
+    <a href="https://api.whatsapp.com/send/?phone=96170708025" aria-label="Order on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+        <span data-i18n="mobile_order">Order on WhatsApp</span>
+    </a>
+</div>
+
 <script>
+/* ============ SPA NAV (YOUR ORIGINAL) ============ */
 const spinner = document.getElementById("loadingSpinner");
 const navLinks = document.querySelectorAll(".nav-links a[data-page]");
 const pages = document.querySelectorAll(".page");
@@ -907,6 +794,226 @@ function changePage(id) {
 
 menuToggle.addEventListener("click", () => {
     navLinksContainer.classList.toggle("open");
+});
+
+/* ============ LANGUAGE SYSTEM (NEW) ============ */
+const langModal = document.getElementById("langModal");
+const langToggleText = document.getElementById("langToggleText");
+
+const i18n = {
+  en: {
+    lang_title: "Choose your language",
+    lang_subtitle: "Please select English or Arabic",
+    brand_sub: "Premium Streaming • Lebanon",
+
+    nav_home: "Home",
+    nav_products: "Products",
+    nav_subscribe: "How to Subscribe",
+    nav_contact: "Contact",
+    nav_feedbacks: "Feedbacks",
+
+    hero_badge: `Serving all Lebanon • <span class="highlight">Whish Money Accepted</span>`,
+    hero_title: "Premium Streaming Accounts at Lebanon’s Best Prices",
+    hero_subtitle: "Netflix, Shahid, Anghami, PlayStation gift cards & more. Fast delivery, original accounts, and lifetime support.",
+    hero_point1: `<i class="fa-solid fa-check"></i> User & full accounts available`,
+    hero_point2: `<i class="fa-solid fa-check"></i> Secure Whish Money payments`,
+    hero_point3: `<i class="fa-solid fa-check"></i> Instant activation after payment`,
+    hero_btn_browse: "Browse Products",
+    hero_btn_order: "Order via WhatsApp",
+    hero_small: "24/7 support • 1,500+ happy customers",
+
+    bundle_title: "Popular Bundle",
+    bundle_tag: `<i class="fa-solid fa-fire"></i> Lebanon Favorite`,
+    bundle_line1_left: "Netflix User • 1 Month",
+    bundle_line2_left: "Shahid User • 1 Year",
+    bundle_line3_left: "Anghami • 1 Year",
+    bundle_ps_left: "PlayStation USA Gift Card",
+    starting_prefix: "Starting",
+    bundle_note: "Message us on WhatsApp, pay via Whish Money, and get your login or code instantly.",
+
+    products_title: "Explore our offerings",
+    netflix_user: "User Account",
+    netflix_full: "Full Account",
+    shahid_user: "User Account",
+    shahid_full: "Full Account",
+    ps_usa_title: "🎮 PlayStation Gift Cards (USA)",
+    ps_lb_title: "PlayStation Gift Cards (Lebanon)",
+    netflix_code_help: "Netflix asking for a login code? → Visit ostories.me",
+
+    m1: "1 Month",
+    m3: "3 Months",
+    m6: "6 Months",
+    y1: "1 Year",
+
+    subscribe_title: "How to Subscribe",
+    subscribe_sub: "Simple steps to activate your account in minutes:",
+    step1: "1. Message us on WhatsApp or Telegram with the service you want.",
+    step2: "2. Send your full name and phone number.",
+    step3: "3. For Netflix → choose your profile name.",
+    step4: "4. Pay using <strong>Whish Money</strong> (details will be sent to you).",
+    step5: "5. Receive your account or code instantly after payment.",
+    start_order: "Start Order on WhatsApp",
+
+    contact_title: "Contact & Support",
+    contact_sub: "We’re online almost 24/7. Choose your favorite app and we’ll reply as soon as possible.",
+    contact_whatsapp: "WhatsApp",
+    contact_telegram: "Telegram Support",
+
+    trust_title: "Why Thousands Trust LakkisStock",
+    trust_1: "Secure Whish Money Payments",
+    trust_2: "Instant Delivery",
+    trust_3: "1,500+ Happy Customers",
+    trust_4: "24/7 Support",
+    trust_5: "Original Accounts",
+
+    footer: "© 2022–2025 LakkisStock — All Rights Reserved",
+    mobile_order: "Order on WhatsApp"
+  },
+
+  ar: {
+    lang_title: "اختر لغتك",
+    lang_subtitle: "اختَر العربية أو الإنجليزية",
+    brand_sub: "حسابات بث مميزة • لبنان",
+
+    nav_home: "الرئيسية",
+    nav_products: "المنتجات",
+    nav_subscribe: "طريقة الاشتراك",
+    nav_contact: "تواصل معنا",
+    nav_feedbacks: "الآراء",
+
+    hero_badge: `نخدم كل لبنان • <span class="highlight">نقبل Whish Money</span>`,
+    hero_title: "حسابات بث مميزة بأفضل الأسعار في لبنان",
+    hero_subtitle: "نتفليكس، شاهد، أنغامي، وبطاقات بلايستيشن وأكثر. تسليم سريع، حسابات أصلية، ودعم دائم.",
+    hero_point1: `<i class="fa-solid fa-check"></i> متوفر حسابات مستخدم وحسابات كاملة`,
+    hero_point2: `<i class="fa-solid fa-check"></i> دفع آمن عبر Whish Money`,
+    hero_point3: `<i class="fa-solid fa-check"></i> تفعيل مباشر بعد الدفع`,
+    hero_btn_browse: "تصفح المنتجات",
+    hero_btn_order: "اطلب عبر واتساب",
+    hero_small: "دعم 24/7 • أكثر من 1500 زبون مبسوط",
+
+    bundle_title: "الباقة الأكثر طلباً",
+    bundle_tag: `<i class="fa-solid fa-fire"></i> المفضلة بلبنان`,
+    bundle_line1_left: "Netflix مستخدم • شهر",
+    bundle_line2_left: "Shahid مستخدم • سنة",
+    bundle_line3_left: "Anghami • سنة",
+    bundle_ps_left: "بطاقات PlayStation (أمريكا)",
+    starting_prefix: "ابتداءً من",
+    bundle_note: "راسلنا على واتساب، ادفع عبر Whish Money، وخد الحساب أو الكود فوراً.",
+
+    products_title: "استكشف منتجاتنا",
+    netflix_user: "حساب مستخدم",
+    netflix_full: "حساب كامل",
+    shahid_user: "حساب مستخدم",
+    shahid_full: "حساب كامل",
+    ps_usa_title: "🎮 بطاقات PlayStation (أمريكا)",
+    ps_lb_title: "بطاقات PlayStation (لبنان)",
+    netflix_code_help: "نتفليكس عم يطلب كود تسجيل؟ → زور ostories.me",
+
+    m1: "شهر",
+    m3: "3 أشهر",
+    m6: "6 أشهر",
+    y1: "سنة",
+
+    subscribe_title: "طريقة الاشتراك",
+    subscribe_sub: "خطوات بسيطة لتفعيل حسابك خلال دقائق:",
+    step1: "1. راسلنا على واتساب أو تيليغرام بالخدمة اللي بدك ياها.",
+    step2: "2. ابعت اسمك الكامل ورقم تلفونك.",
+    step3: "3. لنتفليكس → اختار اسم البروفايل.",
+    step4: "4. ادفع عبر <strong>Whish Money</strong> (منبعتلك التفاصيل).",
+    step5: "5. بتستلم الحساب أو الكود فوراً بعد الدفع.",
+    start_order: "ابدأ الطلب على واتساب",
+
+    contact_title: "تواصل ودعم",
+    contact_sub: "نحن متواجدين تقريباً 24/7. اختار التطبيق اللي بتحبه ومنرد بأسرع وقت.",
+    contact_whatsapp: "واتساب",
+    contact_telegram: "دعم تيليغرام",
+
+    trust_title: "ليش آلاف الزباين بيثقوا بـ LakkisStock",
+    trust_1: "دفع آمن عبر Whish Money",
+    trust_2: "تسليم فوري",
+    trust_3: "أكثر من 1500 زبون مبسوط",
+    trust_4: "دعم 24/7",
+    trust_5: "حسابات أصلية",
+
+    footer: "© 2022–2025 LakkisStock — جميع الحقوق محفوظة",
+    mobile_order: "اطلب عبر واتساب"
+  }
+};
+
+function applyLanguage(lang){
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+    langToggleText.textContent = (lang === "ar") ? "EN" : "AR";
+
+    document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        const val = i18n[lang]?.[key];
+        if(typeof val === "string") el.innerHTML = val;
+    });
+
+    // RTL border direction for steps
+    document.querySelectorAll(".step").forEach(step => {
+        step.style.borderLeft = (lang === "ar") ? "none" : "4px solid var(--accent-color)";
+        step.style.borderRight = (lang === "ar") ? "4px solid var(--accent-color)" : "none";
+    });
+}
+
+function setLanguage(lang){
+    localStorage.setItem("siteLang", lang);
+    applyLanguage(lang);
+    langModal.style.display = "none";
+}
+
+function toggleLanguage(){
+    const current = localStorage.getItem("siteLang") || "en";
+    setLanguage(current === "en" ? "ar" : "en");
+}
+
+/* ============ CURRENCY (USD ⇄ LBP) ============ */
+const USD_TO_LBP = 90000;
+const currencyToggleText = document.getElementById("currencyToggleText");
+
+function formatLBP(n){
+    return Math.round(n).toLocaleString("en-US");
+}
+
+function applyCurrency(currency){
+    document.querySelectorAll(".price-value[data-usd]").forEach(el => {
+        const usd = parseFloat(el.dataset.usd);
+        if (!isFinite(usd)) return;
+
+        if(currency === "lbp"){
+            const lbp = usd * USD_TO_LBP;
+            el.textContent = `${formatLBP(lbp)} LBP`;
+        } else {
+            el.textContent = `$${usd}`;
+        }
+    });
+
+    currencyToggleText.textContent = (currency === "usd") ? "LBP" : "USD";
+}
+
+function toggleCurrency(){
+    const current = localStorage.getItem("currency") || "usd";
+    const next = (current === "usd") ? "lbp" : "usd";
+    localStorage.setItem("currency", next);
+    applyCurrency(next);
+}
+
+/* First visit language chooser + apply saved currency */
+window.addEventListener("load", () => {
+    const savedLang = localStorage.getItem("siteLang");
+    const savedCurrency = localStorage.getItem("currency") || "usd";
+
+    if(savedLang){
+        applyLanguage(savedLang);
+        langModal.style.display = "none";
+    } else {
+        applyLanguage("en");
+        langModal.style.display = "flex";
+    }
+
+    applyCurrency(savedCurrency);
 });
 </script>
 
