@@ -109,25 +109,32 @@
             .alfa-tile:hover { transform: none; }
             .glass-card:hover { transform: none; }
 
-            /* Plan rows stack price above Order on very small screens */
-            .plan-row-inner {
-                flex-wrap: wrap;
-                gap: 6px;
-            }
-            .plan-row-inner .order-btn {
-                margin-left: auto;
-            }
-
             /* LBP prices shrink so they don't overflow */
             [data-usd] {
                 font-size: 0.85rem !important;
                 white-space: nowrap;
             }
 
-            /* product image panel shorter on mobile */
+            /* product image panel — tall enough for text not to overlap */
             .product-img-panel {
-                min-height: 160px !important;
-                height: 160px !important;
+                min-height: 200px !important;
+                height: 200px !important;
+            }
+
+            /* smaller title inside panels on mobile */
+            .product-img-panel h3 {
+                font-size: 1.75rem !important;
+            }
+
+            /* push the text label lower padding so it sits at the bottom cleanly */
+            .product-img-panel .absolute.bottom-6 {
+                bottom: 1rem !important;
+                left: 1.25rem !important;
+            }
+
+            /* stronger gradient overlay so text never bleeds into image */
+            .product-img-panel .bg-gradient-to-r {
+                background: linear-gradient(to right, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.5) 70%, transparent 100%) !important;
             }
 
             /* section padding tighter */
@@ -140,6 +147,13 @@
         @media (max-width: 380px) {
             .hero-title { font-size: 1.9rem !important; }
             .plan-card { padding: 0.65rem !important; }
+            .product-img-panel {
+                min-height: 180px !important;
+                height: 180px !important;
+            }
+            .product-img-panel h3 {
+                font-size: 1.5rem !important;
+            }
         }
 
 
@@ -325,7 +339,7 @@
         <div class="mb-12 scroll-reveal">
             <div class="glass-card rounded-3xl overflow-hidden">
                 <div class="grid md:grid-cols-2">
-                    <div class="relative h-56 md:h-auto overflow-hidden bg-gradient-to-br from-red-900/50 to-red-600/30 min-h-[220px] product-img-panel">
+                    <div class="relative h-52 md:h-auto overflow-hidden bg-gradient-to-br from-red-900/50 to-red-600/30 min-h-[208px] product-img-panel">
                         <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&q=80" alt="Netflix" class="absolute inset-0 w-full h-full object-cover opacity-70">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
@@ -361,7 +375,7 @@
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
                                 <div><p class="font-semibold text-sm">1 Year</p><p class="text-xs text-gray-400">User Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
-                                    <span class="text-lg font-bold text-red-400" data-usd="22">$22</span>
+                                    <span class="text-lg font-bold text-red-400" data-usd="25">$25</span>
                                     <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Netflix 1 Year User Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
@@ -403,7 +417,7 @@
         <div class="mb-12 scroll-reveal">
             <div class="glass-card rounded-3xl overflow-hidden">
                 <div class="grid md:grid-cols-2">
-                    <div class="relative h-56 md:h-auto overflow-hidden bg-[#0a1a2e] min-h-[220px] product-img-panel">
+                    <div class="relative h-52 md:h-auto overflow-hidden bg-[#0a1a2e] min-h-[208px] product-img-panel">
                         <img src="https://www.marefa.org/w/images/e/ec/Shahid.jpg" alt="Shahid" class="absolute inset-0 w-full h-full object-contain opacity-90 p-8">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/70 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
@@ -418,7 +432,7 @@
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
                                 <div><p class="font-semibold text-sm">1 Month</p><p class="text-xs text-gray-400">User Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
-                                    <span class="text-lg font-bold text-cyan-400" data-usd="3">$3</span>
+                                    <span class="text-lg font-bold text-cyan-400" data-usd="5">$5</span>
                                     <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 1 Month User Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
@@ -428,7 +442,7 @@
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center border-purple-500/30 bg-purple-500/5">
                                 <div><p class="font-semibold text-sm">1 Month</p><p class="text-xs text-gray-400">Full Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
-                                    <span class="text-lg font-bold text-purple-400" data-usd="9">$9</span>
+                                    <span class="text-lg font-bold text-purple-400" data-usd="10">$10</span>
                                     <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 1 Month Full Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
@@ -446,7 +460,7 @@
         <div class="mb-12 scroll-reveal">
             <div class="glass-card rounded-3xl overflow-hidden">
                 <div class="grid md:grid-cols-2">
-                    <div class="relative h-56 md:h-auto overflow-hidden bg-gradient-to-br from-purple-900/50 to-pink-600/30 min-h-[220px] product-img-panel">
+                    <div class="relative h-52 md:h-auto overflow-hidden bg-gradient-to-br from-purple-900/50 to-pink-600/30 min-h-[208px] product-img-panel">
                         <img src="https://cdn.wamda.com/feature-images/fdadf3bf1e3c3e8.jpg" alt="Anghami" class="absolute inset-0 w-full h-full object-cover opacity-70">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
@@ -492,7 +506,7 @@
         <div class="mb-12 scroll-reveal">
             <div class="glass-card rounded-3xl overflow-hidden">
                 <div class="grid md:grid-cols-2">
-                    <div class="relative h-56 md:h-auto overflow-hidden min-h-[220px] product-img-panel" style="background:#0f1111;">
+                    <div class="relative h-52 md:h-auto overflow-hidden min-h-[208px] product-img-panel" style="background:#0f1111;">
                         <img src="https://assets.aboutamazon.com/2d/49/abd3719b41aea4605bb51e4d8d72/subs-pre-order-consent-background-image-cb578173463.jpg" alt="Amazon Prime" class="absolute inset-0 w-full h-full object-cover opacity-75">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
@@ -506,14 +520,14 @@
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
                                 <div><p class="font-semibold text-sm">1 Month</p><p class="text-xs text-gray-400">Prime Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
-                                    <span class="text-lg font-bold" style="color:#ff9900;" data-usd="5">$5</span>
+                                    <span class="text-lg font-bold" style="color:#ff9900;" data-usd="7">$7</span>
                                     <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Amazon Prime 1 Month" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center" style="border-color:rgba(255,153,0,0.3);background:rgba(255,153,0,0.05);">
                                 <div><p class="font-semibold text-sm">1 Year</p><p class="text-xs" style="color:#ff9900;">Best Value</p></div>
                                 <div class="flex items-center gap-3 price-cell">
-                                    <span class="text-lg font-bold" style="color:#ff9900;" data-usd="15">$15</span>
+                                    <span class="text-lg font-bold" style="color:#ff9900;" data-usd="18">$18</span>
                                     <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Amazon Prime 1 Year" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
@@ -531,7 +545,7 @@
         <div class="mb-12 scroll-reveal">
             <div class="glass-card rounded-3xl overflow-hidden">
                 <div class="grid md:grid-cols-2">
-                    <div class="relative h-56 md:h-auto overflow-hidden bg-gradient-to-br from-blue-900/50 to-indigo-600/30 min-h-[220px] product-img-panel">
+                    <div class="relative h-52 md:h-auto overflow-hidden bg-gradient-to-br from-blue-900/50 to-indigo-600/30 min-h-[208px] product-img-panel">
                         <img src="https://i5.walmartimages.com/seo/PlayStation-Store-30-Gift-Card-Multipack-3-x-10-Physical_47d81ced-3c4c-45ef-a571-ea884bcd81c1.75d2efec3e1143280c3a120d10b1efa1.jpeg" alt="PlayStation USA Gift Cards" class="absolute inset-0 w-full h-full object-cover opacity-80">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
@@ -581,7 +595,7 @@
         <div class="mb-12 scroll-reveal">
             <div class="glass-card rounded-3xl overflow-hidden">
                 <div class="grid md:grid-cols-2">
-                    <div class="relative h-56 md:h-auto overflow-hidden min-h-[220px] product-img-panel" style="background:linear-gradient(135deg,#001540,#002a70);">
+                    <div class="relative h-52 md:h-auto overflow-hidden min-h-[208px] product-img-panel" style="background:linear-gradient(135deg,#001540,#002a70);">
                         <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800&q=80" alt="PlayStation Lebanon" class="absolute inset-0 w-full h-full object-cover opacity-70">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
@@ -627,7 +641,7 @@
         <div class="mb-12 scroll-reveal">
             <div class="glass-card rounded-3xl overflow-hidden">
                 <div class="grid md:grid-cols-2">
-                    <div class="relative h-56 md:h-auto overflow-hidden min-h-[220px] product-img-panel" style="background:linear-gradient(135deg,#1a0000,#3d0000);">
+                    <div class="relative h-52 md:h-auto overflow-hidden min-h-[208px] product-img-panel" style="background:linear-gradient(135deg,#1a0000,#3d0000);">
                         <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/73/Logo_Alfa_Telecom_%28Lebanon%29.png/250px-Logo_Alfa_Telecom_%28Lebanon%29.png" alt="Alfa Lebanon" class="absolute inset-0 w-full h-full object-contain opacity-90 p-10">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
@@ -768,17 +782,17 @@
                         <option value="Netflix User 1 Month">Netflix (User) - 1 Month ($3.5)</option>
                         <option value="Netflix User 3 Months">Netflix (User) - 3 Months ($9)</option>
                         <option value="Netflix User 6 Months">Netflix (User) - 6 Months ($15)</option>
-                        <option value="Netflix User 1 Year">Netflix (User) - 1 Year ($22)</option>
+                        <option value="Netflix User 1 Year">Netflix (User) - 1 Year ($25)</option>
                         <option value="Netflix Full 1 Month">Netflix (Full) - 1 Month ($14)</option>
                         <option value="Netflix Full 3 Months">Netflix (Full) - 3 Months ($25)</option>
                         <option value="Netflix Full 1 Year">Netflix (Full) - 1 Year ($90)</option>
-                        <option value="Shahid User 1 Month">Shahid (User) - 1 Month ($3)</option>
-                        <option value="Shahid Full 1 Month">Shahid (Full) - 1 Month ($9)</option>
+                        <option value="Shahid User 1 Month">Shahid (User) - 1 Month ($5)</option>
+                        <option value="Shahid Full 1 Month">Shahid (Full) - 1 Month ($10)</option>
                         <option value="Anghami 3 Months">Anghami - 3 Months ($9)</option>
                         <option value="Anghami 6 Months">Anghami - 6 Months ($15)</option>
                         <option value="Anghami 1 Year">Anghami - 1 Year ($20)</option>
-                        <option value="Amazon Prime 1 Month">Amazon Prime - 1 Month ($5)</option>
-                        <option value="Amazon Prime 1 Year">Amazon Prime - 1 Year ($15)</option>
+                        <option value="Amazon Prime 1 Month">Amazon Prime - 1 Month ($7)</option>
+                        <option value="Amazon Prime 1 Year">Amazon Prime - 1 Year ($18)</option>
                         <option value="PS USA 10">PlayStation USA - $10 Card ($12)</option>
                         <option value="PS USA 25">PlayStation USA - $25 Card ($27)</option>
                         <option value="PS USA 50">PlayStation USA - $50 Card ($52)</option>
