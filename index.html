@@ -139,16 +139,11 @@
             .price-cell a { padding: 0.3rem 0.6rem !important; font-size: 0.7rem !important; }
         }
 
-        /* Shahid unavailable card — no hover lift */
-        .shahid-unavailable { pointer-events: none; }
-        .shahid-unavailable * { pointer-events: none; }
-        .shahid-unavailable .shahid-unavail-btn { pointer-events: none; cursor: not-allowed; }
-
-        /* Announcement bar */
+        /* Announcement bar — "We're Back" edition */
         .announce-bar {
-            background: linear-gradient(90deg, #7c2d12, #991b1b, #7c2d12);
-            background-size: 200% 100%;
-            animation: shimmer-bar 4s linear infinite;
+            background: linear-gradient(90deg, #1a0533, #2d1060, #3b0f8c, #2d1060, #1a0533);
+            background-size: 300% 100%;
+            animation: shimmer-bar 5s linear infinite;
             position: relative;
             overflow: hidden;
         }
@@ -156,41 +151,34 @@
             content: '';
             position: absolute;
             inset: 0;
-            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.07) 50%, transparent 100%);
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.09) 50%, transparent 100%);
             animation: sweep 3s ease-in-out infinite;
         }
         @keyframes shimmer-bar {
             0%   { background-position: 0% 50%; }
-            100% { background-position: 200% 50%; }
+            100% { background-position: 300% 50%; }
         }
         @keyframes sweep {
             0%   { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
 
-        /* Charity section */
-        .charity-glow {
-            background: radial-gradient(ellipse at 50% 50%, rgba(220,38,38,0.18) 0%, rgba(120,20,20,0.08) 50%, transparent 70%);
+        /* Back badge pulse */
+        .back-badge {
+            animation: badge-glow 2s ease-in-out infinite;
         }
-        .heart-pulse {
-            animation: heartbeat 1.4s ease-in-out infinite;
+        @keyframes badge-glow {
+            0%, 100% { box-shadow: 0 0 8px rgba(139,92,246,0.6); }
+            50%       { box-shadow: 0 0 18px rgba(139,92,246,1); }
         }
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            14%       { transform: scale(1.2); }
-            28%       { transform: scale(1); }
-            42%       { transform: scale(1.15); }
-            56%       { transform: scale(1); }
+
+        /* Lightning bolt icon bounce */
+        .bolt-anim {
+            animation: bolt-bounce 1.5s ease-in-out infinite;
         }
-        .stat-card {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.07);
-            transition: all 0.3s ease;
-        }
-        .stat-card:hover {
-            background: rgba(220,38,38,0.08);
-            border-color: rgba(220,38,38,0.3);
-            transform: translateY(-4px);
+        @keyframes bolt-bounce {
+            0%, 100% { transform: translateY(0) scale(1); }
+            40%       { transform: translateY(-3px) scale(1.15); }
         }
     </style>
 </head>
@@ -199,14 +187,19 @@
 <div class="noise"></div>
 
 <!-- ── TOP ANNOUNCEMENT BAR ── -->
-<div class="announce-bar relative z-[60] py-2.5 px-4 text-center border-b border-red-900/40">
-    <div class="max-w-7xl mx-auto flex items-center justify-center gap-2.5 flex-wrap">
-        <svg class="w-4 h-4 text-red-300 heart-pulse flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
-        <p class="text-sm font-semibold text-white tracking-wide">
-            <span class="text-red-300 font-bold">LakkisStock gives 50% of all profits</span>
-            <span class="text-gray-200"> to families affected by war in Lebanon</span>
-        </p>
-        <svg class="w-4 h-4 text-red-300 heart-pulse flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
+<div class="announce-bar relative z-[60] py-2.5 px-4 text-center border-b border-purple-900/40">
+    <div class="max-w-7xl mx-auto flex items-center justify-center gap-3 flex-wrap">
+        <svg class="w-4 h-4 text-yellow-300 bolt-anim flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        <div class="flex items-center gap-2 flex-wrap justify-center">
+            <span class="back-badge inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-bold uppercase tracking-widest" style="background:rgba(139,92,246,0.25);border:1px solid rgba(139,92,246,0.6);color:#d8b4fe;">
+                We're Back
+            </span>
+            <p class="text-sm font-semibold text-white tracking-wide">
+                <span class="text-purple-300 font-bold">LakkisStock is back and stronger than ever</span>
+                <span class="text-gray-300"> — more products, faster delivery, better prices</span>
+            </p>
+        </div>
+        <svg class="w-4 h-4 text-yellow-300 bolt-anim flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
     </div>
 </div>
 
@@ -221,9 +214,6 @@
         <div class="hidden md:flex space-x-7 text-sm font-medium text-gray-300">
             <a href="#products" class="nav-link hover:text-white transition-colors">Products</a>
             <a href="#how-it-works" class="nav-link hover:text-white transition-colors">How It Works</a>
-            <a href="#initiative" class="nav-link hover:text-white transition-colors flex items-center gap-1.5 text-red-400 hover:text-red-300">
-                <svg class="w-3.5 h-3.5 heart-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>Our Initiative
-            </a>
             <a href="#contact" class="nav-link hover:text-white transition-colors">Contact</a>
             <a href="https://www.instagram.com/stories/highlights/18015522128034327/" target="_blank" class="nav-link hover:text-white transition-colors flex items-center gap-1.5 text-pink-400 hover:text-pink-300">
                 <span class="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></span>Feedbacks
@@ -259,9 +249,6 @@
         <div class="flex flex-col gap-1 mb-4">
             <a href="#products" class="py-2.5 text-gray-300 hover:text-white font-medium border-b border-white/5">Products</a>
             <a href="#how-it-works" class="py-2.5 text-gray-300 hover:text-white font-medium border-b border-white/5">How It Works</a>
-            <a href="#initiative" class="py-2.5 text-red-400 hover:text-red-300 font-medium border-b border-white/5 flex items-center gap-2">
-                <svg class="w-4 h-4 heart-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>Our Initiative
-            </a>
             <a href="#contact" class="py-2.5 text-gray-300 hover:text-white font-medium border-b border-white/5">Contact</a>
             <a href="https://www.instagram.com/stories/highlights/18015522128034327/" target="_blank" class="py-2.5 text-pink-400 hover:text-pink-300 font-medium flex items-center gap-2">
                 <span class="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></span>Feedbacks
@@ -306,7 +293,7 @@
             <span class="gradient-text">At Best Prices</span>
         </h1>
         <p class="text-base md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-            Netflix, Shahid, Anghami, Amazon Prime, PlayStation gift cards, Alfa Ushare & more.
+            Netflix, Shahid, Anghami, Amazon Prime, PlayStation gift cards, Alfa Ushare &amp; more.
             Fast delivery, original accounts, and lifetime support across Lebanon.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-14">
@@ -322,104 +309,12 @@
                 Order on WhatsApp
             </a>
         </div>
-        <div class="grid grid-cols-2 md:grid-cols-5 gap-3 max-w-4xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto">
             <div class="glass-card p-4 rounded-2xl text-center"><div class="text-xl md:text-2xl font-display font-bold mb-1">100%</div><div class="text-xs text-gray-400">Original Accounts</div></div>
             <div class="glass-card p-4 rounded-2xl text-center"><div class="text-xl md:text-2xl font-display font-bold mb-1">24/7</div><div class="text-xs text-gray-400">Support</div></div>
             <div class="glass-card p-4 rounded-2xl text-center"><div class="text-xl md:text-2xl font-display font-bold mb-1">Instant</div><div class="text-xs text-gray-400">Delivery</div></div>
             <div class="glass-card p-4 rounded-2xl text-center"><div class="text-xl md:text-2xl font-display font-bold mb-1">Whish</div><div class="text-xs text-gray-400">Money Accepted</div></div>
-            <div class="col-span-2 md:col-span-1 p-4 rounded-2xl text-center border border-red-500/30" style="background:rgba(239,68,68,0.08);">
-                <div class="text-xl md:text-2xl font-display font-bold mb-1 text-red-400 heart-pulse inline-block">50%</div>
-                <div class="text-xs text-red-300">Profits to War Victims</div>
-            </div>
         </div>
-    </div>
-</section>
-
-<!-- ── CHARITY INITIATIVE ── -->
-<section id="initiative" class="py-20 relative overflow-hidden">
-    <div class="charity-glow absolute inset-0 z-0 pointer-events-none"></div>
-    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-px h-16 bg-gradient-to-b from-transparent to-red-500/40"></div>
-
-    <div class="max-w-5xl mx-auto px-5 relative z-10">
-
-        <!-- Header -->
-        <div class="text-center mb-12 scroll-reveal">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 border border-red-500/30 bg-red-500/10">
-                <svg class="w-4 h-4 text-red-400 heart-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
-                <span class="text-sm text-red-300 font-semibold tracking-wide uppercase">Standing With Lebanon</span>
-                <svg class="w-4 h-4 text-red-400 heart-pulse" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.593c-5.63-5.539-11-10.297-11-14.402 0-3.791 3.068-5.191 5.281-5.191 1.312 0 4.151.501 5.719 4.457 1.59-3.968 4.464-4.447 5.726-4.447 2.54 0 5.274 1.621 5.274 5.181 0 4.069-5.136 8.625-11 14.402z"/></svg>
-            </div>
-            <h2 class="font-display font-bold text-4xl md:text-6xl mb-5 leading-tight">
-                Every Purchase<br>
-                <span style="background:linear-gradient(135deg,#ef4444 0%,#f97316 50%,#ef4444 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Gives Back</span>
-            </h2>
-            <p class="text-gray-400 max-w-2xl mx-auto text-base md:text-lg leading-relaxed">
-                At LakkisStock, we believe in using business as a force for good. When you subscribe to any of our services, you're not just getting entertainment — you're helping rebuild lives.
-            </p>
-        </div>
-
-        <!-- Big 50% stat + message -->
-        <div class="scroll-reveal mb-10">
-            <div class="rounded-3xl overflow-hidden relative" style="background:linear-gradient(135deg,rgba(127,29,29,0.35) 0%,rgba(30,10,10,0.6) 50%,rgba(127,29,29,0.25) 100%);border:1px solid rgba(239,68,68,0.25);">
-                <!-- Subtle noise overlay -->
-                <div style="position:absolute;inset:0;background-image:url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\");opacity:0.04;pointer-events:none;"></div>
-
-                <div class="relative grid md:grid-cols-2 gap-0">
-                    <!-- Left: the number -->
-                    <div class="flex flex-col items-center justify-center p-10 md:p-14 border-b md:border-b-0 md:border-r border-red-900/30">
-                        <div class="font-display font-bold leading-none mb-3" style="font-size:clamp(5rem,15vw,9rem);background:linear-gradient(135deg,#fca5a5 0%,#ef4444 40%,#b91c1c 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 40px rgba(239,68,68,0.4));">50%</div>
-                        <p class="text-white font-semibold text-lg md:text-xl text-center">of all profits donated</p>
-                        <p class="text-red-300/70 text-sm text-center mt-1">with every single order</p>
-                    </div>
-                    <!-- Right: message -->
-                    <div class="flex flex-col justify-center p-8 md:p-12">
-                        <div class="flex items-center gap-3 mb-5">
-                            <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(239,68,68,0.15);border:1px solid rgba(239,68,68,0.3);">
-                                <!-- Lebanon cedar icon approximation -->
-                                <svg class="w-5 h-5 text-red-400" fill="currentColor" viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 19.82A1 1 0 005.18 21C6.72 19 8 17 11 17h2c0 2.5-1.34 4.26-3.18 5.5A1 1 0 0011 24h2a1 1 0 00.88-.53C16.71 19.55 19 15.38 19 11a2 2 0 00-2-2z"/><path d="M12 2a5 5 0 00-5 5c0 1.38.56 2.63 1.46 3.54C9.44 11.51 10.66 12 12 12s2.56-.49 3.54-1.46A4.97 4.97 0 0017 7a5 5 0 00-5-5z"/></svg>
-                            </div>
-                            <h3 class="font-display font-bold text-xl text-white">Our Commitment to Lebanon</h3>
-                        </div>
-                        <p class="text-gray-300 text-sm leading-relaxed mb-4">
-                            Lebanon has faced tremendous hardship. Families who lost homes, livelihoods, and loved ones deserve our support — not just words, but real action.
-                        </p>
-                        <p class="text-gray-300 text-sm leading-relaxed mb-6">
-                            That's why <span class="text-white font-semibold">half of every dollar we earn</span> goes directly to people affected by war. When you order from LakkisStock, you become part of that effort.
-                        </p>
-                        <div class="flex items-center gap-2.5 p-3.5 rounded-xl" style="background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.2);">
-                            <svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            <p class="text-red-200 text-sm font-medium">Every order you place is a direct act of solidarity.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3 stats cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 scroll-reveal">
-            <div class="stat-card p-6 rounded-2xl text-center">
-                <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);">
-                    <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                </div>
-                <h4 class="font-display font-bold text-lg mb-2 text-white">Displaced Families</h4>
-                <p class="text-gray-400 text-sm leading-relaxed">Supporting those who lost their homes and are rebuilding from scratch.</p>
-            </div>
-            <div class="stat-card p-6 rounded-2xl text-center">
-                <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);">
-                    <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-                </div>
-                <h4 class="font-display font-bold text-lg mb-2 text-white">Direct Aid</h4>
-                <p class="text-gray-400 text-sm leading-relaxed">Funds go directly to affected individuals — no middleman, no delays.</p>
-            </div>
-            <div class="stat-card p-6 rounded-2xl text-center">
-                <div class="w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center" style="background:rgba(239,68,68,0.12);border:1px solid rgba(239,68,68,0.25);">
-                    <svg class="w-6 h-6 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
-                </div>
-                <h4 class="font-display font-bold text-lg mb-2 text-white">Community First</h4>
-                <p class="text-gray-400 text-sm leading-relaxed">We're Lebanese, we serve Lebanon. Our customers are our neighbours.</p>
-            </div>
-        </div>
-
     </div>
 </section>
 
@@ -440,7 +335,7 @@
                         <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
                             <h3 class="font-display font-bold text-4xl text-red-500 mb-1">Netflix</h3>
-                            <p class="text-gray-300 text-sm">User & Full Accounts</p>
+                            <p class="text-gray-300 text-sm">User &amp; Full Accounts</p>
                         </div>
                     </div>
                     <div class="p-6 md:p-8">
@@ -509,62 +404,70 @@
             </div>
         </div>
 
-        <!-- SHAHID — TEMPORARILY UNAVAILABLE -->
+        <!-- SHAHID — NOW AVAILABLE -->
         <div class="mb-12 scroll-reveal">
-            <div class="rounded-3xl overflow-hidden relative" style="background:linear-gradient(145deg,rgba(255,255,255,0.025) 0%,rgba(255,255,255,0.008) 100%);border:1px solid rgba(255,255,255,0.06);opacity:0.75;filter:grayscale(0.4);">
-                <!-- Red unavailable banner pinned to top -->
-                <div style="position:relative;z-index:20;background:linear-gradient(90deg,#b91c1c,#7f1d1d);padding:0.6rem 1.25rem;display:flex;align-items:center;gap:0.65rem;border-bottom:1px solid rgba(255,255,255,0.1);">
-                    <svg style="width:1rem;height:1rem;color:#fca5a5;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
-                    <span style="font-size:0.78rem;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.06em;flex:1;">Temporarily Unavailable — Shahid orders are paused until further notice</span>
-                    <svg style="width:1rem;height:1rem;color:#fca5a5;flex-shrink:0;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
-                </div>
+            <div class="glass-card rounded-3xl overflow-hidden">
                 <div class="grid md:grid-cols-2">
                     <!-- Image panel -->
                     <div class="relative h-52 md:h-auto overflow-hidden bg-[#0a1a2e] min-h-[208px] product-img-panel">
-                        <img src="https://www.marefa.org/w/images/e/ec/Shahid.jpg" alt="Shahid" class="absolute inset-0 w-full h-full object-contain p-8" style="opacity:0.35;filter:grayscale(1);">
-                        <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
+                        <img src="https://www.marefa.org/w/images/e/ec/Shahid.jpg" alt="Shahid" class="absolute inset-0 w-full h-full object-contain p-8 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
-                            <h3 class="font-display font-bold text-4xl mb-1" style="color:#6b7280;">Shahid</h3>
-                            <p class="text-sm" style="color:#4b5563;">User & Full Accounts</p>
+                            <h3 class="font-display font-bold text-4xl mb-1" style="color:#00c3ff;">Shahid</h3>
+                            <p class="text-gray-300 text-sm">User &amp; Full Accounts</p>
                         </div>
                     </div>
                     <!-- Pricing panel -->
                     <div class="p-6 md:p-8">
-                        <h4 class="text-base font-semibold mb-5" style="color:#6b7280;">Available Plans</h4>
+                        <h4 class="text-base font-semibold mb-5 text-gray-300">Available Plans</h4>
 
-                        <p class="text-xs mb-3 uppercase tracking-wider font-semibold" style="color:#4b5563;">User Account</p>
+                        <p class="text-xs text-gray-500 mb-3 uppercase tracking-wider font-semibold">User Account</p>
                         <div class="space-y-2 mb-5">
-                            <div class="p-3.5 rounded-xl flex justify-between items-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);">
-                                <div>
-                                    <p class="font-semibold text-sm" style="color:#6b7280;text-decoration:line-through;text-decoration-color:#ef4444;text-decoration-thickness:2px;">1 Month</p>
-                                    <p class="text-xs" style="color:#4b5563;text-decoration:line-through;text-decoration-color:#ef4444;">User Account</p>
-                                </div>
+                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
+                                <div><p class="font-semibold text-sm">1 Month</p><p class="text-xs text-gray-400">User Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
-                                    <span class="text-lg font-bold" style="color:#6b7280;text-decoration:line-through;text-decoration-color:#ef4444;text-decoration-thickness:2px;" data-usd="5">$5</span>
-                                    <span class="px-3.5 py-1.5 rounded-lg text-xs font-semibold" style="background:rgba(255,255,255,0.04);color:#6b7280;cursor:not-allowed;border:1px solid rgba(255,255,255,0.07);">Unavailable</span>
+                                    <span class="text-lg font-bold" style="color:#00c3ff;" data-usd="5">$5</span>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 1 Month User Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                </div>
+                            </div>
+                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
+                                <div><p class="font-semibold text-sm">3 Months</p><p class="text-xs text-gray-400">User Account</p></div>
+                                <div class="flex items-center gap-3 price-cell">
+                                    <span class="text-lg font-bold" style="color:#00c3ff;" data-usd="12">$12</span>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 3 Months User Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                </div>
+                            </div>
+                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center" style="border-color:rgba(0,195,255,0.25);background:rgba(0,195,255,0.04);">
+                                <div><p class="font-semibold text-sm">1 Year</p><p class="text-xs" style="color:#00c3ff;">Best Value</p></div>
+                                <div class="flex items-center gap-3 price-cell">
+                                    <span class="text-lg font-bold" style="color:#00c3ff;" data-usd="35">$35</span>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 1 Year User Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                         </div>
 
-                        <p class="text-xs mb-3 uppercase tracking-wider font-semibold" style="color:#4b5563;">Full Account</p>
+                        <p class="text-xs text-gray-500 mb-3 uppercase tracking-wider font-semibold">Full Account</p>
                         <div class="space-y-2 mb-5">
-                            <div class="p-3.5 rounded-xl flex justify-between items-center" style="background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05);">
-                                <div>
-                                    <p class="font-semibold text-sm" style="color:#6b7280;text-decoration:line-through;text-decoration-color:#ef4444;text-decoration-thickness:2px;">1 Month</p>
-                                    <p class="text-xs" style="color:#4b5563;text-decoration:line-through;text-decoration-color:#ef4444;">Full Account</p>
-                                </div>
+                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
+                                <div><p class="font-semibold text-sm">1 Month</p><p class="text-xs text-gray-400">Full Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
-                                    <span class="text-lg font-bold" style="color:#6b7280;text-decoration:line-through;text-decoration-color:#ef4444;text-decoration-thickness:2px;" data-usd="10">$10</span>
-                                    <span class="px-3.5 py-1.5 rounded-lg text-xs font-semibold" style="background:rgba(255,255,255,0.04);color:#6b7280;cursor:not-allowed;border:1px solid rgba(255,255,255,0.07);">Unavailable</span>
+                                    <span class="text-lg font-bold" style="color:#00c3ff;" data-usd="10">$10</span>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 1 Month Full Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                </div>
+                            </div>
+                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
+                                <div><p class="font-semibold text-sm">3 Months</p><p class="text-xs text-gray-400">Full Account</p></div>
+                                <div class="flex items-center gap-3 price-cell">
+                                    <span class="text-lg font-bold" style="color:#00c3ff;" data-usd="22">$22</span>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 3 Months Full Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Notice box -->
-                        <div class="p-3.5 rounded-xl flex items-start gap-3" style="background:rgba(185,28,28,0.1);border:1px solid rgba(185,28,28,0.3);">
-                            <svg style="width:1.1rem;height:1.1rem;color:#f87171;flex-shrink:0;margin-top:1px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/></svg>
-                            <p style="font-size:0.8rem;color:#fca5a5;line-height:1.5;">Shahid is currently paused. Follow our <a href="https://www.instagram.com/lakkisstock/" target="_blank" style="font-weight:700;text-decoration:underline;color:#f9a8d4;">Instagram @lakkisstock</a> to be notified when it's back.</p>
-                        </div>
+                        <ul class="space-y-1.5 text-sm text-gray-400">
+                            <li class="flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" style="color:#00c3ff;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Arabic Series, Movies &amp; Originals</li>
+                            <li class="flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" style="color:#00c3ff;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>HD Streaming • Instant Delivery</li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -648,7 +551,7 @@
                         </div>
                         <ul class="mt-2 space-y-1.5 text-sm text-gray-400">
                             <li class="flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" style="color:#ff9900;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Prime Video Access</li>
-                            <li class="flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" style="color:#ff9900;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Movies, Series & Originals</li>
+                            <li class="flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" style="color:#ff9900;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Movies, Series &amp; Originals</li>
                         </ul>
                     </div>
                 </div>
@@ -698,7 +601,7 @@
                         </div>
                         <ul class="space-y-1.5 text-sm text-gray-400">
                             <li class="flex items-center gap-2"><svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Instant Code Delivery</li>
-                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Valid for PS5, PS4 & PS Store</li>
+                            <li class="flex items-center gap-2"><svg class="w-4 h-4 text-blue-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Valid for PS5, PS4 &amp; PS Store</li>
                         </ul>
                     </div>
                 </div>
@@ -857,7 +760,7 @@
                 <div class="w-11 h-11 rounded-full bg-green-500/20 flex items-center justify-center mx-auto mb-3">
                     <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
-                <h3 class="font-display font-bold mb-1.5 text-sm">Pay & Receive</h3>
+                <h3 class="font-display font-bold mb-1.5 text-sm">Pay &amp; Receive</h3>
                 <p class="text-xs text-gray-400">Pay via Whish Money and get instant delivery</p>
             </div>
         </div>
@@ -900,6 +803,11 @@
                         <option value="Netflix Full 1 Month">Netflix (Full) - 1 Month ($14)</option>
                         <option value="Netflix Full 3 Months">Netflix (Full) - 3 Months ($25)</option>
                         <option value="Netflix Full 1 Year">Netflix (Full) - 1 Year ($90)</option>
+                        <option value="Shahid User 1 Month">Shahid (User) - 1 Month ($5)</option>
+                        <option value="Shahid User 3 Months">Shahid (User) - 3 Months ($12)</option>
+                        <option value="Shahid User 1 Year">Shahid (User) - 1 Year ($35)</option>
+                        <option value="Shahid Full 1 Month">Shahid (Full) - 1 Month ($10)</option>
+                        <option value="Shahid Full 3 Months">Shahid (Full) - 3 Months ($22)</option>
                         <option value="Anghami 3 Months">Anghami - 3 Months ($9)</option>
                         <option value="Anghami 6 Months">Anghami - 6 Months ($15)</option>
                         <option value="Anghami 1 Year">Anghami - 1 Year ($20)</option>
