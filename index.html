@@ -4,10 +4,30 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <title>LakkisStock | Premium Streaming Accounts Lebanon</title>
+    <meta name="description" content="LakkisStock offers Netflix, Shahid, Anghami, Amazon Prime, PlayStation gift cards and Alfa Ushare data bundles in Lebanon, plus assisted SHEIN and Amazon ordering. Order easily through WhatsApp and pay with Whish Money.">
+    <link rel="canonical" href="https://www.example-lakkisstock.com/">
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <link rel="apple-touch-icon" href="assets/images/favicon.png">
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="LakkisStock | Premium Streaming Accounts &amp; Shopping Orders in Lebanon">
+    <meta property="og:description" content="Netflix, Shahid, Anghami, Amazon Prime, PlayStation gift cards, Alfa Ushare, plus SHEIN and Amazon assisted ordering. Order on WhatsApp, pay with Whish Money.">
+    <meta property="og:image" content="https://www.example-lakkisstock.com/assets/images/og-cover.webp">
+    <meta property="og:url" content="https://www.example-lakkisstock.com/">
+    <meta property="og:site_name" content="LakkisStock">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="LakkisStock | Premium Streaming Accounts Lebanon">
+    <meta name="twitter:description" content="Netflix, Shahid, Anghami, Amazon Prime, PlayStation gift cards, Alfa Ushare, plus SHEIN and Amazon assisted ordering in Lebanon.">
+    <meta name="twitter:image" content="https://www.example-lakkisstock.com/assets/images/og-cover.webp">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <!-- NOTE: cdn.tailwindcss.com is the development build. For production, replace it with a compiled
+         Tailwind CSS file (e.g. via the Tailwind CLI: npx tailwindcss -i input.css -o assets/css/tailwind.css --minify)
+         and swap this <script> for <link rel="stylesheet" href="assets/css/tailwind.css">. No classes need to change. -->
     <script>
         tailwind.config = {
             theme: {
@@ -28,13 +48,14 @@
 
         .glass-panel {
             background: rgba(20,20,20,0.6);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(255,255,255,0.08);
         }
         .glass-card {
             background: linear-gradient(145deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             border: 1px solid rgba(255,255,255,0.06);
             transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
         }
@@ -55,7 +76,7 @@
             pointer-events:none; z-index:1; opacity:0.025;
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
         }
-        .scroll-reveal { opacity:0; transform:translateY(30px); }
+        .scroll-reveal { opacity:1; transform:none; }
         .whatsapp-btn { background: linear-gradient(135deg,#25D366 0%,#128C7E 100%); }
         .telegram-btn { background: linear-gradient(135deg,#0088cc 0%,#005885 100%); }
         .input-field {
@@ -143,7 +164,7 @@
         .announce-bar {
             background: linear-gradient(90deg, #1a0533, #2d1060, #3b0f8c, #2d1060, #1a0533);
             background-size: 300% 100%;
-            animation: shimmer-bar 5s linear infinite;
+            animation: none;
             position: relative;
             overflow: hidden;
         }
@@ -152,7 +173,7 @@
             position: absolute;
             inset: 0;
             background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.09) 50%, transparent 100%);
-            animation: sweep 3s ease-in-out infinite;
+            display: none;
         }
         @keyframes shimmer-bar {
             0%   { background-position: 0% 50%; }
@@ -165,7 +186,7 @@
 
         /* Back badge pulse */
         .back-badge {
-            animation: badge-glow 2s ease-in-out infinite;
+            animation: none;
         }
         @keyframes badge-glow {
             0%, 100% { box-shadow: 0 0 8px rgba(139,92,246,0.6); }
@@ -174,20 +195,133 @@
 
         /* Lightning bolt icon bounce */
         .bolt-anim {
-            animation: bolt-bounce 1.5s ease-in-out infinite;
+            animation: none;
         }
         @keyframes bolt-bounce {
             0%, 100% { transform: translateY(0) scale(1); }
             40%       { transform: translateY(-3px) scale(1.15); }
         }
+
+        /* Header scrolls normally with the page; section links keep a small comfortable offset. */
+        section[id] { scroll-margin-top: 1rem; }
+
+        /* Most Popular badge */
+        .popular-badge {
+            position: absolute; top: 0.9rem; left: 0.9rem; z-index: 20;
+            background: linear-gradient(135deg,#f59e0b,#ef4444);
+            color: #fff; font-size: 0.65rem; font-weight: 700;
+            letter-spacing: 0.05em; text-transform: uppercase;
+            padding: 0.3rem 0.7rem; border-radius: 999px;
+            box-shadow: 0 4px 14px rgba(245,158,11,0.35);
+        }
+
+        /* Category filter pills */
+        .filter-pill {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.25s ease;
+            white-space: nowrap;
+        }
+        .filter-pill:hover { border-color: rgba(139,92,246,0.4); background: rgba(255,255,255,0.08); }
+        .filter-pill.active {
+            background: linear-gradient(135deg,#8B5CF6,#3B82F6);
+            border-color: transparent;
+            color: #fff;
+        }
+        .product-block, .service-block { transition: opacity 0.25s ease; }
+        .product-block[hidden], .service-block[hidden] { display: none; }
+
+        /* FAQ accordion */
+        .faq-item summary { cursor: pointer; list-style: none; }
+        .faq-item summary::-webkit-details-marker { display: none; }
+        .faq-icon { transition: transform 0.25s ease; }
+        .faq-item[open] .faq-icon { transform: rotate(45deg); }
+
+        /* Policy modal */
+        .policy-modal { display: none; }
+        .policy-modal.open { display: flex; }
+
+        /* Performance mode: reduce expensive paint work while scrolling */
+        .noise { display: none; }
+        .glass-card, .plan-card, .alfa-tile { will-change: auto; }
+        .glass-card:hover { transform: translateY(-3px); }
+        @media (max-width: 900px) {
+            .glass-panel, .glass-card {
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                background-color: rgba(15,15,15,0.96);
+            }
+            .hero-gradient, .blur-3xl { filter: none !important; }
+            .animate-pulse { animation: none !important; }
+        }
+
+        /* Respect reduced-motion preference */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.001ms !important;
+                scroll-behavior: auto !important;
+            }
+            .scroll-reveal { opacity: 1 !important; transform: none !important; }
+        }
     </style>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "LakkisStock",
+        "description": "Digital subscription reseller and assisted online shopping service (SHEIN, Amazon) in Lebanon, ordered via WhatsApp with Whish Money payment.",
+        "url": "https://www.example-lakkisstock.com/",
+        "telephone": "+96170708025",
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "LB"
+        },
+        "sameAs": [
+            "https://www.instagram.com/lakkisstock/",
+            "https://t.me/+96170708025"
+        ]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "Product",
+                "name": "Netflix User Account Subscription",
+                "brand": "Netflix",
+                "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "3.5", "availability": "https://schema.org/InStock" }
+            },
+            {
+                "@type": "Product",
+                "name": "Shahid VIP User Account Subscription",
+                "brand": "Shahid",
+                "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "5", "availability": "https://schema.org/InStock" }
+            },
+            {
+                "@type": "Product",
+                "name": "Anghami Music Subscription",
+                "brand": "Anghami",
+                "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "9", "availability": "https://schema.org/InStock" }
+            },
+            {
+                "@type": "Product",
+                "name": "Amazon Prime Account",
+                "brand": "Amazon Prime",
+                "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "7", "availability": "https://schema.org/InStock" }
+            }
+        ]
+    }
+    </script>
 </head>
 <body class="antialiased selection:bg-purple-500 selection:text-white">
 
 <div class="noise"></div>
 
 <!-- ── TOP ANNOUNCEMENT BAR ── -->
-<div class="announce-bar relative z-[60] py-2.5 px-4 text-center border-b border-purple-900/40">
+<div class="announce-bar relative z-[60] py-2.5 px-4 text-center border-b border-purple-900/40" id="announceBar">
     <div class="max-w-7xl mx-auto flex items-center justify-center gap-3 flex-wrap">
         <svg class="w-4 h-4 text-yellow-300 bolt-anim flex-shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
         <div class="flex items-center gap-2 flex-wrap justify-center">
@@ -204,7 +338,7 @@
 </div>
 
 <!-- ── NAVBAR ── -->
-<nav class="fixed top-0 w-full z-50 glass-panel border-b border-white/5" id="navbar">
+<nav class="relative w-full z-50 glass-panel border-b border-white/5" id="navbar">
     <div class="max-w-7xl mx-auto px-5 py-3.5 flex justify-between items-center">
         <div class="font-display font-bold text-2xl tracking-tight flex items-center gap-2">
             <span class="gradient-text">Lakkis</span>
@@ -215,7 +349,7 @@
             <a href="#products" class="nav-link hover:text-white transition-colors">Products</a>
             <a href="#how-it-works" class="nav-link hover:text-white transition-colors">How It Works</a>
             <a href="#contact" class="nav-link hover:text-white transition-colors">Contact</a>
-            <a href="https://www.instagram.com/stories/highlights/18015522128034327/" target="_blank" class="nav-link hover:text-white transition-colors flex items-center gap-1.5 text-pink-400 hover:text-pink-300">
+            <a href="https://www.instagram.com/stories/highlights/18015522128034327/" target="_blank" rel="noopener noreferrer" class="nav-link hover:text-white transition-colors flex items-center gap-1.5 text-pink-400 hover:text-pink-300">
                 <span class="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></span>Feedbacks
             </a>
         </div>
@@ -225,15 +359,15 @@
                 <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
                 <span id="currencyLabel">LBP</span>
             </button>
-            <a href="https://www.instagram.com/lakkisstock/" target="_blank"
+            <a href="https://www.instagram.com/lakkisstock/" target="_blank" rel="noopener noreferrer"
                class="w-9 h-9 rounded-full flex items-center justify-center bg-white/5 border border-white/10 hover:border-pink-500/50 hover:bg-pink-500/10 transition-all">
                 <svg class="w-4 h-4 text-pink-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
-            <a href="https://t.me/+96170708025" target="_blank"
+            <a href="https://t.me/+96170708025" target="_blank" rel="noopener noreferrer"
                class="w-9 h-9 rounded-full flex items-center justify-center bg-white/5 border border-white/10 hover:border-blue-400/50 hover:bg-blue-500/10 transition-all">
                 <svg class="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
             </a>
-            <a href="https://api.whatsapp.com/send/?phone=96170708025" target="_blank"
+            <a href="https://api.whatsapp.com/send/?phone=96170708025" target="_blank" rel="noopener noreferrer"
                class="whatsapp-btn px-5 py-2 rounded-full font-semibold text-sm hover:scale-105 transition-transform flex items-center gap-2 shadow-lg shadow-green-500/20">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 WhatsApp
@@ -250,7 +384,7 @@
             <a href="#products" class="py-2.5 text-gray-300 hover:text-white font-medium border-b border-white/5">Products</a>
             <a href="#how-it-works" class="py-2.5 text-gray-300 hover:text-white font-medium border-b border-white/5">How It Works</a>
             <a href="#contact" class="py-2.5 text-gray-300 hover:text-white font-medium border-b border-white/5">Contact</a>
-            <a href="https://www.instagram.com/stories/highlights/18015522128034327/" target="_blank" class="py-2.5 text-pink-400 hover:text-pink-300 font-medium flex items-center gap-2">
+            <a href="https://www.instagram.com/stories/highlights/18015522128034327/" target="_blank" rel="noopener noreferrer" class="py-2.5 text-pink-400 hover:text-pink-300 font-medium flex items-center gap-2">
                 <span class="w-2 h-2 bg-pink-500 rounded-full animate-pulse"></span>Feedbacks
             </a>
         </div>
@@ -260,16 +394,16 @@
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
                 <span id="currencyLabelMobile">LBP</span>
             </button>
-            <a href="https://api.whatsapp.com/send/?phone=96170708025" target="_blank"
+            <a href="https://api.whatsapp.com/send/?phone=96170708025" target="_blank" rel="noopener noreferrer"
                class="whatsapp-btn flex-1 py-3 rounded-xl font-semibold text-sm flex items-center justify-center gap-2">
                 <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 WhatsApp
             </a>
-            <a href="https://www.instagram.com/lakkisstock/" target="_blank"
+            <a href="https://www.instagram.com/lakkisstock/" target="_blank" rel="noopener noreferrer"
                class="w-12 py-3 rounded-xl flex items-center justify-center bg-gradient-to-br from-pink-500 to-purple-600">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
-            <a href="https://t.me/+96170708025" target="_blank"
+            <a href="https://t.me/+96170708025" target="_blank" rel="noopener noreferrer"
                class="w-12 py-3 rounded-xl flex items-center justify-center telegram-btn">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
             </a>
@@ -278,7 +412,7 @@
 </nav>
 
 <!-- ── HERO ── -->
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-28">
+<section id="heroSection" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-12">
     <div class="hero-gradient absolute inset-0 z-0"></div>
     <div class="absolute top-20 left-5 md:left-10 w-64 md:w-96 h-64 md:h-96 bg-red-600/20 rounded-full blur-3xl animate-pulse"></div>
     <div class="absolute bottom-20 right-5 md:right-10 w-72 md:w-[500px] h-72 md:h-[500px] bg-purple-600/20 rounded-full blur-3xl animate-pulse" style="animation-delay:2s;"></div>
@@ -293,8 +427,9 @@
             <span class="gradient-text">At Best Prices</span>
         </h1>
         <p class="text-base md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-            Netflix, Shahid, Anghami, Amazon Prime, PlayStation gift cards, Alfa Ushare &amp; more.
-            Fast delivery, original accounts, and lifetime support across Lebanon.
+            Netflix, Shahid, Anghami, Amazon Prime, PlayStation gift cards, Alfa Ushare &amp; more —
+            plus assisted SHEIN &amp; Amazon shopping orders. Reliable subscriptions, fast delivery,
+            and after-sales support across Lebanon.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center items-center mb-14">
             <a href="#products" class="group w-full sm:w-auto px-8 py-4 bg-white text-black rounded-full font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2">
@@ -303,17 +438,17 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                 </svg>
             </a>
-            <a href="https://api.whatsapp.com/send/?phone=96170708025" target="_blank"
+            <a href="https://api.whatsapp.com/send/?phone=96170708025" target="_blank" rel="noopener noreferrer"
                class="whatsapp-btn w-full sm:w-auto px-8 py-4 rounded-full font-semibold hover:scale-105 transition-transform flex items-center justify-center gap-2 shadow-lg shadow-green-500/20">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                 Order on WhatsApp
             </a>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-3xl mx-auto">
-            <div class="glass-card p-4 rounded-2xl text-center"><div class="text-xl md:text-2xl font-display font-bold mb-1">100%</div><div class="text-xs text-gray-400">Original Accounts</div></div>
-            <div class="glass-card p-4 rounded-2xl text-center"><div class="text-xl md:text-2xl font-display font-bold mb-1">24/7</div><div class="text-xs text-gray-400">Support</div></div>
-            <div class="glass-card p-4 rounded-2xl text-center"><div class="text-xl md:text-2xl font-display font-bold mb-1">Instant</div><div class="text-xs text-gray-400">Delivery</div></div>
-            <div class="glass-card p-4 rounded-2xl text-center"><div class="text-xl md:text-2xl font-display font-bold mb-1">Whish</div><div class="text-xs text-gray-400">Money Accepted</div></div>
+            <div class="glass-card p-4 rounded-2xl text-center"><div class="text-lg md:text-2xl font-display font-bold mb-1">Reliable</div><div class="text-xs text-gray-400">Subscriptions</div></div>
+            <div class="glass-card p-4 rounded-2xl text-center"><div class="text-lg md:text-2xl font-display font-bold mb-1">Quick</div><div class="text-xs text-gray-400">WhatsApp Assistance</div></div>
+            <div class="glass-card p-4 rounded-2xl text-center"><div class="text-lg md:text-2xl font-display font-bold mb-1">Fast</div><div class="text-xs text-gray-400">Delivery</div></div>
+            <div class="glass-card p-4 rounded-2xl text-center"><div class="text-lg md:text-2xl font-display font-bold mb-1">Whish</div><div class="text-xs text-gray-400">Money Accepted</div></div>
         </div>
     </div>
 </section>
@@ -321,17 +456,37 @@
 <!-- ── PRODUCTS ── -->
 <section id="products" class="py-20 relative">
     <div class="max-w-7xl mx-auto px-5">
-        <div class="text-center mb-14 scroll-reveal">
+        <div class="text-center mb-10 scroll-reveal">
             <h2 class="font-display font-bold text-4xl md:text-6xl mb-4">Premium Accounts</h2>
-            <p class="text-gray-400 max-w-xl mx-auto">Choose from our selection of premium services at unbeatable prices.</p>
+            <p class="text-gray-400 max-w-xl mx-auto">Choose from our selection of premium services and ordering assistance below.</p>
+        </div>
+
+        <!-- CATEGORY FILTERS -->
+        <div class="flex gap-2.5 overflow-x-auto pb-2 mb-10 scroll-reveal justify-center flex-wrap" id="categoryFilters" role="tablist" aria-label="Filter products by category">
+            <button type="button" class="filter-pill active px-4 py-2 rounded-full text-sm font-medium" data-filter="all">All Products</button>
+            <button type="button" class="filter-pill px-4 py-2 rounded-full text-sm font-medium" data-filter="most-popular">Most Popular</button>
+            <button type="button" class="filter-pill px-4 py-2 rounded-full text-sm font-medium" data-filter="streaming">Streaming</button>
+            <button type="button" class="filter-pill px-4 py-2 rounded-full text-sm font-medium" data-filter="music">Music</button>
+            <button type="button" class="filter-pill px-4 py-2 rounded-full text-sm font-medium" data-filter="playstation">PlayStation</button>
+            <button type="button" class="filter-pill px-4 py-2 rounded-full text-sm font-medium" data-filter="mobile-data">Mobile Data</button>
+            <button type="button" class="filter-pill px-4 py-2 rounded-full text-sm font-medium" data-filter="shopping">Shopping Orders</button>
+        </div>
+
+        <!-- MOST POPULAR QUICK-JUMP (built from existing product cards via JS — see script) -->
+        <div class="mb-14 scroll-reveal" id="mostPopularSection">
+            <h3 class="text-center text-sm uppercase tracking-widest text-purple-300 font-semibold mb-4">⭐ Most Popular Right Now</h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3" id="mostPopularGrid">
+                <!-- populated by JS from cards marked data-category="most-popular ..." -->
+            </div>
         </div>
 
         <!-- NETFLIX -->
-        <div class="mb-12 scroll-reveal">
-            <div class="glass-card rounded-3xl overflow-hidden">
+        <div class="mb-12 scroll-reveal product-block" id="product-netflix" data-category="most-popular streaming">
+            <div class="glass-card rounded-3xl overflow-hidden relative">
+                <span class="popular-badge">Most Popular</span>
                 <div class="grid md:grid-cols-2">
                     <div class="relative h-52 md:h-auto overflow-hidden bg-gradient-to-br from-red-900/50 to-red-600/30 min-h-[208px] product-img-panel">
-                        <img src="https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&q=80" alt="Netflix" class="absolute inset-0 w-full h-full object-cover opacity-70">
+                        <img src="assets/images/netflix.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&q=80';" alt="Netflix streaming account logo on dark background" class="absolute inset-0 w-full h-full object-cover opacity-70" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
                             <h3 class="font-display font-bold text-4xl text-red-500 mb-1">Netflix</h3>
@@ -346,28 +501,28 @@
                                 <div><p class="font-semibold text-sm">1 Month</p><p class="text-xs text-gray-400">User Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold text-red-400" data-usd="3.5">$3.5</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Netflix 1 Month User Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Netflix 1 Month User Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
                                 <div><p class="font-semibold text-sm">3 Months</p><p class="text-xs text-gray-400">User Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold text-red-400" data-usd="9">$9</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Netflix 3 Months User Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Netflix 3 Months User Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center border-red-500/30 bg-red-500/5">
                                 <div><p class="font-semibold text-sm">6 Months</p><p class="text-xs text-red-400">Best Value</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold text-red-400" data-usd="15">$15</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Netflix 6 Months User Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Netflix 6 Months User Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
                                 <div><p class="font-semibold text-sm">1 Year</p><p class="text-xs text-gray-400">User Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold text-red-400" data-usd="25">$25</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Netflix 1 Year User Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Netflix 1 Year User Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                         </div>
@@ -377,27 +532,27 @@
                                 <div><p class="font-semibold text-sm">1 Month</p><p class="text-xs text-gray-400">Full Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold text-purple-400" data-usd="14">$14</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Netflix 1 Month Full Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Netflix 1 Month Full Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
                                 <div><p class="font-semibold text-sm">3 Months</p><p class="text-xs text-gray-400">Full Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold text-purple-400" data-usd="25">$25</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Netflix 3 Months Full Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Netflix 3 Months Full Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
                                 <div><p class="font-semibold text-sm">1 Year</p><p class="text-xs text-gray-400">Full Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold text-purple-400" data-usd="90">$90</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Netflix 1 Year Full Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Netflix 1 Year Full Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                         </div>
                         <div class="p-3 rounded-xl bg-blue-500/5 border border-blue-500/20 text-center text-xs text-blue-300">
                             Netflix asking for a login code? →
-                            <a href="https://ostories.me" target="_blank" class="font-bold underline">Visit ostories.me</a>
+                            <a href="https://ostories.me" target="_blank" rel="noopener noreferrer" class="font-bold underline">Visit ostories.me</a>
                         </div>
                     </div>
                 </div>
@@ -405,12 +560,12 @@
         </div>
 
         <!-- SHAHID — NOW AVAILABLE -->
-        <div class="mb-12 scroll-reveal">
+        <div class="mb-12 scroll-reveal product-block" id="product-shahid" data-category="streaming">
             <div class="glass-card rounded-3xl overflow-hidden">
                 <div class="grid md:grid-cols-2">
                     <!-- Image panel -->
                     <div class="relative h-52 md:h-auto overflow-hidden bg-[#0a1a2e] min-h-[208px] product-img-panel">
-                        <img src="https://www.marefa.org/w/images/e/ec/Shahid.jpg" alt="Shahid" class="absolute inset-0 w-full h-full object-contain p-8 opacity-80">
+                        <img src="assets/images/shahid.webp" onerror="this.onerror=null;this.src='https://www.marefa.org/w/images/e/ec/Shahid.jpg';" alt="Shahid VIP streaming service logo" class="absolute inset-0 w-full h-full object-contain p-8 opacity-80" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
                             <h3 class="font-display font-bold text-4xl mb-1" style="color:#00c3ff;">Shahid</h3>
@@ -427,21 +582,21 @@
                                 <div><p class="font-semibold text-sm">1 Month</p><p class="text-xs text-gray-400">User Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold" style="color:#00c3ff;" data-usd="5">$5</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 1 Month User Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 1 Month User Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
                                 <div><p class="font-semibold text-sm">3 Months</p><p class="text-xs text-gray-400">User Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold" style="color:#00c3ff;" data-usd="12">$12</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 3 Months User Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 3 Months User Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center" style="border-color:rgba(0,195,255,0.25);background:rgba(0,195,255,0.04);">
                                 <div><p class="font-semibold text-sm">1 Year</p><p class="text-xs" style="color:#00c3ff;">Best Value</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold" style="color:#00c3ff;" data-usd="35">$35</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 1 Year User Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 1 Year User Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                         </div>
@@ -452,14 +607,14 @@
                                 <div><p class="font-semibold text-sm">1 Month</p><p class="text-xs text-gray-400">Full Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold" style="color:#00c3ff;" data-usd="10">$10</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 1 Month Full Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 1 Month Full Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
                                 <div><p class="font-semibold text-sm">3 Months</p><p class="text-xs text-gray-400">Full Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold" style="color:#00c3ff;" data-usd="22">$22</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 3 Months Full Account" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Shahid 3 Months Full Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                         </div>
@@ -474,11 +629,12 @@
         </div>
 
         <!-- ANGHAMI -->
-        <div class="mb-12 scroll-reveal">
-            <div class="glass-card rounded-3xl overflow-hidden">
+        <div class="mb-12 scroll-reveal product-block" id="product-anghami" data-category="most-popular music">
+            <div class="glass-card rounded-3xl overflow-hidden relative">
+                <span class="popular-badge">Most Popular</span>
                 <div class="grid md:grid-cols-2">
                     <div class="relative h-52 md:h-auto overflow-hidden bg-gradient-to-br from-purple-900/50 to-pink-600/30 min-h-[208px] product-img-panel">
-                        <img src="https://cdn.wamda.com/feature-images/fdadf3bf1e3c3e8.jpg" alt="Anghami" class="absolute inset-0 w-full h-full object-cover opacity-70">
+                        <img src="assets/images/anghami.webp" onerror="this.onerror=null;this.src='https://cdn.wamda.com/feature-images/fdadf3bf1e3c3e8.jpg';" alt="Anghami music streaming app cover image" class="absolute inset-0 w-full h-full object-cover opacity-70" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
                             <h3 class="font-display font-bold text-4xl text-pink-400 mb-1">Anghami</h3>
@@ -492,21 +648,21 @@
                                 <div><p class="font-semibold text-sm">3 Months</p><p class="text-xs text-gray-400">Subscription</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold text-pink-400" data-usd="9">$9</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Anghami 3 Months" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Anghami 3 Months" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center border-pink-500/30 bg-pink-500/5">
                                 <div><p class="font-semibold text-sm">6 Months</p><p class="text-xs text-pink-400">Best Value</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold text-pink-400" data-usd="15">$15</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Anghami 6 Months" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Anghami 6 Months" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
                                 <div><p class="font-semibold text-sm">1 Year</p><p class="text-xs text-gray-400">Subscription</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold text-pink-400" data-usd="20">$20</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Anghami 1 Year" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Anghami 1 Year" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                         </div>
@@ -520,11 +676,11 @@
         </div>
 
         <!-- AMAZON PRIME -->
-        <div class="mb-12 scroll-reveal">
+        <div class="mb-12 scroll-reveal product-block" id="product-amazon-prime" data-category="streaming">
             <div class="glass-card rounded-3xl overflow-hidden">
                 <div class="grid md:grid-cols-2">
                     <div class="relative h-52 md:h-auto overflow-hidden min-h-[208px] product-img-panel" style="background:#0f1111;">
-                        <img src="https://assets.aboutamazon.com/2d/49/abd3719b41aea4605bb51e4d8d72/subs-pre-order-consent-background-image-cb578173463.jpg" alt="Amazon Prime" class="absolute inset-0 w-full h-full object-cover opacity-75">
+                        <img src="assets/images/amazon-prime.webp" onerror="this.onerror=null;this.src='https://assets.aboutamazon.com/2d/49/abd3719b41aea4605bb51e4d8d72/subs-pre-order-consent-background-image-cb578173463.jpg';" alt="Amazon Prime membership artwork" class="absolute inset-0 w-full h-full object-cover opacity-75" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
                             <h3 class="font-display font-bold text-4xl mb-1" style="color:#ff9900;">Amazon</h3>
@@ -538,14 +694,14 @@
                                 <div><p class="font-semibold text-sm">1 Month</p><p class="text-xs text-gray-400">Prime Account</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold" style="color:#ff9900;" data-usd="7">$7</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Amazon Prime 1 Month" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Amazon Prime 1 Month" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center" style="border-color:rgba(255,153,0,0.3);background:rgba(255,153,0,0.05);">
                                 <div><p class="font-semibold text-sm">1 Year</p><p class="text-xs" style="color:#ff9900;">Best Value</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold" style="color:#ff9900;" data-usd="18">$18</span>
-                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Amazon Prime 1 Year" target="_blank" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Amazon Prime 1 Year" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
                         </div>
@@ -559,11 +715,11 @@
         </div>
 
         <!-- PLAYSTATION USA -->
-        <div class="mb-12 scroll-reveal">
+        <div class="mb-12 scroll-reveal product-block" id="product-ps-usa" data-category="playstation">
             <div class="glass-card rounded-3xl overflow-hidden">
                 <div class="grid md:grid-cols-2">
                     <div class="relative h-52 md:h-auto overflow-hidden bg-gradient-to-br from-blue-900/50 to-indigo-600/30 min-h-[208px] product-img-panel">
-                        <img src="https://i5.walmartimages.com/seo/PlayStation-Store-30-Gift-Card-Multipack-3-x-10-Physical_47d81ced-3c4c-45ef-a571-ea884bcd81c1.75d2efec3e1143280c3a120d10b1efa1.jpeg" alt="PlayStation USA Gift Cards" class="absolute inset-0 w-full h-full object-cover opacity-80">
+                        <img src="assets/images/playstation-usa-giftcards.webp" onerror="this.onerror=null;this.src='https://i5.walmartimages.com/seo/PlayStation-Store-30-Gift-Card-Multipack-3-x-10-Physical_47d81ced-3c4c-45ef-a571-ea884bcd81c1.75d2efec3e1143280c3a120d10b1efa1.jpeg';" alt="PlayStation Store USA gift cards" class="absolute inset-0 w-full h-full object-cover opacity-80" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
                             <h3 class="font-display font-bold text-4xl text-blue-400 mb-1">PlayStation</h3>
@@ -576,27 +732,27 @@
                             <div class="plan-card p-3.5 rounded-xl text-center">
                                 <p class="text-xl font-bold text-blue-400 mb-1">$10</p>
                                 <p class="text-xs text-gray-400 mb-2.5"><span data-usd="12">Price: $12</span></p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation USA $10 Gift Card" target="_blank" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation USA $10 Gift Card" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl text-center">
                                 <p class="text-xl font-bold text-blue-400 mb-1">$25</p>
                                 <p class="text-xs text-gray-400 mb-2.5"><span data-usd="27">Price: $27</span></p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation USA $25 Gift Card" target="_blank" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation USA $25 Gift Card" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl text-center">
                                 <p class="text-xl font-bold text-blue-400 mb-1">$50</p>
                                 <p class="text-xs text-gray-400 mb-2.5"><span data-usd="52">Price: $52</span></p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation USA $50 Gift Card" target="_blank" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation USA $50 Gift Card" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl text-center">
                                 <p class="text-xl font-bold text-blue-400 mb-1">$75</p>
                                 <p class="text-xs text-gray-400 mb-2.5"><span data-usd="78">Price: $78</span></p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation USA $75 Gift Card" target="_blank" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation USA $75 Gift Card" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl text-center col-span-2 border-blue-500/30 bg-blue-500/5">
                                 <p class="text-xl font-bold text-blue-400 mb-1">$100</p>
                                 <p class="text-xs text-gray-400 mb-2.5"><span data-usd="105">Price: $105</span></p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation USA $100 Gift Card" target="_blank" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation USA $100 Gift Card" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
                             </div>
                         </div>
                         <ul class="space-y-1.5 text-sm text-gray-400">
@@ -609,11 +765,11 @@
         </div>
 
         <!-- PLAYSTATION LEBANON -->
-        <div class="mb-12 scroll-reveal">
+        <div class="mb-12 scroll-reveal product-block" id="product-ps-lebanon" data-category="playstation">
             <div class="glass-card rounded-3xl overflow-hidden">
                 <div class="grid md:grid-cols-2">
                     <div class="relative h-52 md:h-auto overflow-hidden min-h-[208px] product-img-panel" style="background:linear-gradient(135deg,#001540,#002a70);">
-                        <img src="https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800&q=80" alt="PlayStation Lebanon" class="absolute inset-0 w-full h-full object-cover opacity-70">
+                        <img src="assets/images/playstation-lebanon.webp" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?w=800&q=80';" alt="PlayStation controller representing Lebanon gift cards" class="absolute inset-0 w-full h-full object-cover opacity-70" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
                             <h3 class="font-display font-bold text-4xl text-indigo-300 mb-1">PlayStation</h3>
@@ -626,27 +782,27 @@
                             <div class="plan-card p-3.5 rounded-xl text-center">
                                 <p class="text-xl font-bold text-indigo-300 mb-1">$10</p>
                                 <p class="text-xs text-gray-400 mb-2.5"><span data-usd="12">Price: $12</span></p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation Lebanon $10 Gift Card" target="_blank" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation Lebanon $10 Gift Card" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl text-center">
                                 <p class="text-xl font-bold text-indigo-300 mb-1">$20</p>
                                 <p class="text-xs text-gray-400 mb-2.5"><span data-usd="22">Price: $22</span></p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation Lebanon $20 Gift Card" target="_blank" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation Lebanon $20 Gift Card" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl text-center">
                                 <p class="text-xl font-bold text-indigo-300 mb-1">$40</p>
                                 <p class="text-xs text-gray-400 mb-2.5"><span data-usd="42">Price: $42</span></p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation Lebanon $40 Gift Card" target="_blank" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation Lebanon $40 Gift Card" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl text-center">
                                 <p class="text-xl font-bold text-indigo-300 mb-1">$50</p>
                                 <p class="text-xs text-gray-400 mb-2.5"><span data-usd="53">Price: $53</span></p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation Lebanon $50 Gift Card" target="_blank" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation Lebanon $50 Gift Card" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="plan-card p-3.5 rounded-xl text-center col-span-2 border-indigo-500/30 bg-indigo-500/5">
                                 <p class="text-xl font-bold text-indigo-300 mb-1">$100</p>
                                 <p class="text-xs text-gray-400 mb-2.5"><span data-usd="105">Price: $105</span></p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation Lebanon $100 Gift Card" target="_blank" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order PlayStation Lebanon $100 Gift Card" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3 py-1.5 rounded-lg text-xs font-semibold w-full inline-block hover:scale-105 transition-transform">Order</a>
                             </div>
                         </div>
                     </div>
@@ -655,11 +811,11 @@
         </div>
 
         <!-- ALFA USHARE -->
-        <div class="mb-12 scroll-reveal">
+        <div class="mb-12 scroll-reveal product-block" id="product-alfa" data-category="mobile-data">
             <div class="glass-card rounded-3xl overflow-hidden">
                 <div class="grid md:grid-cols-2">
                     <div class="relative h-52 md:h-auto overflow-hidden min-h-[208px] product-img-panel" style="background:linear-gradient(135deg,#1a0000,#3d0000);">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/73/Logo_Alfa_Telecom_%28Lebanon%29.png/250px-Logo_Alfa_Telecom_%28Lebanon%29.png" alt="Alfa Lebanon" class="absolute inset-0 w-full h-full object-contain opacity-90 p-10">
+                        <img src="assets/images/alfa-ushare.webp" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/en/thumb/7/73/Logo_Alfa_Telecom_%28Lebanon%29.png/250px-Logo_Alfa_Telecom_%28Lebanon%29.png';" alt="Alfa Telecom Lebanon logo for Ushare data bundles" class="absolute inset-0 w-full h-full object-contain opacity-90 p-10" loading="lazy" decoding="async">
                         <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent"></div>
                         <div class="absolute bottom-6 left-6">
                             <h3 class="font-display font-bold text-4xl mb-1" style="color:#e74c3c;">Alfa Ushare</h3>
@@ -672,56 +828,127 @@
                             <div class="alfa-tile p-3 rounded-xl text-center cursor-pointer">
                                 <p class="font-bold text-sm text-white">5.5 GB</p>
                                 <p class="text-base font-bold mt-0.5" style="color:#e74c3c;" data-usd="6.99">$6.99</p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 5.5 GB" target="_blank" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 5.5 GB" target="_blank" rel="noopener noreferrer" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="alfa-tile p-3 rounded-xl text-center cursor-pointer">
                                 <p class="font-bold text-sm text-white">7.5 GB</p>
                                 <p class="text-base font-bold mt-0.5" style="color:#e74c3c;" data-usd="7.99">$7.99</p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 7.5 GB" target="_blank" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 7.5 GB" target="_blank" rel="noopener noreferrer" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="alfa-tile p-3 rounded-xl text-center cursor-pointer" style="border-color:rgba(192,57,43,0.5);background:rgba(192,57,43,0.1);">
                                 <p class="font-bold text-sm text-white">11 GB</p>
                                 <p class="text-base font-bold mt-0.5" style="color:#e74c3c;" data-usd="9.49">$9.49</p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 11 GB" target="_blank" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 11 GB" target="_blank" rel="noopener noreferrer" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="alfa-tile p-3 rounded-xl text-center cursor-pointer">
                                 <p class="font-bold text-sm text-white">16.5 GB</p>
                                 <p class="text-base font-bold mt-0.5" style="color:#e74c3c;" data-usd="10.99">$10.99</p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 16.5 GB" target="_blank" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 16.5 GB" target="_blank" rel="noopener noreferrer" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="alfa-tile p-3 rounded-xl text-center cursor-pointer">
                                 <p class="font-bold text-sm text-white">22 GB</p>
                                 <p class="text-base font-bold mt-0.5" style="color:#e74c3c;" data-usd="12.99">$12.99</p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 22 GB" target="_blank" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 22 GB" target="_blank" rel="noopener noreferrer" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="alfa-tile p-3 rounded-xl text-center cursor-pointer">
                                 <p class="font-bold text-sm text-white">25.5 GB</p>
                                 <p class="text-base font-bold mt-0.5" style="color:#e74c3c;" data-usd="14.49">$14.49</p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 25.5 GB" target="_blank" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 25.5 GB" target="_blank" rel="noopener noreferrer" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="alfa-tile p-3 rounded-xl text-center cursor-pointer">
                                 <p class="font-bold text-sm text-white">33 GB</p>
                                 <p class="text-base font-bold mt-0.5" style="color:#e74c3c;" data-usd="16.99">$16.99</p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 33 GB" target="_blank" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 33 GB" target="_blank" rel="noopener noreferrer" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="alfa-tile p-3 rounded-xl text-center cursor-pointer">
                                 <p class="font-bold text-sm text-white">44 GB</p>
                                 <p class="text-base font-bold mt-0.5" style="color:#e74c3c;" data-usd="20.99">$20.99</p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 44 GB" target="_blank" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 44 GB" target="_blank" rel="noopener noreferrer" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="alfa-tile p-3 rounded-xl text-center cursor-pointer">
                                 <p class="font-bold text-sm text-white">55 GB</p>
                                 <p class="text-base font-bold mt-0.5" style="color:#e74c3c;" data-usd="24.99">$24.99</p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 55 GB" target="_blank" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 55 GB" target="_blank" rel="noopener noreferrer" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                             </div>
                             <div class="alfa-tile p-3 rounded-xl text-center cursor-pointer col-span-2 sm:col-span-1" style="border-color:rgba(192,57,43,0.5);background:rgba(192,57,43,0.1);">
                                 <p class="font-bold text-sm text-white">66 GB</p>
                                 <p class="text-base font-bold mt-0.5" style="color:#e74c3c;" data-usd="28.99">$28.99</p>
-                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 66 GB" target="_blank" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Alfa Ushare 66 GB" target="_blank" rel="noopener noreferrer" class="mt-2 block whatsapp-btn py-1 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <!-- ── SHOPPING ORDERS: SHEIN & AMAZON ── -->
+        <div class="mb-4 mt-6 scroll-reveal service-block" id="shopping-orders" data-category="shopping">
+            <div class="text-center mb-8">
+                <h3 class="font-display font-bold text-3xl md:text-4xl mb-3">Order from SHEIN or Amazon</h3>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
+                    We place and coordinate the order for you. Send us the product details on WhatsApp,
+                    pay securely through Whish Money, and we'll handle the rest.
+                </p>
+            </div>
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- SHEIN -->
+                <div class="glass-card rounded-3xl p-6 md:p-8 flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.1);">
+                            <svg class="w-6 h-6 text-pink-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 2l1.5 4h9L18 2M3 6h18l-1.5 14a2 2 0 01-2 2H6.5a2 2 0 01-2-2L3 6z"/></svg>
+                        </div>
+                        <h4 class="font-display font-bold text-2xl">SHEIN Orders</h4>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-5 leading-relaxed flex-grow">
+                        Choose the products you want from SHEIN, send us the product links, sizes, colors, and
+                        quantities through WhatsApp, then pay securely through Whish Money. We will confirm the
+                        total cost and process your order.
+                    </p>
+                    <ul class="space-y-1.5 text-xs text-gray-500 mb-6">
+                        <li class="flex gap-2"><span class="text-pink-400">•</span>Final price confirmed before payment</li>
+                        <li class="flex gap-2"><span class="text-pink-400">•</span>Please double-check sizes and colors before ordering</li>
+                        <li class="flex gap-2"><span class="text-pink-400">•</span>Availability depends on SHEIN's stock</li>
+                    </ul>
+                    <a href="#" data-wa-shein
+                       class="whatsapp-btn w-full py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        Send SHEIN Order
+                    </a>
+                </div>
+
+                <!-- AMAZON -->
+                <div class="glass-card rounded-3xl p-6 md:p-8 flex flex-col">
+                    <div class="flex items-center gap-3 mb-4">
+                        <div class="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0" style="background:rgba(0,0,0,0.35);border:1px solid rgba(255,153,0,0.25);">
+                            <svg class="w-6 h-6" style="color:#ff9900;" fill="currentColor" viewBox="0 0 24 24"><path d="M13.5 3c-2.7 0-4.9 1.4-6 3.5l1.9.8c.8-1.5 2.2-2.3 4-2.3 2.2 0 3.6 1.2 3.6 3.1v.4c-.7-.1-1.6-.2-2.5-.2-3.2 0-5.7 1.5-5.7 4.2 0 2.3 1.8 3.6 4.1 3.6 1.7 0 3-.7 3.9-1.8v1.5h2.1V8c0-3-2.1-5-5.4-5zm1.5 9.9c-.6 1-1.6 1.6-2.8 1.6-1.2 0-2-.6-2-1.6 0-1.4 1.5-2 3.2-2 .7 0 1.4.1 1.9.2v.5c0 .5-.1.9-.3 1.3z"/></svg>
+                        </div>
+                        <h4 class="font-display font-bold text-2xl" style="color:#ff9900;">Amazon Orders</h4>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-5 leading-relaxed flex-grow">
+                        Send us your Amazon product links and required quantities through WhatsApp. We will
+                        calculate the product, shipping, and service costs. Payment can be completed through
+                        Whish Money before the order is processed.
+                    </p>
+                    <ul class="space-y-1.5 text-xs text-gray-500 mb-6">
+                        <li class="flex gap-2" style="color:inherit;"><span style="color:#ff9900;">•</span>Customs or extra delivery charges (if any) are disclosed before payment</li>
+                        <li class="flex gap-2"><span style="color:#ff9900;">•</span>Orders are processed only after payment confirmation</li>
+                        <li class="flex gap-2"><span style="color:#ff9900;">•</span>Delivery time depends on Amazon &amp; shipping method</li>
+                    </ul>
+                    <a href="#" data-wa-amazon
+                       class="w-full py-3.5 rounded-xl font-semibold text-sm flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform text-black" style="background:linear-gradient(135deg,#ff9900,#e88a00);">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        Send Amazon Order
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-6 p-4 rounded-2xl bg-blue-500/5 border border-blue-500/20 text-xs text-blue-200 leading-relaxed max-w-3xl mx-auto">
+                Please note: payment for SHEIN and Amazon orders is completed through Whish Money. You must send
+                the exact product links so we order the correct item. Final prices are confirmed with you before
+                any payment is made. Availability and delivery time depend on the external store (SHEIN or
+                Amazon) and are outside our control. Orders are processed only after payment is confirmed, so
+                please verify sizes, colors, models, and quantities beforehand — customs duties or extra delivery
+                charges, if applicable, will be disclosed before you pay.
             </div>
         </div>
 
@@ -734,7 +961,7 @@
     <div class="max-w-7xl mx-auto px-5 relative z-10">
         <div class="text-center mb-14 scroll-reveal">
             <h2 class="font-display font-bold text-4xl md:text-6xl mb-4">How To Order</h2>
-            <p class="text-gray-400 max-w-xl mx-auto">Simple steps to get your premium account in minutes.</p>
+            <p class="text-gray-400 max-w-xl mx-auto">Simple steps for digital subscriptions and assisted shopping orders.</p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-5 gap-6 items-center">
             <div class="glass-card p-6 rounded-2xl text-center scroll-reveal relative">
@@ -761,8 +988,46 @@
                     <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                 </div>
                 <h3 class="font-display font-bold mb-1.5 text-sm">Pay &amp; Receive</h3>
-                <p class="text-xs text-gray-400">Pay via Whish Money and get instant delivery</p>
+                <p class="text-xs text-gray-400">Pay via Whish Money and receive confirmation and delivery details</p>
             </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ── IMPORTANT INFORMATION ── -->
+<section id="important-info" class="py-20 relative">
+    <div class="max-w-7xl mx-auto px-5">
+        <div class="text-center mb-12 scroll-reveal">
+            <h2 class="font-display font-bold text-4xl md:text-6xl mb-4">Important Information</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto">Clear details before you confirm and pay for your order.</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div class="glass-card rounded-2xl p-6 scroll-reveal"><h3 class="font-bold mb-2">Digital Delivery</h3><p class="text-sm text-gray-400">Most digital orders are delivered after payment confirmation. Timing can vary according to product availability and support workload.</p></div>
+            <div class="glass-card rounded-2xl p-6 scroll-reveal"><h3 class="font-bold mb-2">User vs Full Account</h3><p class="text-sm text-gray-400">A user account normally provides access to an assigned profile or user. A full account provides account-level access. Password-change permission depends on the specific product and will be confirmed before purchase.</p></div>
+            <div class="glass-card rounded-2xl p-6 scroll-reveal"><h3 class="font-bold mb-2">Shopping Orders</h3><p class="text-sm text-gray-400">For SHEIN and Amazon, send exact links, options, sizes, colors, and quantities. We confirm item, shipping, service, customs, and delivery costs before payment whenever applicable.</p></div>
+            <div class="glass-card rounded-2xl p-6 scroll-reveal"><h3 class="font-bold mb-2">Payment</h3><p class="text-sm text-gray-400">Whish Money is accepted. Never send card numbers, passwords, verification codes, or other sensitive payment information through this website.</p></div>
+            <div class="glass-card rounded-2xl p-6 scroll-reveal"><h3 class="font-bold mb-2">Refunds & Replacements</h3><p class="text-sm text-gray-400">Eligibility depends on the product and issue. Digital codes or successfully delivered accounts may not be refundable. Shopping orders may become non-cancellable after purchase from the external store.</p></div>
+            <div class="glass-card rounded-2xl p-6 scroll-reveal"><h3 class="font-bold mb-2">Support</h3><p class="text-sm text-gray-400">Quick assistance is provided through WhatsApp during available support hours. Response times may vary outside normal working periods.</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq" class="py-20 relative">
+    <div class="max-w-4xl mx-auto px-5">
+        <div class="text-center mb-12 scroll-reveal">
+            <h2 class="font-display font-bold text-4xl md:text-6xl mb-4">Frequently Asked Questions</h2>
+            <p class="text-gray-400">Answers to common questions about subscriptions and shopping orders.</p>
+        </div>
+        <div class="space-y-3">
+            <details class="faq-item glass-card rounded-2xl p-5 scroll-reveal"><summary class="flex justify-between gap-4 font-semibold">How do I place an order?<span class="faq-icon text-purple-400 text-xl">+</span></summary><p class="mt-3 text-sm text-gray-400">Choose a product or service, press its order button, complete the WhatsApp message, and wait for price and availability confirmation.</p></details>
+            <details class="faq-item glass-card rounded-2xl p-5 scroll-reveal"><summary class="flex justify-between gap-4 font-semibold">How do I pay through Whish Money?<span class="faq-icon text-purple-400 text-xl">+</span></summary><p class="mt-3 text-sm text-gray-400">After your order is confirmed, we send the correct Whish Money payment details. Please do not pay before receiving confirmation.</p></details>
+            <details class="faq-item glass-card rounded-2xl p-5 scroll-reveal"><summary class="flex justify-between gap-4 font-semibold">How long does delivery take?<span class="faq-icon text-purple-400 text-xl">+</span></summary><p class="mt-3 text-sm text-gray-400">Digital delivery is usually fast after payment confirmation, but timing depends on availability. SHEIN and Amazon delivery depends on the seller, shipping method, customs, and final destination.</p></details>
+            <details class="faq-item glass-card rounded-2xl p-5 scroll-reveal"><summary class="flex justify-between gap-4 font-semibold">Can I change the password?<span class="faq-icon text-purple-400 text-xl">+</span></summary><p class="mt-3 text-sm text-gray-400">Only when the selected product permits it. Ask before purchasing because user accounts and full accounts have different access conditions.</p></details>
+            <details class="faq-item glass-card rounded-2xl p-5 scroll-reveal"><summary class="flex justify-between gap-4 font-semibold">What happens if a subscription does not work?<span class="faq-icon text-purple-400 text-xl">+</span></summary><p class="mt-3 text-sm text-gray-400">Contact us promptly with the order details and a clear screenshot. We will review the issue and apply the relevant support, replacement, or refund policy.</p></details>
+            <details class="faq-item glass-card rounded-2xl p-5 scroll-reveal"><summary class="flex justify-between gap-4 font-semibold">How do SHEIN and Amazon orders work?<span class="faq-icon text-purple-400 text-xl">+</span></summary><p class="mt-3 text-sm text-gray-400">Send exact product links and selections. We calculate and confirm the total, send Whish payment details, and process the order after payment confirmation.</p></details>
+            <details class="faq-item glass-card rounded-2xl p-5 scroll-reveal"><summary class="flex justify-between gap-4 font-semibold">Can I cancel a shopping order after payment?<span class="faq-icon text-purple-400 text-xl">+</span></summary><p class="mt-3 text-sm text-gray-400">Cancellation may not be possible after the item is purchased from the external store. Confirm links, options, and quantities carefully before payment.</p></details>
         </div>
     </div>
 </section>
@@ -775,7 +1040,7 @@
                 <h2 class="font-display font-bold text-3xl md:text-5xl mb-3">Get In Touch</h2>
                 <p class="text-gray-400">Have questions? Send us an email or reach out on WhatsApp.</p>
             </div>
-            <form action="https://formsubmit.co/lakkisstockinquiry@gmail.com" method="POST" class="space-y-5">
+            <form id="contactForm" action="https://formsubmit.co/lakkisstockinquiry@gmail.com" method="POST" class="space-y-5">
                 <input type="hidden" name="_subject" value="New Inquiry from LakkisStock Website">
                 <input type="hidden" name="_template" value="table">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -794,7 +1059,7 @@
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-300 mb-1.5">Service Interested In</label>
-                    <select name="service" required class="input-field w-full px-4 py-3 rounded-xl text-white bg-gray-900">
+                    <select id="serviceSelect" name="service" required class="input-field w-full px-4 py-3 rounded-xl text-white bg-gray-900">
                         <option value="">Select a service...</option>
                         <option value="Netflix User 1 Month">Netflix (User) - 1 Month ($3.5)</option>
                         <option value="Netflix User 3 Months">Netflix (User) - 3 Months ($9)</option>
@@ -810,7 +1075,7 @@
                         <option value="Shahid Full 3 Months">Shahid (Full) - 3 Months ($22)</option>
                         <option value="Anghami 3 Months">Anghami - 3 Months ($9)</option>
                         <option value="Anghami 6 Months">Anghami - 6 Months ($15)</option>
-                        <option value="Anghami 1 Year">Anghami - 1 Year ($25)</option>
+                        <option value="Anghami 1 Year">Anghami - 1 Year ($20)</option>
                         <option value="Amazon Prime 1 Month">Amazon Prime - 1 Month ($7)</option>
                         <option value="Amazon Prime 1 Year">Amazon Prime - 1 Year ($18)</option>
                         <option value="PS USA 10">PlayStation USA - $10 Card ($12)</option>
@@ -833,8 +1098,21 @@
                         <option value="Alfa 44GB">Alfa Ushare - 44 GB ($20.99)</option>
                         <option value="Alfa 55GB">Alfa Ushare - 55 GB ($24.99)</option>
                         <option value="Alfa 66GB">Alfa Ushare - 66 GB ($28.99)</option>
-                        <option value="Other">Other</option>
+                        <option value="SHEIN Order">SHEIN Order</option>
+                        <option value="Amazon Shopping Order">Amazon Shopping Order</option>
+                        <option value="General Question">General Question</option>
                     </select>
+                </div>
+                <div id="shoppingFields" class="hidden space-y-5 p-5 rounded-2xl bg-white/[0.02] border border-white/10">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-1.5">Product Link(s)</label>
+                        <textarea id="productLinks" name="product_links" rows="3" class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-500 resize-none" placeholder="Paste one product link per line"></textarea>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <div><label class="block text-sm font-medium text-gray-300 mb-1.5">Size / Model / Variation</label><input id="productOption" type="text" name="product_option" class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-500" placeholder="Example: Medium, Black, 128 GB"></div>
+                        <div><label class="block text-sm font-medium text-gray-300 mb-1.5">Quantity</label><input id="productQuantity" type="number" min="1" name="quantity" class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-500" placeholder="1"></div>
+                    </div>
+                    <div id="deliveryLocationWrap"><label class="block text-sm font-medium text-gray-300 mb-1.5">Delivery Location</label><input id="deliveryLocation" type="text" name="delivery_location" class="input-field w-full px-4 py-3 rounded-xl text-white placeholder-gray-500" placeholder="City / area in Lebanon"></div>
                 </div>
                 <div>
                     <label class="block text-sm font-medium text-gray-300 mb-1.5">Message</label>
@@ -845,12 +1123,12 @@
                 </button>
             </form>
             <div class="mt-7 pt-7 border-t border-white/10 flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="https://api.whatsapp.com/send/?phone=96170708025" target="_blank"
+                <a href="https://api.whatsapp.com/send/?phone=96170708025" target="_blank" rel="noopener noreferrer"
                    class="whatsapp-btn w-full sm:w-auto px-6 py-3 rounded-full font-medium flex items-center justify-center gap-2 hover:scale-105 transition-transform">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
                     WhatsApp: 70 708 025
                 </a>
-                <a href="https://www.instagram.com/lakkisstock/" target="_blank"
+                <a href="https://www.instagram.com/lakkisstock/" target="_blank" rel="noopener noreferrer"
                    class="w-full sm:w-auto px-6 py-3 rounded-full font-medium flex items-center justify-center gap-2 hover:scale-105 transition-transform bg-gradient-to-r from-pink-500 to-purple-600">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                     Instagram: @lakkisstock
@@ -867,28 +1145,44 @@
             <span class="gradient-text">Lakkis</span><span class="text-white">Stock</span>
         </div>
         <div class="text-gray-500 text-sm text-center">
-            Premium streaming accounts in Lebanon.<br>
+            Premium streaming accounts and assisted shopping orders in Lebanon.<br>
             Contact: +961 70 708 025 | Whish Money Accepted
+            <div class="mt-2 flex flex-wrap justify-center gap-x-3 gap-y-1">
+                <button type="button" class="policy-link hover:text-white" data-policy="refund">Refund &amp; Replacement</button>
+                <button type="button" class="policy-link hover:text-white" data-policy="privacy">Privacy</button>
+                <button type="button" class="policy-link hover:text-white" data-policy="terms">Terms</button>
+                <button type="button" class="policy-link hover:text-white" data-policy="delivery">Delivery</button>
+            </div>
         </div>
         <div class="flex items-center gap-4">
-            <a href="https://www.instagram.com/lakkisstock/" target="_blank" class="w-9 h-9 rounded-full flex items-center justify-center bg-white/5 border border-white/10 hover:border-pink-500/50 transition-all">
+            <a href="https://www.instagram.com/lakkisstock/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full flex items-center justify-center bg-white/5 border border-white/10 hover:border-pink-500/50 transition-all">
                 <svg class="w-4 h-4 text-pink-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
             </a>
-            <a href="https://t.me/+96170708025" target="_blank" class="w-9 h-9 rounded-full flex items-center justify-center bg-white/5 border border-white/10 hover:border-blue-400/50 transition-all">
+            <a href="https://t.me/+96170708025" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full flex items-center justify-center bg-white/5 border border-white/10 hover:border-blue-400/50 transition-all">
                 <svg class="w-4 h-4 text-blue-400" fill="currentColor" viewBox="0 0 24 24"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
             </a>
-            <a href="https://api.whatsapp.com/send/?phone=96170708025" target="_blank" class="w-9 h-9 rounded-full flex items-center justify-center bg-white/5 border border-white/10 hover:border-green-400/50 transition-all">
+            <a href="https://api.whatsapp.com/send/?phone=96170708025" target="_blank" rel="noopener noreferrer" class="w-9 h-9 rounded-full flex items-center justify-center bg-white/5 border border-white/10 hover:border-green-400/50 transition-all">
                 <svg class="w-4 h-4 text-green-400" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
             </a>
-            <span class="text-gray-600 text-sm">© 2025</span>
+            <span class="text-gray-600 text-sm">© <span id="currentYear"></span></span>
         </div>
     </div>
 </footer>
 
+
+<!-- Policy modal -->
+<div id="policyModal" class="policy-modal fixed inset-0 z-[100] items-center justify-center bg-black/80 p-4" role="dialog" aria-modal="true" aria-labelledby="policyTitle">
+    <div class="glass-panel rounded-3xl w-full max-w-2xl max-h-[85vh] overflow-y-auto p-6 md:p-8 relative">
+        <button type="button" id="closePolicy" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/5 border border-white/10 text-xl" aria-label="Close policy">×</button>
+        <h2 id="policyTitle" class="font-display font-bold text-3xl mb-5 pr-10"></h2>
+        <div id="policyContent" class="space-y-4 text-sm leading-relaxed text-gray-300"></div>
+    </div>
+</div>
+
 <!-- Floating WA -->
-<a href="https://api.whatsapp.com/send/?phone=96170708025" target="_blank"
+<a href="https://api.whatsapp.com/send/?phone=96170708025" target="_blank" rel="noopener noreferrer"
    class="fixed z-50 w-14 h-14 whatsapp-btn rounded-full flex items-center justify-center shadow-2xl shadow-green-500/30 hover:scale-110 transition-transform"
-   style="animation: wpulse 2s infinite; bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem)); right: 1.5rem;">
+   style="bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem)); right: 1.5rem;">
     <svg class="w-7 h-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
 </a>
 <style>
@@ -900,13 +1194,7 @@
 </style>
 
 <script>
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.utils.toArray('.scroll-reveal').forEach(el => {
-        gsap.fromTo(el, { opacity:0, y:50 }, {
-            opacity:1, y:0, duration:0.8, ease:"power3.out",
-            scrollTrigger: { trigger:el, start:"top 88%", toggleActions:"play none none reverse" }
-        });
-    });
+    // Scroll animations removed for smoother performance.
 
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
@@ -917,7 +1205,7 @@
         a.addEventListener('click', e => {
             e.preventDefault();
             const t = document.querySelector(a.getAttribute('href'));
-            if (t) { t.scrollIntoView({ behavior:'smooth', block:'start' }); }
+            if (t) { t.scrollIntoView({ behavior:'auto', block:'start' }); }
             document.getElementById('mobile-menu').classList.remove('open');
         });
     });
@@ -961,6 +1249,124 @@
             }
         });
     }
+
+
+    // The announcement bar and navbar are part of the normal page flow, so they scroll away naturally.
+
+    // Automatic footer year.
+    const currentYear = document.getElementById('currentYear');
+    if (currentYear) currentYear.textContent = new Date().getFullYear();
+
+    // Prefilled shopping-order WhatsApp buttons.
+    const WA_PHONE = '96170708025';
+    const sheinMessage = `Hello, I would like to place a SHEIN order.\n\nProduct links:\nSizes:\nColors:\nQuantities:\nAdditional notes:\n\nPlease calculate the total price and send me the Whish payment details.`;
+    const amazonMessage = `Hello, I would like to place an Amazon order.\n\nProduct links:\nQuantities:\nPreferred options:\nDelivery location:\nAdditional notes:\n\nPlease calculate the total price and send me the Whish payment details.`;
+    document.querySelectorAll('[data-wa-shein]').forEach(link => {
+        link.href = `https://api.whatsapp.com/send/?phone=${WA_PHONE}&text=${encodeURIComponent(sheinMessage)}`;
+        link.target = '_blank'; link.rel = 'noopener noreferrer';
+    });
+    document.querySelectorAll('[data-wa-amazon]').forEach(link => {
+        link.href = `https://api.whatsapp.com/send/?phone=${WA_PHONE}&text=${encodeURIComponent(amazonMessage)}`;
+        link.target = '_blank'; link.rel = 'noopener noreferrer';
+    });
+
+    // Category filters. Keep matching cards visible even when GSAP originally prepared them off-screen.
+    const filterButtons = document.querySelectorAll('[data-filter]');
+    const filterItems = document.querySelectorAll('.product-block, .service-block');
+    const mostPopularSection = document.getElementById('mostPopularSection');
+    const productsSection = document.getElementById('products');
+
+    filterButtons.forEach(button => button.addEventListener('click', () => {
+        const filter = button.dataset.filter;
+        filterButtons.forEach(btn => btn.classList.toggle('active', btn === button));
+
+        let visibleCount = 0;
+        filterItems.forEach(item => {
+            const categories = (item.dataset.category || '').trim().split(/\s+/).filter(Boolean);
+            const shouldShow = filter === 'all' || categories.includes(filter);
+            item.hidden = !shouldShow;
+
+            if (shouldShow) {
+                visibleCount += 1;
+                item.style.opacity = '1';
+                item.style.transform = 'none';
+            }
+        });
+
+        if (mostPopularSection) {
+            const showPopular = filter === 'all' || filter === 'most-popular';
+            mostPopularSection.hidden = !showPopular;
+            if (showPopular) {
+                mostPopularSection.style.opacity = '1';
+                mostPopularSection.style.transform = 'none';
+            }
+        }
+
+        // Prevent the browser from remaining in a blank area after many cards are hidden.
+        if (productsSection) {
+            const filtersTop = document.getElementById('categoryFilters')?.getBoundingClientRect().top ?? 0;
+            if (filtersTop < -120 || window.scrollY > productsSection.offsetTop + productsSection.offsetHeight) {
+                productsSection.scrollIntoView({ behavior: 'auto', block: 'start' });
+            }
+        }
+
+    }));
+
+    // Build compact Most Popular cards from existing products without duplicating prices.
+    const popularGrid = document.getElementById('mostPopularGrid');
+    if (popularGrid) {
+        document.querySelectorAll('.product-block[data-category*="most-popular"]').forEach(product => {
+            const title = product.querySelector('h3')?.textContent?.trim() || 'Popular Product';
+            const firstPrice = product.querySelector('[data-usd]')?.dataset.usd;
+            const card = document.createElement('a');
+            card.href = `#${product.id}`;
+            card.className = 'glass-card rounded-2xl p-4 text-center block';
+            card.innerHTML = `<div class="text-sm font-bold mb-1">${title}</div><div class="text-xs text-gray-400">${firstPrice ? `Plans from $${firstPrice}` : 'View plans'}</div>`;
+            popularGrid.appendChild(card);
+        });
+    }
+
+    // Dynamic contact fields for shopping orders.
+    const serviceSelect = document.getElementById('serviceSelect');
+    const shoppingFields = document.getElementById('shoppingFields');
+    const shoppingInputs = ['productLinks', 'productQuantity'];
+    function updateShoppingFields() {
+        if (!serviceSelect || !shoppingFields) return;
+        const isShopping = serviceSelect.value === 'SHEIN Order' || serviceSelect.value === 'Amazon Shopping Order';
+        shoppingFields.classList.toggle('hidden', !isShopping);
+        shoppingInputs.forEach(id => {
+            const field = document.getElementById(id);
+            if (field) field.required = isShopping;
+        });
+    }
+    if (serviceSelect) {
+        serviceSelect.addEventListener('change', updateShoppingFields);
+        updateShoppingFields();
+    }
+
+    // Policy modal content.
+    const policies = {
+        refund: { title: 'Refund & Replacement Policy', body: `<p>Digital products are reviewed case by case. A replacement or refund may be considered when a verified product is not delivered or does not function as described and the issue is reported promptly.</p><p>Successfully delivered digital codes, activated subscriptions, or accounts affected by customer misuse, unauthorized password changes, or violation of usage instructions may not be refundable.</p><p>SHEIN and Amazon orders may become non-cancellable after purchase from the external store. Any store-approved refund remains subject to the external store, shipping, currency, customs, and service-cost deductions.</p>` },
+        privacy: { title: 'Privacy Policy', body: `<p>We use the information you submit only to answer inquiries, confirm orders, arrange delivery, and provide support. We do not ask for bank-card numbers, account passwords, or verification codes through this website.</p><p>Order details may be shared only with service providers or external stores when required to complete your requested order.</p>` },
+        terms: { title: 'Terms & Conditions', body: `<p>Prices and availability can change before payment confirmation. An order is accepted only after we confirm the final details and payment.</p><p>Customers are responsible for verifying product links, platform, region, size, color, model, quantity, and account type before confirmation.</p><p>External-store availability, shipping, customs, platform rules, and delivery schedules are outside our direct control.</p>` },
+        delivery: { title: 'Delivery Information', body: `<p>Digital products are generally delivered after payment confirmation, subject to availability and support hours.</p><p>SHEIN and Amazon delivery estimates are provided before payment when possible, but may change because of seller processing, international shipping, customs, local delivery, or circumstances outside our control.</p>` }
+    };
+    const policyModal = document.getElementById('policyModal');
+    const policyTitle = document.getElementById('policyTitle');
+    const policyContent = document.getElementById('policyContent');
+    function closePolicyModal() { policyModal?.classList.remove('open'); document.body.style.overflow = ''; }
+    document.querySelectorAll('[data-policy]').forEach(btn => btn.addEventListener('click', () => {
+        const policy = policies[btn.dataset.policy];
+        if (!policy || !policyModal) return;
+        policyTitle.textContent = policy.title;
+        policyContent.innerHTML = policy.body;
+        policyModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }));
+    document.getElementById('closePolicy')?.addEventListener('click', closePolicyModal);
+    policyModal?.addEventListener('click', event => { if (event.target === policyModal) closePolicyModal(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') closePolicyModal(); });
+
 </script>
 </body>
 </html>
