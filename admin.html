@@ -19,6 +19,13 @@
         .input-field:focus { outline:none; border-color:#8B5CF6; }
         .badge-open { background:rgba(234,179,8,0.15); color:#facc15; border:1px solid rgba(234,179,8,0.35); }
         .badge-resolved { background:rgba(34,197,94,0.15); color:#4ade80; border:1px solid rgba(34,197,94,0.35); }
+        .badge-unread { background:rgba(239,68,68,0.15); color:#f87171; border:1px solid rgba(239,68,68,0.4); }
+        .tab-btn.active { background:rgba(255,255,255,0.1); border-color:rgba(255,255,255,0.2); color:#fff; }
+        .msg-bubble { max-width:80%; padding:10px 14px; border-radius:14px; font-size:.875rem; white-space:pre-wrap; }
+        .msg-user { background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.1); align-self:flex-start; }
+        .msg-admin { background:rgba(139,92,246,0.18); border:1px solid rgba(139,92,246,0.4); align-self:flex-end; }
+        .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.8); z-index:100; align-items:center; justify-content:center; padding:1rem; }
+        .modal-overlay.open { display:flex; }
     </style>
 </head>
 <body class="antialiased min-h-screen">
@@ -44,8 +51,18 @@
     const auth = firebase.auth();
     const db = firebase.firestore();
 
-    // ⚠️ EDIT THIS: only these email addresses can view tickets here.
-    const ADMIN_EMAILS = ["lakkisr2@gmail.com"];
+    // ⚠️ EDIT THIS: bootstrap owner email(s) — always have access, even before
+    // the "admins" list below has any entries. Additional admins can be added
+    // from inside the dashboard (Admins tab) without touching this file.
+    const OWNER_EMAILS = ["lakkisr2@gmail.com"];
+    // Filled in from the "admins" Firestore collection once signed in.
+    let DYNAMIC_ADMIN_EMAILS = [];
+    function isAllowedAdmin(email) {
+        if (!email) return false;
+        email = email.toLowerCase();
+        return OWNER_EMAILS.map(e => e.toLowerCase()).includes(email) ||
+               DYNAMIC_ADMIN_EMAILS.map(e => e.toLowerCase()).includes(email);
+    }
 </script>
 
 <div class="max-w-5xl mx-auto px-5 py-10">
@@ -84,15 +101,67 @@
     <!-- DASHBOARD VIEW -->
     <div id="dashboardView" class="hidden">
         <div class="flex flex-wrap items-center gap-3 mb-6">
-            <button data-status="open" class="status-filter px-4 py-2 rounded-full text-sm font-semibold bg-white/10 border border-white/20">Open</button>
-            <button data-status="resolved" class="status-filter px-4 py-2 rounded-full text-sm font-semibold border border-white/10 text-gray-400 hover:text-white">Resolved</button>
-            <button data-status="all" class="status-filter px-4 py-2 rounded-full text-sm font-semibold border border-white/10 text-gray-400 hover:text-white">All</button>
-            <span id="ticketCount" class="ml-auto text-sm text-gray-400"></span>
+            <button data-tab="tickets" class="tab-btn active px-4 py-2 rounded-full text-sm font-semibold border border-white/10 text-gray-300 transition-all">Tickets</button>
+            <button data-tab="admins" class="tab-btn px-4 py-2 rounded-full text-sm font-semibold border border-white/10 text-gray-300 transition-all">Admins</button>
         </div>
 
-        <div id="ticketsList" class="space-y-4"></div>
-        <div id="emptyState" class="hidden text-center py-20 text-gray-500">No tickets here yet.</div>
-        <div id="loadingState" class="text-center py-20 text-gray-500">Loading tickets...</div>
+        <!-- TICKETS TAB -->
+        <div id="ticketsTab">
+            <div class="flex flex-wrap items-center gap-3 mb-6">
+                <button data-status="open" class="status-filter px-4 py-2 rounded-full text-sm font-semibold bg-white/10 border border-white/20">Open</button>
+                <button data-status="resolved" class="status-filter px-4 py-2 rounded-full text-sm font-semibold border border-white/10 text-gray-400 hover:text-white">Resolved</button>
+                <button data-status="all" class="status-filter px-4 py-2 rounded-full text-sm font-semibold border border-white/10 text-gray-400 hover:text-white">All</button>
+                <span id="ticketCount" class="ml-auto text-sm text-gray-400"></span>
+            </div>
+
+            <div id="ticketsList" class="space-y-4"></div>
+            <div id="emptyState" class="hidden text-center py-20 text-gray-500">No tickets here yet.</div>
+            <div id="loadingState" class="text-center py-20 text-gray-500">Loading tickets...</div>
+        </div>
+
+        <!-- ADMINS TAB -->
+        <div id="adminsTab" class="hidden">
+            <div class="glass rounded-2xl p-6 mb-6">
+                <h2 class="font-display font-bold text-lg mb-1">Add an Admin</h2>
+                <p class="text-sm text-gray-400 mb-4">
+                    Adding an email here lets that account see and reply to tickets in this dashboard.
+                    The person still needs their own sign-in account with this exact email — have them
+                    create one on the main site (Sign Up), or create it for them in the Firebase console
+                    under Authentication. Adding the email here does not create the login itself.
+                </p>
+                <form id="addAdminForm" class="flex flex-col sm:flex-row gap-3">
+                    <input type="email" id="newAdminEmail" required placeholder="teammate@example.com"
+                        class="input-field flex-1 px-4 py-3 rounded-xl">
+                    <button type="submit" class="px-6 py-3 rounded-xl font-semibold bg-gradient-to-r from-purple-600 to-blue-600 whitespace-nowrap">Add Admin</button>
+                </form>
+                <p id="addAdminMsg" class="hidden mt-3 text-sm"></p>
+            </div>
+            <div class="glass rounded-2xl p-6">
+                <h2 class="font-display font-bold text-lg mb-4">Current Admins</h2>
+                <div id="ownerList" class="space-y-2 mb-4"></div>
+                <div id="adminsList" class="space-y-2"></div>
+                <div id="adminsEmpty" class="hidden text-sm text-gray-500">No additional admins added yet.</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- TICKET THREAD MODAL -->
+<div id="threadModal" class="modal-overlay">
+    <div class="glass rounded-2xl w-full max-w-lg p-6 max-h-[85vh] flex flex-col">
+        <div class="flex items-start justify-between gap-3 mb-1">
+            <div>
+                <h3 id="threadSubject" class="font-display font-bold text-lg"></h3>
+                <p id="threadMeta" class="text-xs text-gray-500 mt-0.5"></p>
+            </div>
+            <button id="closeThreadModal" class="w-8 h-8 rounded-full bg-white/5 border border-white/10 shrink-0">×</button>
+        </div>
+        <div id="threadMessages" class="flex-1 overflow-y-auto flex flex-col gap-3 my-4 py-2"></div>
+        <form id="threadReplyForm" class="flex gap-2">
+            <textarea id="threadReplyText" required rows="2" placeholder="Type a reply the customer will see on the website..."
+                class="input-field flex-1 px-4 py-2.5 rounded-xl text-sm resize-none"></textarea>
+            <button type="submit" class="px-5 rounded-xl font-semibold bg-gradient-to-r from-purple-600 to-blue-600 text-sm">Send</button>
+        </form>
     </div>
 </div>
 
@@ -120,29 +189,127 @@
 
     let allTickets = [];
     let currentFilter = 'open';
+    let currentUserEmail = null;
+    let unsubTickets = null, unsubAdmins = null;
 
-    auth.onAuthStateChanged((user) => {
+    auth.onAuthStateChanged(async (user) => {
         [loginView, deniedView, dashboardView].forEach(v => v.classList.add('hidden'));
+        if (unsubTickets) { unsubTickets(); unsubTickets = null; }
+        if (unsubAdmins) { unsubAdmins(); unsubAdmins = null; }
         if (!user) {
             logoutBtn.classList.add('hidden');
             loginView.classList.remove('hidden');
             return;
         }
         logoutBtn.classList.remove('hidden');
-        if (!ADMIN_EMAILS.includes(user.email)) {
+        currentUserEmail = user.email;
+
+        // Load the dynamic admins list first so isAllowedAdmin() has fresh data.
+        try {
+            const snap = await db.collection('admins').get();
+            DYNAMIC_ADMIN_EMAILS = snap.docs.map(d => d.data().email).filter(Boolean);
+        } catch (e) { /* if this fails, OWNER_EMAILS still works */ }
+
+        if (!isAllowedAdmin(user.email)) {
             deniedView.classList.remove('hidden');
             return;
         }
         dashboardView.classList.remove('hidden');
         loadTickets();
+        listenAdmins();
     });
+
+    // ── Tabs ──────────────────────────────────────────────────────────
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const tab = btn.dataset.tab;
+            document.getElementById('ticketsTab').classList.toggle('hidden', tab !== 'tickets');
+            document.getElementById('adminsTab').classList.toggle('hidden', tab !== 'admins');
+        });
+    });
+
+    // ── Admins management ────────────────────────────────────────────
+    function listenAdmins() {
+        const ownerList = document.getElementById('ownerList');
+        ownerList.innerHTML = OWNER_EMAILS.map(e => `
+            <div class="flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/5 border border-white/10">
+                <span class="text-sm">${escapeHtml(e)}</span>
+                <span class="text-xs text-gray-500">Owner · can't be removed here</span>
+            </div>`).join('');
+
+        unsubAdmins = db.collection('admins').orderBy('addedAt', 'desc').onSnapshot((snap) => {
+            DYNAMIC_ADMIN_EMAILS = snap.docs.map(d => d.data().email).filter(Boolean);
+            const list = document.getElementById('adminsList');
+            const empty = document.getElementById('adminsEmpty');
+            if (snap.empty) {
+                list.innerHTML = '';
+                empty.classList.remove('hidden');
+                return;
+            }
+            empty.classList.add('hidden');
+            list.innerHTML = snap.docs.map(d => {
+                const data = d.data();
+                return `
+                <div class="flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/5 border border-white/10">
+                    <span class="text-sm">${escapeHtml(data.email || '')}</span>
+                    <button onclick="removeAdmin('${d.id}')" class="text-xs font-semibold px-3 py-1 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 hover:bg-red-500/20 transition-all">Remove</button>
+                </div>`;
+            }).join('');
+        });
+    }
+
+    document.getElementById('addAdminForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const msg = document.getElementById('addAdminMsg');
+        const input = document.getElementById('newAdminEmail');
+        const email = input.value.trim().toLowerCase();
+        msg.classList.add('hidden');
+        if (!email) return;
+        if (isAllowedAdmin(email)) {
+            msg.textContent = 'That email already has admin access.';
+            msg.className = 'mt-3 text-sm text-yellow-300';
+            msg.classList.remove('hidden');
+            return;
+        }
+        try {
+            await db.collection('admins').add({
+                email,
+                addedBy: currentUserEmail,
+                addedAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            input.value = '';
+            msg.textContent = `Added ${email}. They can sign in with that email once they have an account.`;
+            msg.className = 'mt-3 text-sm text-green-300';
+            msg.classList.remove('hidden');
+        } catch (err) {
+            msg.textContent = 'Could not add admin: ' + err.message;
+            msg.className = 'mt-3 text-sm text-red-300';
+            msg.classList.remove('hidden');
+        }
+    });
+
+    async function removeAdmin(docId) {
+        if (!confirm('Remove this admin\'s access?')) return;
+        try {
+            await db.collection('admins').doc(docId).delete();
+        } catch (err) {
+            alert('Could not remove admin: ' + err.message);
+        }
+    }
 
     function loadTickets() {
         document.getElementById('loadingState').classList.remove('hidden');
-        db.collection('supportTickets').orderBy('createdAt', 'desc').onSnapshot((snapshot) => {
+        unsubTickets = db.collection('supportTickets').orderBy('createdAt', 'desc').onSnapshot((snapshot) => {
             allTickets = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
             document.getElementById('loadingState').classList.add('hidden');
             renderTickets();
+            // Keep an open thread modal's header in sync (e.g. unread badge clears).
+            if (openThreadId) {
+                const t = allTickets.find(x => x.id === openThreadId);
+                if (t) renderThreadHeader(t);
+            }
         }, (err) => {
             document.getElementById('loadingState').textContent = 'Error loading tickets: ' + err.message;
         });
@@ -168,21 +335,22 @@
             const status = t.status || 'open';
             const date = t.createdAt?.toDate ? t.createdAt.toDate().toLocaleString() : '—';
             const who = t.name || t.email || 'Guest';
+            const unread = !!t.unreadForAdmin;
             return `
-            <div class="ticket-card rounded-2xl p-5">
+            <div class="ticket-card rounded-2xl p-5 cursor-pointer" onclick="openThread('${t.id}')">
                 <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
                     <div>
-                        <h3 class="font-semibold text-lg">${escapeHtml(t.subject || '(no subject)')}</h3>
+                        <h3 class="font-semibold text-lg flex items-center gap-2">${escapeHtml(t.subject || '(no subject)')} ${unread ? '<span class="w-2 h-2 rounded-full bg-red-500 inline-block"></span>' : ''}</h3>
                         <p class="text-xs text-gray-500 mt-0.5">${escapeHtml(who)} ${t.email ? '· ' + escapeHtml(t.email) : ''} · ${date}</p>
                     </div>
                     <span class="text-xs font-semibold px-2.5 py-1 rounded-full ${status === 'resolved' ? 'badge-resolved' : 'badge-open'}">${status}</span>
                 </div>
-                <p class="text-sm text-gray-300 whitespace-pre-wrap mb-4">${escapeHtml(t.message || '')}</p>
-                <div class="flex gap-2">
+                <p class="text-sm text-gray-300 whitespace-pre-wrap mb-4 line-clamp-2">${escapeHtml(t.message || '')}</p>
+                <div class="flex gap-2" onclick="event.stopPropagation()">
                     ${status !== 'resolved'
                         ? `<button onclick="setStatus('${t.id}','resolved')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-green-500/10 border border-green-500/30 text-green-300 hover:bg-green-500/20 transition-all">Mark Resolved</button>`
                         : `<button onclick="setStatus('${t.id}','open')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-yellow-500/10 border border-yellow-500/30 text-yellow-300 hover:bg-yellow-500/20 transition-all">Reopen</button>`}
-                    ${t.email ? `<a href="mailto:${encodeURIComponent(t.email)}" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-white/25 transition-all">Reply by Email</a>` : ''}
+                    <button onclick="openThread('${t.id}')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-white/25 transition-all">Open Conversation</button>
                 </div>
             </div>`;
         }).join('');
@@ -195,6 +363,94 @@
             alert('Could not update ticket: ' + err.message);
         }
     }
+
+    // ── Ticket conversation thread (in-website replies, no email) ──────
+    const threadModal = document.getElementById('threadModal');
+    let openThreadId = null;
+    let unsubThread = null;
+
+    function renderThreadHeader(t) {
+        const date = t.createdAt?.toDate ? t.createdAt.toDate().toLocaleString() : '—';
+        const who = t.name || t.email || 'Guest';
+        document.getElementById('threadSubject').textContent = t.subject || '(no subject)';
+        document.getElementById('threadMeta').textContent = `${who}${t.email ? ' · ' + t.email : ''} · ${date}`;
+    }
+
+    async function openThread(id) {
+        const t = allTickets.find(x => x.id === id);
+        if (!t) return;
+        openThreadId = id;
+        renderThreadHeader(t);
+        threadModal.classList.add('open');
+        document.getElementById('threadReplyText').value = '';
+
+        // Mark as read for admin.
+        db.collection('supportTickets').doc(id).update({ unreadForAdmin: false }).catch(() => {});
+
+        if (unsubThread) unsubThread();
+        const messagesEl = document.getElementById('threadMessages');
+        messagesEl.innerHTML = '<p class="text-sm text-gray-500">Loading conversation...</p>';
+
+        unsubThread = db.collection('supportTickets').doc(id).collection('replies')
+            .orderBy('createdAt', 'asc')
+            .onSnapshot((snap) => {
+                const initial = [{
+                    sender: 'user',
+                    text: t.message || '',
+                    createdAt: t.createdAt
+                }];
+                const replies = snap.docs.map(d => d.data());
+                const all = initial.concat(replies);
+                messagesEl.innerHTML = all.map(m => {
+                    const time = m.createdAt?.toDate ? m.createdAt.toDate().toLocaleString() : '';
+                    const isAdmin = m.sender === 'admin';
+                    return `
+                    <div class="flex flex-col ${isAdmin ? 'items-end' : 'items-start'}">
+                        <div class="msg-bubble ${isAdmin ? 'msg-admin' : 'msg-user'}">${escapeHtml(m.text || '')}</div>
+                        <span class="text-[11px] text-gray-500 mt-1 px-1">${isAdmin ? 'Support team' : 'Customer'} · ${time}</span>
+                    </div>`;
+                }).join('');
+                messagesEl.scrollTop = messagesEl.scrollHeight;
+            });
+    }
+
+    function closeThread() {
+        threadModal.classList.remove('open');
+        openThreadId = null;
+        if (unsubThread) { unsubThread(); unsubThread = null; }
+    }
+    document.getElementById('closeThreadModal').addEventListener('click', closeThread);
+    threadModal.addEventListener('click', e => { if (e.target === threadModal) closeThread(); });
+
+    document.getElementById('threadReplyForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!openThreadId) return;
+        const textEl = document.getElementById('threadReplyText');
+        const text = textEl.value.trim();
+        if (!text) return;
+        const submitBtn = e.target.querySelector('button[type="submit"]');
+        submitBtn.disabled = true;
+        try {
+            const ticketRef = db.collection('supportTickets').doc(openThreadId);
+            await ticketRef.collection('replies').add({
+                sender: 'admin',
+                text,
+                authorEmail: currentUserEmail,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            // The customer sees this on the website's Support page — never by email.
+            await ticketRef.update({
+                unreadForUser: true,
+                unreadForAdmin: false,
+                lastMessageAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+            textEl.value = '';
+        } catch (err) {
+            alert('Could not send reply: ' + err.message);
+        } finally {
+            submitBtn.disabled = false;
+        }
+    });
 
     document.querySelectorAll('.status-filter').forEach(btn => {
         btn.addEventListener('click', () => {
