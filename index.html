@@ -660,7 +660,6 @@
             <button type="button" class="filter-pill px-4 py-2 rounded-full text-sm font-medium" data-filter="playstation">PlayStation</button>
             <button type="button" class="filter-pill px-4 py-2 rounded-full text-sm font-medium" data-filter="mobile-data">Mobile Data</button>
             <button type="button" class="filter-pill px-4 py-2 rounded-full text-sm font-medium" data-filter="shopping">Shopping Orders</button>
-            <button type="button" class="filter-pill px-4 py-2 rounded-full text-sm font-medium" data-filter="licenses">Licenses &amp; Software</button>
         </div>
 
         <!-- MOST POPULAR QUICK-JUMP (built from existing product cards via JS — see script) -->
@@ -1287,23 +1286,6 @@
             </div>
         </div>
 
-        <!-- ── LICENSES & MEMBERSHIPS ── -->
-        <div class="mb-4 mt-6 scroll-reveal service-block" id="licenses-memberships" data-category="licenses">
-            <div class="text-center mb-10">
-                <h3 class="font-display font-bold text-3xl md:text-4xl mb-3">Licenses &amp; Memberships</h3>
-                <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
-                    Genuine software, AI tool, and platform subscriptions — delivered fast, with a 100% authentic
-                    guarantee on every license.
-                </p>
-            </div>
-            <div id="licensesGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
-            <div class="mt-6 p-4 rounded-2xl bg-white/[0.02] border border-white/10 text-xs text-gray-500 leading-relaxed max-w-3xl mx-auto text-center">
-                All product names, logos, and brands shown above are the property of their respective owners.
-                LakkisStock is an independent reseller and is not affiliated with, endorsed by, or sponsored by
-                any of these companies unless explicitly stated.
-            </div>
-        </div>
-
     </div>
 </section>
 
@@ -1788,88 +1770,6 @@
         }
 
     }));
-
-    // ── LICENSES & MEMBERSHIPS ──────────────────────────────────────────
-    // domain is used to pull the official company logo via a public logo API;
-    // if that fails, an initials-based avatar is shown instead (never a random stock photo).
-    const LICENSES = [
-        { name: 'Coursera Plus', duration: '1 Year', price: 89.99, domain: 'coursera.org' },
-        { name: 'Canva Pro', duration: 'Lifetime', price: 14.99, domain: 'canva.com' },
-        { name: 'ChatGPT Plus', duration: '1 Month', price: 16.99, domain: 'openai.com' },
-        { name: 'CapCut Pro', duration: '6 Months', price: 44.99, domain: 'capcut.com' },
-        { name: 'LinkedIn Business', duration: '1 Year', price: 169.99, domain: 'linkedin.com' },
-        { name: 'Microsoft 365 Personal', duration: '1 Year', price: 59.99, domain: 'microsoft.com' },
-        { name: 'Microsoft 365 Family', duration: '1 Year', price: 119.99, domain: 'microsoft.com' },
-        { name: 'Microsoft Business', duration: '1 Year', price: 749.99, domain: 'microsoft.com' },
-        { name: 'Duolingo Super', duration: '1 Year', price: 59.99, domain: 'duolingo.com' },
-        { name: 'Adobe Creative Cloud', duration: '1 Year', price: 119.99, domain: 'adobe.com' },
-        { name: 'Envato', duration: '1 Month', price: 14.99, domain: 'envato.com' },
-        { name: 'Avast VPN', duration: '1 Year', price: 49.99, domain: 'avast.com' },
-        { name: 'Autodesk', duration: '3 Years', price: 159.99, domain: 'autodesk.com' },
-        { name: 'V-Ray', duration: '1 Year', price: 269.99, domain: 'chaos.com' },
-        { name: 'Lumion', duration: '1 Year', price: 269.99, domain: 'lumion.com' },
-        { name: 'Perplexity Pro', duration: '1 Year', price: 79.99, domain: 'perplexity.ai' },
-        { name: 'Figma Professional', duration: '1 Year', price: 74.99, domain: 'figma.com' },
-        { name: 'Scribd', duration: '1 Year', price: 79.99, domain: 'scribd.com' },
-        { name: 'NordVPN', duration: '1 Month', price: 9.99, domain: 'nordvpn.com' },
-        { name: 'QuillBot', duration: '1 Year', price: 59.99, domain: 'quillbot.com' },
-        { name: 'YouTube Premium', duration: '1 Year', price: 59.99, domain: 'youtube.com' },
-        { name: 'Wondershare Filmora', duration: '1 Year', price: 109.99, domain: 'wondershare.com' },
-        { name: 'DataCamp', duration: '1 Year', price: 74.99, domain: 'datacamp.com' },
-        { name: 'Grammarly Pro', duration: '1 Year', price: 99.99, domain: 'grammarly.com' },
-        { name: 'Google AI Pro', duration: '1 Year', price: 99.99, domain: 'google.com' },
-        { name: 'Google AI Ultra', duration: '1 Month', price: 54.99, domain: 'google.com' },
-        { name: 'SketchUp Pro', duration: '1 Year', price: 219.99, domain: 'sketchup.com' },
-        { name: 'SketchUp Studio', duration: '1 Year', price: 329.99, domain: 'sketchup.com' },
-        { name: 'Picsart', duration: '1 Year', price: 99.99, domain: 'picsart.com' },
-        { name: 'Notion AI', duration: '1 Year', price: 99.99, domain: 'notion.so' },
-        { name: 'Notion Plus', duration: '1 Year', price: 109.99, domain: 'notion.so' },
-        { name: 'Notion Plus + AI', duration: '1 Year', price: 179.99, domain: 'notion.so' },
-        { name: 'Midjourney', duration: '6 Months', price: 109.99, domain: 'midjourney.com' },
-        { name: 'Lovable Pro', duration: '1 Year', price: 179.99, domain: 'lovable.dev' },
-        { name: 'Replit Core', duration: '1 Year', price: 179.99, domain: 'replit.com' },
-        { name: 'Bolt Pro', duration: '1 Year', price: 179.99, domain: 'bolt.new' },
-        { name: 'n8n Cloud Starter', duration: '1 Year', price: 179.99, domain: 'n8n.io' },
-        { name: 'Descript Creator', duration: '1 Year', price: 139.99, domain: 'descript.com' },
-        { name: 'Warp Pro', duration: '1 Year', price: 144.99, domain: 'warp.dev' },
-        { name: 'Gamma Pro', duration: '1 Year', price: 169.99, domain: 'gamma.app' },
-        { name: 'Wispr Flow Pro', duration: '1 Year', price: 129.99, domain: 'wisprflow.ai' },
-        { name: 'Magic Patterns', duration: '1 Year', price: 219.99, domain: 'magicpatterns.com' },
-        { name: 'Granola Business', duration: '1 Year', price: 174.99, domain: 'granola.ai' },
-        { name: 'Linear Business', duration: '1 Year', price: 154.99, domain: 'linear.app' },
-        { name: 'Superhuman Starter', duration: '1 Year', price: 209.99, domain: 'superhuman.com' },
-        { name: 'Raycast Pro', duration: '1 Year', price: 114.99, domain: 'raycast.com' },
-        { name: 'ChatPRD Pro', duration: '1 Year', price: 129.99, domain: 'chatprd.ai' },
-        { name: 'Mobbin Pro', duration: '1 Year', price: 114.99, domain: 'mobbin.com' },
-        { name: 'Make.com', duration: '1 Year', price: 229.99, domain: 'make.com' },
-        { name: 'AnyDesk', duration: '1 Year', price: 99.99, domain: 'anydesk.com' }
-    ];
-
-    function renderLicenses() {
-        const grid = document.getElementById('licensesGrid');
-        if (!grid) return;
-        grid.innerHTML = LICENSES.map(p => {
-            const logoUrl = `https://logo.clearbit.com/${p.domain}?size=200`;
-            const fallbackUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(p.name)}&background=1a1a2e&color=ffffff&bold=true&size=200`;
-            const waText = encodeURIComponent(`Hi! I want to order ${p.name} - ${p.duration}`);
-            return `
-            <div class="glass-card rounded-2xl p-4 flex flex-col items-center text-center">
-                <div class="w-16 h-16 rounded-xl bg-white/95 border border-white/10 flex items-center justify-center mb-3 overflow-hidden p-2 flex-shrink-0">
-                    <img src="${logoUrl}" onerror="this.onerror=null;this.src='${fallbackUrl}';" alt="${p.name} logo" class="w-full h-full object-contain" loading="lazy" decoding="async">
-                </div>
-                <h4 class="font-semibold text-sm leading-snug mb-0.5">${p.name}</h4>
-                <p class="text-xs text-gray-500 mb-2">${p.duration}</p>
-                <p class="text-lg font-bold text-purple-400 mb-2" data-usd="${p.price}">$${p.price}</p>
-                <div class="flex flex-col items-center gap-1 mb-3 w-full">
-                    <span class="inline-flex items-center justify-center gap-1 text-[10px] font-semibold text-green-400"><svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>100% Authentic Subscription</span>
-                    <span class="inline-flex items-center justify-center gap-1 text-[10px] font-semibold text-blue-300"><svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12c0 4.556-3.04 8.53-7.428 9.6a1.5 1.5 0 01-1.144 0C8.04 20.53 5 16.556 5 12V6.75a1.5 1.5 0 01.826-1.342l6-3a1.5 1.5 0 011.348 0l6 3A1.5 1.5 0 0121 6.75V12z"/></svg>Money-Back Guarantee</span>
-                </div>
-                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=${waText}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn w-full py-2 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
-            </div>`;
-        }).join('');
-        applyCurrency(currentCurrency);
-    }
-    renderLicenses();
 
     // Build compact Most Popular cards from existing products without duplicating prices.
     const popularGrid = document.getElementById('mostPopularGrid');
