@@ -23,8 +23,18 @@
     <meta name="twitter:description" content="Netflix, Shahid, Anghami, Amazon Prime, PlayStation gift cards, Alfa Ushare, plus SHEIN and Amazon assisted ordering in Lebanon.">
     <meta name="twitter:image" content="https://nexusdevv.github.io/LakkisStockkk/assets/images/og-cover.webp">
 
+    <!-- Performance: warm up connections to the origins we actually load from -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://sm.pcmag.com">
+    <link rel="dns-prefetch" href="https://upload.wikimedia.org">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"></noscript>
     <!-- NOTE: cdn.tailwindcss.com is the development build. For production, replace it with a compiled
          Tailwind CSS file (e.g. via the Tailwind CLI: npx tailwindcss -i input.css -o assets/css/tailwind.css --minify)
          and swap this <script> for <link rel="stylesheet" href="assets/css/tailwind.css">. No classes need to change. -->
@@ -221,6 +231,37 @@
             box-shadow: 0 4px 14px rgba(245,158,11,0.35);
         }
 
+        /* Urgency badge (limited stock, etc.) */
+        .urgent-badge {
+            position: absolute; top: 0.9rem; left: 0.9rem; z-index: 20;
+            background: linear-gradient(135deg,#dc2626,#ef4444);
+            color: #fff; font-size: 0.65rem; font-weight: 700;
+            letter-spacing: 0.05em; text-transform: uppercase;
+            padding: 0.3rem 0.7rem; border-radius: 999px;
+            box-shadow: 0 4px 14px rgba(220,38,38,0.4);
+            display: inline-flex; align-items: center; gap: 0.3rem;
+            animation: urgent-pulse 1.8s ease-in-out infinite;
+        }
+        @keyframes urgent-pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(239,68,68,0.55); }
+            50%       { box-shadow: 0 0 0 8px rgba(239,68,68,0); }
+        }
+
+        /* Inline urgency alert strip inside a product's pricing panel */
+        .urgency-alert {
+            display: flex; align-items: center; gap: 0.6rem;
+            background: rgba(239,68,68,0.1);
+            border: 1px solid rgba(239,68,68,0.35);
+            color: #fca5a5;
+            font-size: 0.78rem; font-weight: 600;
+            padding: 0.6rem 0.9rem; border-radius: 0.75rem;
+            margin-bottom: 1.1rem;
+        }
+        .urgency-alert svg { flex-shrink: 0; }
+        @media (prefers-reduced-motion: reduce) {
+            .urgent-badge { animation: none; }
+        }
+
         /* Category filter pills */
         .filter-pill {
             background: rgba(255,255,255,0.04);
@@ -317,6 +358,24 @@
                 "name": "Amazon Prime Account",
                 "brand": "Amazon Prime",
                 "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "7", "availability": "https://schema.org/InStock" }
+            },
+            {
+                "@type": "Product",
+                "name": "Disney+ User Account Subscription",
+                "brand": "Disney+",
+                "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "5", "availability": "https://schema.org/InStock" }
+            },
+            {
+                "@type": "Product",
+                "name": "OSN+ User Account Subscription",
+                "brand": "OSN+",
+                "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "4.99", "availability": "https://schema.org/InStock" }
+            },
+            {
+                "@type": "Product",
+                "name": "WATCH IT Premium Subscription",
+                "brand": "WATCH IT",
+                "offers": { "@type": "Offer", "priceCurrency": "USD", "price": "5.99", "availability": "https://schema.org/InStock" }
             }
         ]
     }
@@ -522,7 +581,7 @@
             <span class="gradient-text">At Best Prices</span>
         </h1>
         <p class="text-base md:text-xl text-gray-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed">
-            Netflix, Shahid, Anghami, Amazon Prime, PlayStation gift cards, Alfa Ushare &amp; more —
+            Netflix, Shahid, Anghami, Amazon Prime, Disney+, PlayStation gift cards, Alfa Ushare &amp; more —
             plus assisted SHEIN &amp; Amazon shopping orders. Reliable subscriptions, fast delivery,
             and after-sales support across Lebanon.
         </p>
@@ -548,6 +607,42 @@
     </div>
 </section>
 
+<!-- ── TRUST BAR ── -->
+<section class="py-10 relative border-y border-white/5" style="background:rgba(255,255,255,0.015);">
+    <div class="max-w-6xl mx-auto px-5">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="flex flex-col items-center text-center gap-2">
+                <div class="w-11 h-11 rounded-full bg-green-500/10 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12c0 4.556-3.04 8.53-7.428 9.6a1.5 1.5 0 01-1.144 0C8.04 20.53 5 16.556 5 12V6.75a1.5 1.5 0 01.826-1.342l6-3a1.5 1.5 0 011.348 0l6 3A1.5 1.5 0 0121 6.75V12z"/></svg>
+                </div>
+                <p class="text-sm font-semibold">Secure Payment</p>
+                <p class="text-xs text-gray-500 leading-snug">Pay only via Whish Money — we never ask for card details in chat</p>
+            </div>
+            <div class="flex flex-col items-center text-center gap-2">
+                <div class="w-11 h-11 rounded-full bg-blue-500/10 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <p class="text-sm font-semibold">Fast Digital Delivery</p>
+                <p class="text-xs text-gray-500 leading-snug">Most orders delivered right after payment is confirmed</p>
+            </div>
+            <div class="flex flex-col items-center text-center gap-2">
+                <div class="w-11 h-11 rounded-full bg-purple-500/10 flex items-center justify-center">
+                    <svg class="w-5 h-5 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <p class="text-sm font-semibold">Real Support</p>
+                <p class="text-xs text-gray-500 leading-snug">Reach a person on WhatsApp before and after you order</p>
+            </div>
+            <a href="https://www.instagram.com/stories/highlights/18015522128034327/" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center text-center gap-2 group">
+                <div class="w-11 h-11 rounded-full bg-pink-500/10 flex items-center justify-center group-hover:bg-pink-500/20 transition-colors">
+                    <svg class="w-5 h-5 text-pink-400" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </div>
+                <p class="text-sm font-semibold group-hover:text-pink-300 transition-colors">Real Customer Feedback</p>
+                <p class="text-xs text-gray-500 leading-snug">See real orders and reviews on our Instagram highlights</p>
+            </a>
+        </div>
+    </div>
+</section>
+
 <!-- ── PRODUCTS ── -->
 <section id="products" class="py-20 relative">
     <div class="max-w-7xl mx-auto px-5">
@@ -565,6 +660,7 @@
             <button type="button" class="filter-pill px-4 py-2 rounded-full text-sm font-medium" data-filter="playstation">PlayStation</button>
             <button type="button" class="filter-pill px-4 py-2 rounded-full text-sm font-medium" data-filter="mobile-data">Mobile Data</button>
             <button type="button" class="filter-pill px-4 py-2 rounded-full text-sm font-medium" data-filter="shopping">Shopping Orders</button>
+            <button type="button" class="filter-pill px-4 py-2 rounded-full text-sm font-medium" data-filter="licenses">Licenses &amp; Software</button>
         </div>
 
         <!-- MOST POPULAR QUICK-JUMP (built from existing product cards via JS — see script) -->
@@ -723,6 +819,146 @@
             </div>
         </div>
 
+        <!-- DISNEY+ -->
+        <div class="mb-12 scroll-reveal product-block" id="product-disney" data-category="most-popular streaming">
+            <div class="glass-card rounded-3xl overflow-hidden relative">
+                <span class="urgent-badge">
+                    <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.72-1.36 3.486 0l6.518 11.598c.75 1.334-.213 2.98-1.743 2.98H3.482c-1.53 0-2.493-1.646-1.743-2.98L8.257 3.1zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                    Limited Stock
+                </span>
+                <div class="grid md:grid-cols-2">
+                    <div class="relative h-52 md:h-auto overflow-hidden min-h-[208px] product-img-panel" style="background:linear-gradient(135deg,#040b2c,#0b1f5c);">
+                        <img src="https://sm.pcmag.com/t/pcmag_me/review/d/disney/disney_v3q1.1920.jpg" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Disney%2B_logo.svg/512px-Disney%2B_logo.svg.png';" alt="Disney Plus streaming account cover image" class="absolute inset-0 w-full h-full object-cover opacity-80" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6">
+                            <h3 class="font-display font-bold text-4xl mb-1" style="color:#1FA2FF;">Disney+</h3>
+                            <p class="text-gray-300 text-sm">User Account</p>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <h4 class="text-base font-semibold mb-5 text-gray-300">Available Plans</h4>
+                        <p class="text-xs text-gray-500 mb-3 uppercase tracking-wider font-semibold">User Account</p>
+                        <div class="space-y-2 mb-5">
+                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
+                                <div><p class="font-semibold text-sm">1 Month</p><p class="text-xs text-gray-400">User Account</p></div>
+                                <div class="flex items-center gap-3 price-cell">
+                                    <span class="text-lg font-bold" style="color:#1FA2FF;" data-usd="5">$5</span>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Disney%2B 1 Month User Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                </div>
+                            </div>
+                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center" style="border-color:rgba(31,162,255,0.3);background:rgba(31,162,255,0.06);">
+                                <div><p class="font-semibold text-sm">3 Months</p><p class="text-xs" style="color:#1FA2FF;">Best Value</p></div>
+                                <div class="flex items-center gap-3 price-cell">
+                                    <span class="text-lg font-bold" style="color:#1FA2FF;" data-usd="10">$10</span>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Disney%2B 3 Months User Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="mt-2 space-y-1.5 text-sm text-gray-400">
+                            <li class="flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" style="color:#1FA2FF;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Disney, Pixar, Marvel &amp; Star Wars</li>
+                            <li class="flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" style="color:#1FA2FF;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>HD Streaming • Instant Delivery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- OSN+ -->
+        <div class="mb-12 scroll-reveal product-block" id="product-osn" data-category="streaming">
+            <div class="glass-card rounded-3xl overflow-hidden">
+                <div class="grid md:grid-cols-2">
+                    <div class="relative h-52 md:h-auto overflow-hidden min-h-[208px] product-img-panel" style="background:linear-gradient(135deg,#0a0a0a,#1a1a1a);">
+                        <img src="https://yt3.googleusercontent.com/w5cxKBh8qTmUwPJ3pkrLHGOH8ZBWe3uduDUeajR23Mg2etxv6d5htfk1VTw2U1DU74Nayw7CtNk=s900-c-k-c0x00ffffff-no-rj" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&q=80';" alt="OSN+ streaming account logo" class="absolute inset-0 w-full h-full object-cover opacity-80" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6">
+                            <h3 class="font-display font-bold text-4xl mb-1" style="color:#f5c518;">OSN+</h3>
+                            <p class="text-gray-300 text-sm">User &amp; Full Accounts</p>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <h4 class="text-base font-semibold mb-5 text-gray-300">Available Plans</h4>
+                        <p class="text-xs text-gray-500 mb-3 uppercase tracking-wider font-semibold">User Account</p>
+                        <div class="space-y-2 mb-5">
+                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
+                                <div><p class="font-semibold text-sm">1 Month</p><p class="text-xs text-gray-400">User Account</p></div>
+                                <div class="flex items-center gap-3 price-cell">
+                                    <span class="text-lg font-bold" style="color:#f5c518;" data-usd="4.99">$4.99</span>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order OSN%2B 1 Month User Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                </div>
+                            </div>
+                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center" style="border-color:rgba(245,197,24,0.3);background:rgba(245,197,24,0.06);">
+                                <div><p class="font-semibold text-sm">1 Year</p><p class="text-xs" style="color:#f5c518;">Best Value</p></div>
+                                <div class="flex items-center gap-3 price-cell">
+                                    <span class="text-lg font-bold" style="color:#f5c518;" data-usd="39.99">$39.99</span>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order OSN%2B 1 Year User Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500 mb-3 uppercase tracking-wider font-semibold">Full Account</p>
+                        <div class="space-y-2 mb-5">
+                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center border-purple-500/30 bg-purple-500/5">
+                                <div><p class="font-semibold text-sm">1 Month</p><p class="text-xs text-gray-400">Full Account</p></div>
+                                <div class="flex items-center gap-3 price-cell">
+                                    <span class="text-lg font-bold text-purple-400" data-usd="9.99">$9.99</span>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order OSN%2B 1 Month Full Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                </div>
+                            </div>
+                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
+                                <div><p class="font-semibold text-sm">1 Year</p><p class="text-xs text-gray-400">Full Account</p></div>
+                                <div class="flex items-center gap-3 price-cell">
+                                    <span class="text-lg font-bold text-purple-400" data-usd="89.99">$89.99</span>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order OSN%2B 1 Year Full Account" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="space-y-1.5 text-sm text-gray-400">
+                            <li class="flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" style="color:#f5c518;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Blockbusters, Series &amp; HBO Originals</li>
+                            <li class="flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" style="color:#f5c518;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>HD Streaming • Instant Delivery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- WATCH IT -->
+        <div class="mb-12 scroll-reveal product-block" id="product-watchit" data-category="streaming">
+            <div class="glass-card rounded-3xl overflow-hidden">
+                <div class="grid md:grid-cols-2">
+                    <div class="relative h-52 md:h-auto overflow-hidden min-h-[208px] product-img-panel" style="background:linear-gradient(135deg,#0a0a0a,#1c1c1c);">
+                        <img src="https://yt3.googleusercontent.com/Djei3KAEBapjD4OAjVfbpq7ldZi8voLzz5UBMxkwwh6gohP56BJz7iUMy9rJyMwdJMCjhT28=s900-c-k-c0x00ffffff-no-rj" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1574375927938-d5a98e8ffe85?w=800&q=80';" alt="WATCH IT Premium streaming account logo" class="absolute inset-0 w-full h-full object-cover opacity-80" loading="lazy" decoding="async">
+                        <div class="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6">
+                            <h3 class="font-display font-bold text-4xl mb-1" style="color:#ff3b3b;">WATCH IT</h3>
+                            <p class="text-gray-300 text-sm">Premium</p>
+                        </div>
+                    </div>
+                    <div class="p-6 md:p-8">
+                        <h4 class="text-base font-semibold mb-5 text-gray-300">Available Plans</h4>
+                        <div class="space-y-2 mb-5">
+                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
+                                <div><p class="font-semibold text-sm">1 Month</p><p class="text-xs text-gray-400">Premium</p></div>
+                                <div class="flex items-center gap-3 price-cell">
+                                    <span class="text-lg font-bold" style="color:#ff3b3b;" data-usd="5.99">$5.99</span>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order WATCH IT Premium 1 Month" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                </div>
+                            </div>
+                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center" style="border-color:rgba(255,59,59,0.3);background:rgba(255,59,59,0.06);">
+                                <div><p class="font-semibold text-sm">1 Year</p><p class="text-xs" style="color:#ff3b3b;">Best Value</p></div>
+                                <div class="flex items-center gap-3 price-cell">
+                                    <span class="text-lg font-bold" style="color:#ff3b3b;" data-usd="39.99">$39.99</span>
+                                    <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order WATCH IT Premium 1 Year" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="mt-2 space-y-1.5 text-sm text-gray-400">
+                            <li class="flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" style="color:#ff3b3b;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Movies, Series &amp; Arabic Originals</li>
+                            <li class="flex items-center gap-2"><svg class="w-4 h-4 flex-shrink-0" style="color:#ff3b3b;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>HD Streaming • Instant Delivery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- ANGHAMI -->
         <div class="mb-12 scroll-reveal product-block" id="product-anghami" data-category="most-popular music">
             <div class="glass-card rounded-3xl overflow-hidden relative">
@@ -737,7 +973,11 @@
                         </div>
                     </div>
                     <div class="p-6 md:p-8">
-                        <h4 class="text-base font-semibold mb-5 text-gray-300">Available Plans</h4>
+                        <h4 class="text-base font-semibold mb-3 text-gray-300">Available Plans</h4>
+                        <div class="urgency-alert">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.72-1.36 3.486 0l6.518 11.598c.75 1.334-.213 2.98-1.743 2.98H3.482c-1.53 0-2.493-1.646-1.743-2.98L8.257 3.1zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                            Almost gone — buy before it's too late!
+                        </div>
                         <div class="space-y-2 mb-5">
                             <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
                                 <div><p class="font-semibold text-sm">3 Months</p><p class="text-xs text-gray-400">Subscription</p></div>
@@ -746,15 +986,15 @@
                                     <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Anghami 3 Months" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
-                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center border-pink-500/30 bg-pink-500/5">
-                                <div><p class="font-semibold text-sm">6 Months</p><p class="text-xs text-pink-400">Best Value</p></div>
+                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
+                                <div><p class="font-semibold text-sm">6 Months</p><p class="text-xs text-gray-400">Subscription</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold text-pink-400" data-usd="15">$15</span>
                                     <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Anghami 6 Months" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
                                 </div>
                             </div>
-                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center">
-                                <div><p class="font-semibold text-sm">1 Year</p><p class="text-xs text-gray-400">Subscription</p></div>
+                            <div class="plan-card p-3.5 rounded-xl flex justify-between items-center border-pink-500/30 bg-pink-500/5">
+                                <div><p class="font-semibold text-sm">1 Year</p><p class="text-xs text-pink-400">Best Value</p></div>
                                 <div class="flex items-center gap-3 price-cell">
                                     <span class="text-lg font-bold text-pink-400" data-usd="20">$20</span>
                                     <a href="https://api.whatsapp.com/send/?phone=96170708025&text=Hi! I want to order Anghami 1 Year" target="_blank" rel="noopener noreferrer" class="whatsapp-btn px-3.5 py-1.5 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
@@ -1047,6 +1287,23 @@
             </div>
         </div>
 
+        <!-- ── LICENSES & MEMBERSHIPS ── -->
+        <div class="mb-4 mt-6 scroll-reveal service-block" id="licenses-memberships" data-category="licenses">
+            <div class="text-center mb-10">
+                <h3 class="font-display font-bold text-3xl md:text-4xl mb-3">Licenses &amp; Memberships</h3>
+                <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base">
+                    Genuine software, AI tool, and platform subscriptions — delivered fast, with a 100% authentic
+                    guarantee on every license.
+                </p>
+            </div>
+            <div id="licensesGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"></div>
+            <div class="mt-6 p-4 rounded-2xl bg-white/[0.02] border border-white/10 text-xs text-gray-500 leading-relaxed max-w-3xl mx-auto text-center">
+                All product names, logos, and brands shown above are the property of their respective owners.
+                LakkisStock is an independent reseller and is not affiliated with, endorsed by, or sponsored by
+                any of these companies unless explicitly stated.
+            </div>
+        </div>
+
     </div>
 </section>
 
@@ -1168,6 +1425,14 @@
                         <option value="Shahid User 1 Year">Shahid (User) - 1 Year ($35)</option>
                         <option value="Shahid Full 1 Month">Shahid (Full) - 1 Month ($10)</option>
                         <option value="Shahid Full 3 Months">Shahid (Full) - 3 Months ($22)</option>
+                        <option value="Disney+ User 1 Month">Disney+ (User) - 1 Month ($5)</option>
+                        <option value="Disney+ User 3 Months">Disney+ (User) - 3 Months ($10)</option>
+                        <option value="OSN+ User 1 Month">OSN+ (User) - 1 Month ($4.99)</option>
+                        <option value="OSN+ User 1 Year">OSN+ (User) - 1 Year ($39.99)</option>
+                        <option value="OSN+ Full 1 Month">OSN+ (Full) - 1 Month ($9.99)</option>
+                        <option value="OSN+ Full 1 Year">OSN+ (Full) - 1 Year ($89.99)</option>
+                        <option value="WATCH IT Premium 1 Month">WATCH IT Premium - 1 Month ($5.99)</option>
+                        <option value="WATCH IT Premium 1 Year">WATCH IT Premium - 1 Year ($39.99)</option>
                         <option value="Anghami 3 Months">Anghami - 3 Months ($9)</option>
                         <option value="Anghami 6 Months">Anghami - 6 Months ($15)</option>
                         <option value="Anghami 1 Year">Anghami - 1 Year ($20)</option>
@@ -1523,6 +1788,88 @@
         }
 
     }));
+
+    // ── LICENSES & MEMBERSHIPS ──────────────────────────────────────────
+    // domain is used to pull the official company logo via a public logo API;
+    // if that fails, an initials-based avatar is shown instead (never a random stock photo).
+    const LICENSES = [
+        { name: 'Coursera Plus', duration: '1 Year', price: 89.99, domain: 'coursera.org' },
+        { name: 'Canva Pro', duration: 'Lifetime', price: 14.99, domain: 'canva.com' },
+        { name: 'ChatGPT Plus', duration: '1 Month', price: 16.99, domain: 'openai.com' },
+        { name: 'CapCut Pro', duration: '6 Months', price: 44.99, domain: 'capcut.com' },
+        { name: 'LinkedIn Business', duration: '1 Year', price: 169.99, domain: 'linkedin.com' },
+        { name: 'Microsoft 365 Personal', duration: '1 Year', price: 59.99, domain: 'microsoft.com' },
+        { name: 'Microsoft 365 Family', duration: '1 Year', price: 119.99, domain: 'microsoft.com' },
+        { name: 'Microsoft Business', duration: '1 Year', price: 749.99, domain: 'microsoft.com' },
+        { name: 'Duolingo Super', duration: '1 Year', price: 59.99, domain: 'duolingo.com' },
+        { name: 'Adobe Creative Cloud', duration: '1 Year', price: 119.99, domain: 'adobe.com' },
+        { name: 'Envato', duration: '1 Month', price: 14.99, domain: 'envato.com' },
+        { name: 'Avast VPN', duration: '1 Year', price: 49.99, domain: 'avast.com' },
+        { name: 'Autodesk', duration: '3 Years', price: 159.99, domain: 'autodesk.com' },
+        { name: 'V-Ray', duration: '1 Year', price: 269.99, domain: 'chaos.com' },
+        { name: 'Lumion', duration: '1 Year', price: 269.99, domain: 'lumion.com' },
+        { name: 'Perplexity Pro', duration: '1 Year', price: 79.99, domain: 'perplexity.ai' },
+        { name: 'Figma Professional', duration: '1 Year', price: 74.99, domain: 'figma.com' },
+        { name: 'Scribd', duration: '1 Year', price: 79.99, domain: 'scribd.com' },
+        { name: 'NordVPN', duration: '1 Month', price: 9.99, domain: 'nordvpn.com' },
+        { name: 'QuillBot', duration: '1 Year', price: 59.99, domain: 'quillbot.com' },
+        { name: 'YouTube Premium', duration: '1 Year', price: 59.99, domain: 'youtube.com' },
+        { name: 'Wondershare Filmora', duration: '1 Year', price: 109.99, domain: 'wondershare.com' },
+        { name: 'DataCamp', duration: '1 Year', price: 74.99, domain: 'datacamp.com' },
+        { name: 'Grammarly Pro', duration: '1 Year', price: 99.99, domain: 'grammarly.com' },
+        { name: 'Google AI Pro', duration: '1 Year', price: 99.99, domain: 'google.com' },
+        { name: 'Google AI Ultra', duration: '1 Month', price: 54.99, domain: 'google.com' },
+        { name: 'SketchUp Pro', duration: '1 Year', price: 219.99, domain: 'sketchup.com' },
+        { name: 'SketchUp Studio', duration: '1 Year', price: 329.99, domain: 'sketchup.com' },
+        { name: 'Picsart', duration: '1 Year', price: 99.99, domain: 'picsart.com' },
+        { name: 'Notion AI', duration: '1 Year', price: 99.99, domain: 'notion.so' },
+        { name: 'Notion Plus', duration: '1 Year', price: 109.99, domain: 'notion.so' },
+        { name: 'Notion Plus + AI', duration: '1 Year', price: 179.99, domain: 'notion.so' },
+        { name: 'Midjourney', duration: '6 Months', price: 109.99, domain: 'midjourney.com' },
+        { name: 'Lovable Pro', duration: '1 Year', price: 179.99, domain: 'lovable.dev' },
+        { name: 'Replit Core', duration: '1 Year', price: 179.99, domain: 'replit.com' },
+        { name: 'Bolt Pro', duration: '1 Year', price: 179.99, domain: 'bolt.new' },
+        { name: 'n8n Cloud Starter', duration: '1 Year', price: 179.99, domain: 'n8n.io' },
+        { name: 'Descript Creator', duration: '1 Year', price: 139.99, domain: 'descript.com' },
+        { name: 'Warp Pro', duration: '1 Year', price: 144.99, domain: 'warp.dev' },
+        { name: 'Gamma Pro', duration: '1 Year', price: 169.99, domain: 'gamma.app' },
+        { name: 'Wispr Flow Pro', duration: '1 Year', price: 129.99, domain: 'wisprflow.ai' },
+        { name: 'Magic Patterns', duration: '1 Year', price: 219.99, domain: 'magicpatterns.com' },
+        { name: 'Granola Business', duration: '1 Year', price: 174.99, domain: 'granola.ai' },
+        { name: 'Linear Business', duration: '1 Year', price: 154.99, domain: 'linear.app' },
+        { name: 'Superhuman Starter', duration: '1 Year', price: 209.99, domain: 'superhuman.com' },
+        { name: 'Raycast Pro', duration: '1 Year', price: 114.99, domain: 'raycast.com' },
+        { name: 'ChatPRD Pro', duration: '1 Year', price: 129.99, domain: 'chatprd.ai' },
+        { name: 'Mobbin Pro', duration: '1 Year', price: 114.99, domain: 'mobbin.com' },
+        { name: 'Make.com', duration: '1 Year', price: 229.99, domain: 'make.com' },
+        { name: 'AnyDesk', duration: '1 Year', price: 99.99, domain: 'anydesk.com' }
+    ];
+
+    function renderLicenses() {
+        const grid = document.getElementById('licensesGrid');
+        if (!grid) return;
+        grid.innerHTML = LICENSES.map(p => {
+            const logoUrl = `https://logo.clearbit.com/${p.domain}?size=200`;
+            const fallbackUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(p.name)}&background=1a1a2e&color=ffffff&bold=true&size=200`;
+            const waText = encodeURIComponent(`Hi! I want to order ${p.name} - ${p.duration}`);
+            return `
+            <div class="glass-card rounded-2xl p-4 flex flex-col items-center text-center">
+                <div class="w-16 h-16 rounded-xl bg-white/95 border border-white/10 flex items-center justify-center mb-3 overflow-hidden p-2 flex-shrink-0">
+                    <img src="${logoUrl}" onerror="this.onerror=null;this.src='${fallbackUrl}';" alt="${p.name} logo" class="w-full h-full object-contain" loading="lazy" decoding="async">
+                </div>
+                <h4 class="font-semibold text-sm leading-snug mb-0.5">${p.name}</h4>
+                <p class="text-xs text-gray-500 mb-2">${p.duration}</p>
+                <p class="text-lg font-bold text-purple-400 mb-2" data-usd="${p.price}">$${p.price}</p>
+                <div class="flex flex-col items-center gap-1 mb-3 w-full">
+                    <span class="inline-flex items-center justify-center gap-1 text-[10px] font-semibold text-green-400"><svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>100% Authentic Subscription</span>
+                    <span class="inline-flex items-center justify-center gap-1 text-[10px] font-semibold text-blue-300"><svg class="w-3 h-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12.75L11.25 15 15 9.75M21 12c0 4.556-3.04 8.53-7.428 9.6a1.5 1.5 0 01-1.144 0C8.04 20.53 5 16.556 5 12V6.75a1.5 1.5 0 01.826-1.342l6-3a1.5 1.5 0 011.348 0l6 3A1.5 1.5 0 0121 6.75V12z"/></svg>Money-Back Guarantee</span>
+                </div>
+                <a href="https://api.whatsapp.com/send/?phone=96170708025&text=${waText}" target="_blank" rel="noopener noreferrer" class="whatsapp-btn w-full py-2 rounded-lg text-xs font-semibold hover:scale-105 transition-transform">Order</a>
+            </div>`;
+        }).join('');
+        applyCurrency(currentCurrency);
+    }
+    renderLicenses();
 
     // Build compact Most Popular cards from existing products without duplicating prices.
     const popularGrid = document.getElementById('mostPopularGrid');
