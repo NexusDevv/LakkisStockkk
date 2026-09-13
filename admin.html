@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LakkisStock | Admin</title>
     <meta name="robots" content="noindex, nofollow">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = { theme: { extend: { fontFamily: { sans: ['Inter','sans-serif'], display: ['Outfit','sans-serif'] } } } }
-    </script>
+    <link rel="stylesheet" href="assets/css/admin.css">
+    <link rel="icon" href="logo.png">
+
     <style>
         body { font-family:'Inter',sans-serif; background:#050505; color:#fff; }
         .glass { background:rgba(20,20,20,0.6); border:1px solid rgba(255,255,255,0.08); backdrop-filter:blur(8px); }
@@ -47,9 +45,12 @@
         messagingSenderId: "195238544522",
         appId: "1:195238544522:web:1d1b81f940ffbaf1cb1973"
     };
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
+    let auth = null, db = null;
+    if (window.firebase?.auth && window.firebase?.firestore) {
+        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+        auth = firebase.auth();
+        db = firebase.firestore();
+    }
 
     // ⚠️ EDIT THIS: bootstrap owner email(s) — always have access, even before
     // the "admins" list below has any entries. Additional admins can be added
@@ -69,7 +70,7 @@
     <div class="flex items-center justify-between mb-8">
         <div class="font-display font-bold text-2xl">
             <span class="bg-gradient-to-r from-red-600 via-purple-500 to-blue-500 bg-clip-text text-transparent">Lakkis</span>Stock
-            <span class="text-sm text-gray-400 font-normal ml-2">Admin</span>
+            <span class="text-sm text-gray-400 font-normal ml-2">Admin</span><br><a class="admin-store-link" href="index.html">← Back to the store</a>
         </div>
         <button id="logoutBtn" class="hidden text-sm px-4 py-2 rounded-full border border-white/10 hover:border-red-400/50 hover:text-red-300 transition-all">Log Out</button>
     </div>
@@ -81,12 +82,12 @@
         <div id="loginError" class="hidden mb-4 px-4 py-2.5 rounded-xl bg-red-500/10 border border-red-500/30 text-red-300 text-sm"></div>
         <form id="loginForm" class="space-y-4">
             <div>
-                <label class="block text-sm font-medium text-gray-300 mb-1.5">Email</label>
-                <input type="email" id="loginEmail" required class="input-field w-full px-4 py-3 rounded-xl">
+                <label for="loginEmail" class="block text-sm font-medium text-gray-300 mb-1.5">Email</label>
+                <input type="email" id="loginEmail" autocomplete="username" required class="input-field w-full px-4 py-3 rounded-xl">
             </div>
             <div>
-                <label class="block text-sm font-medium text-gray-300 mb-1.5">Password</label>
-                <input type="password" id="loginPassword" required class="input-field w-full px-4 py-3 rounded-xl">
+                <label for="loginPassword" class="block text-sm font-medium text-gray-300 mb-1.5">Password</label>
+                <input type="password" id="loginPassword" autocomplete="current-password" required class="input-field w-full px-4 py-3 rounded-xl">
             </div>
             <button type="submit" class="w-full py-3 rounded-xl font-semibold bg-gradient-to-r from-purple-600 to-blue-600">Sign In</button>
         </form>
@@ -166,6 +167,8 @@
 </div>
 
 <script>
+if (auth && db) {
+
     const loginView = document.getElementById('loginView');
     const deniedView = document.getElementById('deniedView');
     const dashboardView = document.getElementById('dashboardView');
@@ -196,6 +199,12 @@
         [loginView, deniedView, dashboardView].forEach(v => v.classList.add('hidden'));
         if (unsubTickets) { unsubTickets(); unsubTickets = null; }
         if (unsubAdmins) { unsubAdmins(); unsubAdmins = null; }
+        allTickets = [];
+        DYNAMIC_ADMIN_EMAILS = [];
+        currentUserEmail = null;
+        closeThread();
+        document.getElementById('ticketsList').innerHTML = '';
+        document.getElementById('threadMessages').innerHTML = '';
         if (!user) {
             logoutBtn.classList.add('hidden');
             loginView.classList.remove('hidden');
@@ -210,6 +219,7 @@
             DYNAMIC_ADMIN_EMAILS = snap.docs.map(d => d.data().email).filter(Boolean);
         } catch (e) { /* if this fails, OWNER_EMAILS still works */ }
 
+        if (auth.currentUser?.uid !== user.uid) return;
         if (!isAllowedAdmin(user.email)) {
             deniedView.classList.remove('hidden');
             return;
@@ -254,7 +264,7 @@
                 return `
                 <div class="flex items-center justify-between px-4 py-2.5 rounded-xl bg-white/5 border border-white/10">
                     <span class="text-sm">${escapeHtml(data.email || '')}</span>
-                    <button onclick="removeAdmin('${d.id}')" class="text-xs font-semibold px-3 py-1 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 hover:bg-red-500/20 transition-all">Remove</button>
+                    <button onclick="removeAdmin(decodeURIComponent('${safeDocId(d.id)}'))" class="text-xs font-semibold px-3 py-1 rounded-lg bg-red-500/10 border border-red-500/30 text-red-300 hover:bg-red-500/20 transition-all">Remove</button>
                 </div>`;
             }).join('');
         });
@@ -302,7 +312,7 @@
     function loadTickets() {
         document.getElementById('loadingState').classList.remove('hidden');
         unsubTickets = db.collection('supportTickets').orderBy('createdAt', 'desc').onSnapshot((snapshot) => {
-            allTickets = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            allTickets = snapshot.docs.map(doc => ({ ...doc.data(), id: doc.id }));
             document.getElementById('loadingState').classList.add('hidden');
             renderTickets();
             // Keep an open thread modal's header in sync (e.g. unread badge clears).
@@ -332,12 +342,12 @@
         empty.classList.add('hidden');
 
         list.innerHTML = filtered.map(t => {
-            const status = t.status || 'open';
+            const status = t.status === 'resolved' ? 'resolved' : 'open';
             const date = t.createdAt?.toDate ? t.createdAt.toDate().toLocaleString() : '—';
             const who = t.name || t.email || 'Guest';
             const unread = !!t.unreadForAdmin;
             return `
-            <div class="ticket-card rounded-2xl p-5 cursor-pointer" onclick="openThread('${t.id}')">
+            <div class="ticket-card rounded-2xl p-5 cursor-pointer" onclick="openThread(decodeURIComponent('${safeDocId(t.id)}'))">
                 <div class="flex flex-wrap items-start justify-between gap-2 mb-2">
                     <div>
                         <h3 class="font-semibold text-lg flex items-center gap-2">${escapeHtml(t.subject || '(no subject)')} ${unread ? '<span class="w-2 h-2 rounded-full bg-red-500 inline-block"></span>' : ''}</h3>
@@ -348,9 +358,9 @@
                 <p class="text-sm text-gray-300 whitespace-pre-wrap mb-4 line-clamp-2">${escapeHtml(t.message || '')}</p>
                 <div class="flex gap-2" onclick="event.stopPropagation()">
                     ${status !== 'resolved'
-                        ? `<button onclick="setStatus('${t.id}','resolved')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-green-500/10 border border-green-500/30 text-green-300 hover:bg-green-500/20 transition-all">Mark Resolved</button>`
-                        : `<button onclick="setStatus('${t.id}','open')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-yellow-500/10 border border-yellow-500/30 text-yellow-300 hover:bg-yellow-500/20 transition-all">Reopen</button>`}
-                    <button onclick="openThread('${t.id}')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-white/25 transition-all">Open Conversation</button>
+                        ? `<button onclick="setStatus(decodeURIComponent('${safeDocId(t.id)}'),'resolved')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-green-500/10 border border-green-500/30 text-green-300 hover:bg-green-500/20 transition-all">Mark Resolved</button>`
+                        : `<button onclick="setStatus(decodeURIComponent('${safeDocId(t.id)}'),'open')" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-yellow-500/10 border border-yellow-500/30 text-yellow-300 hover:bg-yellow-500/20 transition-all">Reopen</button>`}
+                    <button onclick="openThread(decodeURIComponent('${safeDocId(t.id)}'))" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 hover:border-white/25 transition-all">Open Conversation</button>
                 </div>
             </div>`;
         }).join('');
@@ -465,11 +475,24 @@
         });
     });
 
+    function safeDocId(value) { return encodeURIComponent(String(value)).replace(/'/g, '%27'); }
+
     function escapeHtml(str) {
         const div = document.createElement('div');
         div.textContent = str;
         return div.innerHTML;
     }
+
+    // Inline buttons call these names after the optional service bootstrap.
+    window.openThread = openThread;
+    window.setStatus = setStatus;
+    window.removeAdmin = removeAdmin;
+} else {
+ document.getElementById('loginError').textContent = 'Account services could not be loaded. Check your connection and reload the page.';
+ document.getElementById('loginError').classList.remove('hidden');
+ document.getElementById('loginForm').addEventListener('submit', event => event.preventDefault());
+ document.querySelector('#loginForm button[type="submit"]').disabled = true;
+}
 </script>
 </body>
 </html>
