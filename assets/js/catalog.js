@@ -26,8 +26,8 @@ window.LAKKIS_STORE = {
       {id:'f3',type:'Full Account',label:'3 months',price:22}
     ]},
     {id:'disney', name:'Disney+', category:'streaming', mark:'Disney+', theme:'disney', popular:true, tagline:'A whole world of favorites.', description:'Disney, Pixar, Marvel, and Star Wars in one place. Choose your subscription duration below.', plans:[
-      {id:'u1',type:'User Account',label:'1 month',price:5},
-      {id:'u3',type:'User Account',label:'3 months',price:10}
+      {id:'u1',type:'User Account',label:'1 month',price:6},
+      {id:'u3',type:'User Account',label:'3 months',price:15}
     ]},
     {id:'anghami', name:'Anghami', category:'music', mark:'anghami', theme:'anghami', popular:true, tagline:'More music. Fewer interruptions.', description:'Choose a music subscription for your everyday soundtrack. Confirm account and activation details with our team.', plans:[
       {id:'s3',type:'Subscription',label:'3 months',price:9},
